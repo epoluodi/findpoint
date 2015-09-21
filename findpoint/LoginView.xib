@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9ud-kW-gqO" customClass="LoginView">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="383"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_back1" translatesAutoresizingMaskIntoConstraints="NO" id="sgM-CN-2b1">
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="383"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="383" id="6LW-yY-dj4"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择第三方登陆" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-pl-AY9">
+                    <rect key="frame" x="8" y="56" width="234" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="udl-Ex-80J"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QQ" translatesAutoresizingMaskIntoConstraints="NO" id="ieu-XT-bQt">
+                    <rect key="frame" x="105" y="172" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="7ph-pK-9cj"/>
+                        <constraint firstAttribute="width" constant="40" id="nde-zy-ANB"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="sgM-CN-2b1" firstAttribute="centerY" secondItem="ieu-XT-bQt" secondAttribute="centerY" id="49A-kK-6GD"/>
+                <constraint firstItem="sgM-CN-2b1" firstAttribute="top" secondItem="9ud-kW-gqO" secondAttribute="top" id="EL3-GB-2AQ"/>
+                <constraint firstItem="sgM-CN-2b1" firstAttribute="centerX" secondItem="ieu-XT-bQt" secondAttribute="centerX" id="Wlg-hF-Rew"/>
+                <constraint firstItem="sgM-CN-2b1" firstAttribute="centerX" secondItem="7UF-pl-AY9" secondAttribute="centerX" id="azn-rd-SIF"/>
+                <constraint firstAttribute="bottom" secondItem="sgM-CN-2b1" secondAttribute="bottom" id="bsn-KQ-pON"/>
+                <constraint firstAttribute="trailing" secondItem="7UF-pl-AY9" secondAttribute="trailing" constant="8" id="cHf-BC-Xr4"/>
+                <constraint firstAttribute="trailing" secondItem="sgM-CN-2b1" secondAttribute="trailing" id="mNp-vL-f2m"/>
+                <constraint firstItem="sgM-CN-2b1" firstAttribute="leading" secondItem="9ud-kW-gqO" secondAttribute="leading" id="uLB-Ju-MJY"/>
+                <constraint firstItem="7UF-pl-AY9" firstAttribute="top" secondItem="9ud-kW-gqO" secondAttribute="top" constant="56" id="uZl-5y-JUa"/>
+                <constraint firstItem="7UF-pl-AY9" firstAttribute="leading" secondItem="9ud-kW-gqO" secondAttribute="leading" constant="8" id="yHk-cK-f3B"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="32" y="-299.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="QQ" width="64" height="64"/>
+        <image name="login_back1" width="163" height="163"/>
+    </resources>
+</document>
