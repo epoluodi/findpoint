@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+//openssl x509 -in aps.cer -inform DER -out aps.pem -outform PEM
+//openssl pkcs12 -nocerts -out Push.pem -in push.p12
+//openssl pkcs12 -export -in aps.pem -inkey Push.pem -certfile yang.certSigningRequest -name "aps" -out aps.p12
+
 
 
 ///定义不同机型

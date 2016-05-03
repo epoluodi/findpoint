@@ -13,10 +13,11 @@
     UINavigationItem *title;
     UIBarButtonItem *leftButton;
     UIBarButtonItem *rightButton;
+    UIRefreshControl *refresh;
 }
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *toobar;
+
 
 
 -(void)refreshlistchannel;

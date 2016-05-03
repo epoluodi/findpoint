@@ -20,8 +20,8 @@
     
     
 
-    
-    
+    self.tabBar.tintColor=[UIColor greenColor];
+  
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -30,15 +30,7 @@
 }
 
 
--(void)showNewUserView
-{
-    UIStoryboard *story;
-    story = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//    pwdviewcontrol *pwdview;
-//    pwdview = [story instantiateViewControllerWithIdentifier:@"pwdview"];
-    
 
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

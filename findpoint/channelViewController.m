@@ -13,7 +13,7 @@
 @end
 
 @implementation channelViewController
-@synthesize toobar;
+
 @synthesize navbar;
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,11 +23,11 @@
     
     
     leftButton = [[UIBarButtonItem alloc]
-                  initWithTitle:@"刷新"                                   style:UIBarButtonItemStyleBordered                                   target:self                                   action:@selector(leftbtn)];
+                  initWithTitle:@"创建"                                   style:UIBarButtonItemStyleBordered                                   target:self                                   action:@selector(leftbtn)];
     
     [title setLeftBarButtonItem:leftButton];
     
-    rightButton = [[UIBarButtonItem alloc] initWithTitle:@"添加" style:UIBarButtonItemStyleBordered target:self action:@selector(rightbtn)];
+    rightButton = [[UIBarButtonItem alloc] initWithTitle:@"加入" style:UIBarButtonItemStyleBordered target:self action:@selector(rightbtn)];
     [title setRightBarButtonItem:rightButton animated:YES];
     
     [navbar pushNavigationItem:title animated:YES];

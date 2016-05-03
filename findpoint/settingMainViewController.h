@@ -10,13 +10,10 @@
 #import "LoginAndRegView.h"
 
 @interface settingMainViewController : UIViewController
-<UITableViewDataSource,UITableViewDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *nickimage;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
-@property (weak, nonatomic) IBOutlet UILabel *levelnane;
-
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 
 @end
