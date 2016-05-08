@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "Common.h"
+
+#import <MAMapKit/MAMapKit.h>
 @interface AppDelegate ()
 
 @end
@@ -17,63 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
-    NSLog(@"%f",[Common GetScreenSIze].height);
-    NSLog(@"%f",[Common GetScreenSIze].width);
-    
+    [MAMapServices sharedServices].apiKey = MAPKEY;
+
     deviveid = [UIDevice currentDevice].identifierForVendor.UUIDString;
-    
-    userinfo  = [NSUserDefaults standardUserDefaults];
-        _info = [[info alloc] init];
-    
-    BOOL isfirstrun = [userinfo boolForKey:@"isfirstrun"];
-    if (!isfirstrun)
-    {
-        [self createuserinfo];
-        //连接服务器获得一个用户id
-        
-        web = [[WebService alloc] initUserinfo:reguserid];
-        int r = [web NewUserGetUserID:deviveid];
-        if (r > 0)
-        {
-            _info.loginerid=[NSString stringWithFormat:@"%d",r];
-            _info.loginer=[NSString stringWithFormat:@"点名号%d",r];
-            NSLog(@"用户 ID %@",_info.loginerid);
-            
-            [userinfo setObject:_info.loginerid forKey:@"userid"];//用户ID
-             [userinfo setBool:NO forKey:@"isregister"];//是否注册
-;
-            
-           
-        }
-        
-        
-        
-    }
-    
-    
-
-    _info.loginer=@"123";
-
-    
+    _info = [[info alloc] init];
     
     return YES;
 }
 
 
-//创建app 用户信息
--(void)createuserinfo
-{
-    [userinfo setBool:NO forKey:@"isregister"];//是否注册
-    [userinfo setObject:nil forKey:@"userid"];//用户ID
-    [userinfo setObject:nil forKey:@"now_channelid"];//当前加入的频道号
-    [userinfo setObject:nil forKey:@"nickimage"];//当前头像
-    
-    
-    
-    
-}
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {

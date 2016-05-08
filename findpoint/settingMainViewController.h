@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "LoginAndRegView.h"
 
-@interface settingMainViewController : UIViewController
+@interface settingMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *nickimage;
 @property (weak, nonatomic) IBOutlet UILabel *nickname;
 
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @end

@@ -22,9 +22,30 @@
 		7B4475FB1B3845B900FEB452 /* png10.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475F01B3845B900FEB452 /* png10.png */; };
 		7B4475FC1B3845B900FEB452 /* png11.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475F11B3845B900FEB452 /* png11.png */; };
 		7B4475FF1B385B6300FEB452 /* MainTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4475FE1B385B6300FEB452 /* MainTabBar.m */; };
+		7B4CF6401CDF6985000D4415 /* settingcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4CF63F1CDF6985000D4415 /* settingcell.xib */; };
+		7B4CF6431CDF6A8C000D4415 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CF6421CDF6A8C000D4415 /* SettingCell.m */; };
+		7B4CF6451CDF6F0C000D4415 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6441CDF6F0C000D4415 /* Common.framework */; };
+		7B4CF64C1CDF6F3E000D4415 /* libHttpClass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF64B1CDF6F3E000D4415 /* libHttpClass.a */; };
+		7B4CF64E1CDF6FAF000D4415 /* Common.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7B4CF6441CDF6F0C000D4415 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7B4CF6501CDF714A000D4415 /* settingbackimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B4CF64F1CDF714A000D4415 /* settingbackimg.jpg */; };
+		7B4CF6551CDF79BD000D4415 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B4CF6541CDF79BD000D4415 /* AMap.bundle */; };
+		7B4CF6571CDF79D3000D4415 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6561CDF79D3000D4415 /* MAMapKit.framework */; };
+		7B4CF6591CDF7A9E000D4415 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6581CDF7A9E000D4415 /* CoreGraphics.framework */; };
+		7B4CF65B1CDF7AAD000D4415 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF65A1CDF7AAD000D4415 /* QuartzCore.framework */; };
+		7B4CF65D1CDF7AB6000D4415 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF65C1CDF7AB6000D4415 /* OpenGLES.framework */; };
+		7B4CF65F1CDF7AC1000D4415 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF65E1CDF7AC1000D4415 /* CoreLocation.framework */; };
+		7B4CF6611CDF7ACE000D4415 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6601CDF7ACE000D4415 /* CoreTelephony.framework */; };
+		7B4CF6631CDF7ADD000D4415 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6621CDF7ADD000D4415 /* SystemConfiguration.framework */; };
+		7B4CF6651CDF7AED000D4415 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6641CDF7AED000D4415 /* libz.tbd */; };
+		7B4CF6671CDF7B00000D4415 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6661CDF7B00000D4415 /* libstdc++.6.0.9.tbd */; };
+		7B4CF6691CDF7B09000D4415 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6681CDF7B09000D4415 /* Security.framework */; };
+		7B4CF66B1CDF7B14000D4415 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF66A1CDF7B14000D4415 /* UIKit.framework */; };
+		7B4CF66D1CDF7B1A000D4415 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF66C1CDF7B1A000D4415 /* Foundation.framework */; };
+		7B4CF66F1CDF7B57000D4415 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF66E1CDF7B57000D4415 /* libc++.tbd */; };
+		7B4CF6721CDF8DCB000D4415 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6711CDF8DCB000D4415 /* AMapLocationKit.framework */; };
+		7B4CF6751CDF91C6000D4415 /* GDLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CF6741CDF91C6000D4415 /* GDLocation.m */; };
 		7B6C7A9F1B4430A30012000B /* NotificationViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C7A9E1B4430A30012000B /* NotificationViewControl.m */; };
 		7B718C211B25E5E000AE4D8B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B718C201B25E5E000AE4D8B /* MBProgressHUD.m */; };
-		7B718C231B25F0FA00AE4D8B /* libHttpClass.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B718C221B25F0FA00AE4D8B /* libHttpClass.a */; };
 		7B893F521B3B029A00C1D776 /* CMSCoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B893F501B3B029A00C1D776 /* CMSCoinView.m */; };
 		7B893F561B3B07AE00C1D776 /* LoginAndRegView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B893F551B3B07AE00C1D776 /* LoginAndRegView.m */; };
 		7B893F581B3B080300C1D776 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B893F571B3B080300C1D776 /* LoginView.xib */; };
@@ -43,7 +64,6 @@
 		7BBC23341B1AF82800AA88DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BBC23321B1AF82800AA88DC /* Main.storyboard */; };
 		7BBC23361B1AF82800AA88DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BBC23351B1AF82800AA88DC /* Images.xcassets */; };
 		7BBC23391B1AF82800AA88DC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBC23371B1AF82800AA88DC /* LaunchScreen.xib */; };
-		7BBC23451B1AF82800AA88DC /* findpointTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBC23441B1AF82800AA88DC /* findpointTests.m */; };
 		7BC0AAE81B40437500D53A84 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7BC0AAE71B40437500D53A84 /* readme.txt */; };
 		7BC0AAEF1B4057BD00D53A84 /* DKCircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0AAEE1B4057BD00D53A84 /* DKCircleButton.m */; };
 		7BCA9CB01B2342E9006D6156 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCA9CAF1B2342E9006D6156 /* AlertView.m */; };
@@ -64,6 +84,19 @@
 			remoteInfo = findpoint;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7B4CF64D1CDF6FA7000D4415 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7B4CF64E1CDF6FAF000D4415 /* Common.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7B17CC741B32FC0900F60BFF /* settingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingMainViewController.h; sourceTree = "<group>"; };
@@ -86,11 +119,36 @@
 		7B4475F11B3845B900FEB452 /* png11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = png11.png; sourceTree = "<group>"; };
 		7B4475FD1B385B6300FEB452 /* MainTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBar.h; sourceTree = "<group>"; };
 		7B4475FE1B385B6300FEB452 /* MainTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBar.m; sourceTree = "<group>"; };
+		7B4CF63F1CDF6985000D4415 /* settingcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = settingcell.xib; sourceTree = "<group>"; };
+		7B4CF6411CDF6A8C000D4415 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		7B4CF6421CDF6A8C000D4415 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		7B4CF6441CDF6F0C000D4415 /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Common.framework; path = findpoint/Common.framework; sourceTree = "<group>"; };
+		7B4CF6481CDF6F3E000D4415 /* AppleToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleToken.h; sourceTree = "<group>"; };
+		7B4CF6491CDF6F3E000D4415 /* HttpClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClass.h; sourceTree = "<group>"; };
+		7B4CF64A1CDF6F3E000D4415 /* info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = info.h; sourceTree = "<group>"; };
+		7B4CF64B1CDF6F3E000D4415 /* libHttpClass.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHttpClass.a; path = findpoint/libHttpClass.a; sourceTree = "<group>"; };
+		7B4CF64F1CDF714A000D4415 /* settingbackimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = settingbackimg.jpg; sourceTree = "<group>"; };
+		7B4CF6541CDF79BD000D4415 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
+		7B4CF6561CDF79D3000D4415 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		7B4CF6581CDF7A9E000D4415 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7B4CF65A1CDF7AAD000D4415 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7B4CF65C1CDF7AB6000D4415 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		7B4CF65E1CDF7AC1000D4415 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7B4CF6601CDF7ACE000D4415 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7B4CF6621CDF7ADD000D4415 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7B4CF6641CDF7AED000D4415 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7B4CF6661CDF7B00000D4415 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		7B4CF6681CDF7B09000D4415 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7B4CF66A1CDF7B14000D4415 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7B4CF66C1CDF7B1A000D4415 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7B4CF66E1CDF7B57000D4415 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7B4CF6711CDF8DCB000D4415 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
+		7B4CF6731CDF91C6000D4415 /* GDLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDLocation.h; sourceTree = "<group>"; };
+		7B4CF6741CDF91C6000D4415 /* GDLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDLocation.m; sourceTree = "<group>"; };
 		7B6C7A9D1B4430A30012000B /* NotificationViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewControl.h; sourceTree = "<group>"; };
 		7B6C7A9E1B4430A30012000B /* NotificationViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewControl.m; sourceTree = "<group>"; };
 		7B718C1F1B25E5E000AE4D8B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7B718C201B25E5E000AE4D8B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		7B718C221B25F0FA00AE4D8B /* libHttpClass.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHttpClass.a; sourceTree = "<group>"; };
 		7B893F501B3B029A00C1D776 /* CMSCoinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMSCoinView.m; sourceTree = "<group>"; };
 		7B893F511B3B029A00C1D776 /* CMSCoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMSCoinView.h; sourceTree = "<group>"; };
 		7B893F541B3B07AE00C1D776 /* LoginAndRegView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAndRegView.h; sourceTree = "<group>"; };
@@ -119,8 +177,6 @@
 		7BBC23351B1AF82800AA88DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BBC23381B1AF82800AA88DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7BBC233E1B1AF82800AA88DC /* findpointTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = findpointTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BBC23431B1AF82800AA88DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BBC23441B1AF82800AA88DC /* findpointTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = findpointTests.m; sourceTree = "<group>"; };
 		7BC0AAE71B40437500D53A84 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		7BC0AAED1B4057BD00D53A84 /* DKCircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCircleButton.h; sourceTree = "<group>"; };
 		7BC0AAEE1B4057BD00D53A84 /* DKCircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCircleButton.m; sourceTree = "<group>"; };
@@ -136,8 +192,6 @@
 		7BCF0CF91B1E020D00DDD8D4 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		7BCF0D001B1E06DA00DDD8D4 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		7BCF0D011B1E06DA00DDD8D4 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
-		7BCF0D031B1E092D00DDD8D4 /* info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = info.h; sourceTree = "<group>"; };
-		7BCF0D061B1E0BD200DDD8D4 /* HttpClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClass.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +199,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B718C231B25F0FA00AE4D8B /* libHttpClass.a in Frameworks */,
+				7B4CF66F1CDF7B57000D4415 /* libc++.tbd in Frameworks */,
+				7B4CF66D1CDF7B1A000D4415 /* Foundation.framework in Frameworks */,
+				7B4CF66B1CDF7B14000D4415 /* UIKit.framework in Frameworks */,
+				7B4CF6691CDF7B09000D4415 /* Security.framework in Frameworks */,
+				7B4CF6671CDF7B00000D4415 /* libstdc++.6.0.9.tbd in Frameworks */,
+				7B4CF6721CDF8DCB000D4415 /* AMapLocationKit.framework in Frameworks */,
+				7B4CF6651CDF7AED000D4415 /* libz.tbd in Frameworks */,
+				7B4CF6631CDF7ADD000D4415 /* SystemConfiguration.framework in Frameworks */,
+				7B4CF6611CDF7ACE000D4415 /* CoreTelephony.framework in Frameworks */,
+				7B4CF65F1CDF7AC1000D4415 /* CoreLocation.framework in Frameworks */,
+				7B4CF65D1CDF7AB6000D4415 /* OpenGLES.framework in Frameworks */,
+				7B4CF65B1CDF7AAD000D4415 /* QuartzCore.framework in Frameworks */,
+				7B4CF6591CDF7A9E000D4415 /* CoreGraphics.framework in Frameworks */,
+				7B4CF6571CDF79D3000D4415 /* MAMapKit.framework in Frameworks */,
+				7B4CF6451CDF6F0C000D4415 /* Common.framework in Frameworks */,
+				7B4CF64C1CDF6F3E000D4415 /* libHttpClass.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +243,8 @@
 			children = (
 				7B23F37F1B1B490B009779FC /* GPSClass.h */,
 				7B23F3801B1B490B009779FC /* GPSClass.m */,
+				7B4CF6731CDF91C6000D4415 /* GDLocation.h */,
+				7B4CF6741CDF91C6000D4415 /* GDLocation.m */,
 			);
 			name = GPS;
 			sourceTree = "<group>";
@@ -219,6 +290,34 @@
 				7B4475F11B3845B900FEB452 /* png11.png */,
 			);
 			name = channelpng;
+			sourceTree = "<group>";
+		};
+		7B4CF6471CDF6F3E000D4415 /* HttpClass */ = {
+			isa = PBXGroup;
+			children = (
+				7B4CF6481CDF6F3E000D4415 /* AppleToken.h */,
+				7B4CF6491CDF6F3E000D4415 /* HttpClass.h */,
+				7B4CF64A1CDF6F3E000D4415 /* info.h */,
+			);
+			name = HttpClass;
+			path = findpoint/include/HttpClass;
+			sourceTree = "<group>";
+		};
+		7B4CF6531CDF79B4000D4415 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				7B4CF6711CDF8DCB000D4415 /* AMapLocationKit.framework */,
+				7B4CF6561CDF79D3000D4415 /* MAMapKit.framework */,
+				7B4CF6541CDF79BD000D4415 /* AMap.bundle */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
+		7B4CF6701CDF7BDD000D4415 /* map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = map;
 			sourceTree = "<group>";
 		};
 		7B6C7A9C1B442B010012000B /* Notification */ = {
@@ -267,7 +366,6 @@
 			isa = PBXGroup;
 			children = (
 				7BBC23271B1AF82800AA88DC /* findpoint */,
-				7BBC23411B1AF82800AA88DC /* findpointTests */,
 				7BCF0CFB1B1E068F00DDD8D4 /* lib */,
 				7BBC23261B1AF82800AA88DC /* Products */,
 			);
@@ -285,6 +383,8 @@
 		7BBC23271B1AF82800AA88DC /* findpoint */ = {
 			isa = PBXGroup;
 			children = (
+				7B4CF6701CDF7BDD000D4415 /* map */,
+				7B6C7A9C1B442B010012000B /* Notification */,
 				7BC0AAE91B40469C00D53A84 /* CustomerView */,
 				7BC0AAE61B40435000D53A84 /* txt */,
 				7B893F4F1B3B028300C1D776 /* TranView */,
@@ -310,23 +410,6 @@
 			children = (
 				7BBC23291B1AF82800AA88DC /* Info.plist */,
 				7BBC232A1B1AF82800AA88DC /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7BBC23411B1AF82800AA88DC /* findpointTests */ = {
-			isa = PBXGroup;
-			children = (
-				7BBC23441B1AF82800AA88DC /* findpointTests.m */,
-				7BBC23421B1AF82800AA88DC /* Supporting Files */,
-			);
-			path = findpointTests;
-			sourceTree = "<group>";
-		};
-		7BBC23421B1AF82800AA88DC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7BBC23431B1AF82800AA88DC /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -358,6 +441,7 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				7B4CF64F1CDF714A000D4415 /* settingbackimg.jpg */,
 				7BAAB8381CD8E5D1003EBE37 /* about.png */,
 				7BAAB8361CD8E591003EBE37 /* share.png */,
 				7BAAB8341CD8E4B4003EBE37 /* gps.png */,
@@ -382,9 +466,22 @@
 		7BCF0CFB1B1E068F00DDD8D4 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				7B718C221B25F0FA00AE4D8B /* libHttpClass.a */,
-				7BCF0D061B1E0BD200DDD8D4 /* HttpClass.h */,
-				7BCF0D031B1E092D00DDD8D4 /* info.h */,
+				7B4CF66E1CDF7B57000D4415 /* libc++.tbd */,
+				7B4CF66C1CDF7B1A000D4415 /* Foundation.framework */,
+				7B4CF66A1CDF7B14000D4415 /* UIKit.framework */,
+				7B4CF6681CDF7B09000D4415 /* Security.framework */,
+				7B4CF6661CDF7B00000D4415 /* libstdc++.6.0.9.tbd */,
+				7B4CF6641CDF7AED000D4415 /* libz.tbd */,
+				7B4CF6621CDF7ADD000D4415 /* SystemConfiguration.framework */,
+				7B4CF6601CDF7ACE000D4415 /* CoreTelephony.framework */,
+				7B4CF65E1CDF7AC1000D4415 /* CoreLocation.framework */,
+				7B4CF65C1CDF7AB6000D4415 /* OpenGLES.framework */,
+				7B4CF65A1CDF7AAD000D4415 /* QuartzCore.framework */,
+				7B4CF6581CDF7A9E000D4415 /* CoreGraphics.framework */,
+				7B4CF6531CDF79B4000D4415 /* map */,
+				7B4CF6441CDF6F0C000D4415 /* Common.framework */,
+				7B4CF6471CDF6F3E000D4415 /* HttpClass */,
+				7B4CF64B1CDF6F3E000D4415 /* libHttpClass.a */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -402,9 +499,11 @@
 		7BEAC3FC1B307DAC003A6E58 /* setting */ = {
 			isa = PBXGroup;
 			children = (
-				7B6C7A9C1B442B010012000B /* Notification */,
 				7B17CC741B32FC0900F60BFF /* settingMainViewController.h */,
 				7B17CC751B32FC0900F60BFF /* settingMainViewController.m */,
+				7B4CF63F1CDF6985000D4415 /* settingcell.xib */,
+				7B4CF6411CDF6A8C000D4415 /* SettingCell.h */,
+				7B4CF6421CDF6A8C000D4415 /* SettingCell.m */,
 			);
 			name = setting;
 			sourceTree = "<group>";
@@ -431,6 +530,7 @@
 				7BBC23211B1AF82800AA88DC /* Sources */,
 				7BBC23221B1AF82800AA88DC /* Frameworks */,
 				7BBC23231B1AF82800AA88DC /* Resources */,
+				7B4CF64D1CDF6FA7000D4415 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -471,6 +571,11 @@
 					7BBC23241B1AF82800AA88DC = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = RK2BTW6E76;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					7BBC233D1B1AF82800AA88DC = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -505,10 +610,13 @@
 				7BAAB8331CD8E266003EBE37 /* color.png in Resources */,
 				7B4475FC1B3845B900FEB452 /* png11.png in Resources */,
 				7B4475F51B3845B900FEB452 /* png4.png in Resources */,
+				7B4CF6501CDF714A000D4415 /* settingbackimg.jpg in Resources */,
 				7BC0AAE81B40437500D53A84 /* readme.txt in Resources */,
 				7B4475F71B3845B900FEB452 /* png6.png in Resources */,
+				7B4CF6401CDF6985000D4415 /* settingcell.xib in Resources */,
 				7B4475F41B3845B900FEB452 /* png3.png in Resources */,
 				7B4475F91B3845B900FEB452 /* png8.png in Resources */,
+				7B4CF6551CDF79BD000D4415 /* AMap.bundle in Resources */,
 				7B4475F21B3845B900FEB452 /* png1.png in Resources */,
 				7BCA9CB31B24950E006D6156 /* png.xcassets in Resources */,
 				7BB2D2E41B3C4B1A00397F20 /* RegView.xib in Resources */,
@@ -544,6 +652,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B17CC761B32FC0900F60BFF /* settingMainViewController.m in Sources */,
+				7B4CF6751CDF91C6000D4415 /* GDLocation.m in Sources */,
 				7B893F561B3B07AE00C1D776 /* LoginAndRegView.m in Sources */,
 				7BCF0D021B1E06DA00DDD8D4 /* WebService.m in Sources */,
 				7BCF0CF71B1DFFE100DDD8D4 /* channelCell.m in Sources */,
@@ -560,6 +669,7 @@
 				7BB9C3D61B1CA63D0004225C /* channelViewController.m in Sources */,
 				7BC0AAEF1B4057BD00D53A84 /* DKCircleButton.m in Sources */,
 				7BBC232B1B1AF82800AA88DC /* main.m in Sources */,
+				7B4CF6431CDF6A8C000D4415 /* SettingCell.m in Sources */,
 				7B893F521B3B029A00C1D776 /* CMSCoinView.m in Sources */,
 				7BB2D2E71B3C4B6500397F20 /* RegView.m in Sources */,
 				7B6C7A9F1B4430A30012000B /* NotificationViewControl.m in Sources */,
@@ -570,7 +680,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BBC23451B1AF82800AA88DC /* findpointTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,13 +799,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/findpoint",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = findpoint/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/findpoint",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -707,13 +823,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/findpoint",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = findpoint/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/findpoint",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

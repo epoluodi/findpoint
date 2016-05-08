@@ -21,7 +21,9 @@
     
 
     self.tabBar.tintColor=[UIColor greenColor];
-  
+
+    self.tabBar.barStyle=UIBarStyleBlack;
+//    self.tabBar.backgroundImage =[UIImage imageNamed:@"settingbackimg"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

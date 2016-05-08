@@ -8,6 +8,9 @@
 
 
 #pragma 通道调用地址
+
+#define ServerUrl @"epoluodi.vicp.cc"
+
 #define checkchannelurl @"http://192.168.1.10:8081/channel.asmx/checkchannel"
 #define addchannelurl @"http://192.168.1.10:8081/channel.asmx/createchannel"
 

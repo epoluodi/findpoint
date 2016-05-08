@@ -10,6 +10,8 @@
 #import "info.h"
 #import "WebService.h"
 
+#define MAPKEY @"7abad449503752055bbe35c553131a16"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
     NSUserDefaults *userinfo;
