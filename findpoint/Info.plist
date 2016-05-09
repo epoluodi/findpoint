@@ -34,7 +34,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>定位运行</string>
+	<string>点名需要打开定位功能</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

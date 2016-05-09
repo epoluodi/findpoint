@@ -7,6 +7,7 @@
 //
 
 #import "MainTabBar.h"
+#import "GDLocation.h"
 
 @interface MainTabBar ()
 
@@ -17,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //开启连续定位
+    [[GDLocation getInstancet] StartLocation];
     
     
 

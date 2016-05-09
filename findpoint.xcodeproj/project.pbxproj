@@ -22,6 +22,7 @@
 		7B4475FB1B3845B900FEB452 /* png10.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475F01B3845B900FEB452 /* png10.png */; };
 		7B4475FC1B3845B900FEB452 /* png11.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475F11B3845B900FEB452 /* png11.png */; };
 		7B4475FF1B385B6300FEB452 /* MainTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4475FE1B385B6300FEB452 /* MainTabBar.m */; };
+		7B4CA8571CE0DA500086111B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CA8561CE0DA500086111B /* MapViewController.m */; };
 		7B4CF6401CDF6985000D4415 /* settingcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4CF63F1CDF6985000D4415 /* settingcell.xib */; };
 		7B4CF6431CDF6A8C000D4415 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CF6421CDF6A8C000D4415 /* SettingCell.m */; };
 		7B4CF6451CDF6F0C000D4415 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6441CDF6F0C000D4415 /* Common.framework */; };
@@ -119,6 +120,8 @@
 		7B4475F11B3845B900FEB452 /* png11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = png11.png; sourceTree = "<group>"; };
 		7B4475FD1B385B6300FEB452 /* MainTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBar.h; sourceTree = "<group>"; };
 		7B4475FE1B385B6300FEB452 /* MainTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBar.m; sourceTree = "<group>"; };
+		7B4CA8551CE0DA500086111B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		7B4CA8561CE0DA500086111B /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		7B4CF63F1CDF6985000D4415 /* settingcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = settingcell.xib; sourceTree = "<group>"; };
 		7B4CF6411CDF6A8C000D4415 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		7B4CF6421CDF6A8C000D4415 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
@@ -252,6 +255,7 @@
 		7B23F3821B1B537A009779FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B4CA8541CE0DA360086111B /* mapview */,
 				7B893F531B3B078400C1D776 /* user */,
 				7BEAC3FD1B307DB7003A6E58 /* channel */,
 				7BEAC3FC1B307DAC003A6E58 /* setting */,
@@ -290,6 +294,15 @@
 				7B4475F11B3845B900FEB452 /* png11.png */,
 			);
 			name = channelpng;
+			sourceTree = "<group>";
+		};
+		7B4CA8541CE0DA360086111B /* mapview */ = {
+			isa = PBXGroup;
+			children = (
+				7B4CA8551CE0DA500086111B /* MapViewController.h */,
+				7B4CA8561CE0DA500086111B /* MapViewController.m */,
+			);
+			name = mapview;
 			sourceTree = "<group>";
 		};
 		7B4CF6471CDF6F3E000D4415 /* HttpClass */ = {
@@ -664,6 +677,7 @@
 				7BCA9CB01B2342E9006D6156 /* AlertView.m in Sources */,
 				7B4475FF1B385B6300FEB452 /* MainTabBar.m in Sources */,
 				7BCF0CFA1B1E020D00DDD8D4 /* Common.m in Sources */,
+				7B4CA8571CE0DA500086111B /* MapViewController.m in Sources */,
 				7B17CC7A1B331E0500F60BFF /* LaunchView.m in Sources */,
 				7BB9C3D91B1CAC0D0004225C /* addchannel.m in Sources */,
 				7BB9C3D61B1CA63D0004225C /* channelViewController.m in Sources */,

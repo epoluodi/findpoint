@@ -7,6 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+
+
+@protocol  GPSLocationDelegate
+
+@optional
+//没有打开定位功能
+-(void)NoOpenLocation;
+//更新定位信息
+-(void)UpdateLocationInfo:(CLLocation *)location;
+@end
+
 
 @interface GPSClass : NSObject
 

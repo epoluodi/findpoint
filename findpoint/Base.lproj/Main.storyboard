@@ -144,7 +144,7 @@
         <!--地图-->
         <scene sceneID="2fa-Cn-wZJ">
             <objects>
-                <viewController id="5yM-Wc-Aj2" sceneMemberID="viewController">
+                <viewController id="5yM-Wc-Aj2" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hru-Rk-kxY"/>
                         <viewControllerLayoutGuide type="bottom" id="SBj-6T-WPz"/>
@@ -168,6 +168,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="地图" image="map" id="lnh-6d-Ci2"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="map" destination="nOM-GF-7hu" id="60d-6l-Yw6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3c-eg-Nee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
