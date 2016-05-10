@@ -93,6 +93,16 @@
     cell.selectedBackgroundView=v;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 2:
+            [self performSegueWithIdentifier:@"showgps" sender:self];
+            break;
+
+    }
+}
+
 
 
 #pragma mark -
