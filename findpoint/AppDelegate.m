@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import <MAMapKit/MAMapKit.h>
-#import <AMapLocationKit/AMapLocationKit.h>
+#import "GPSClass.h"
+
 @interface AppDelegate ()
 
 @end
@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     [MAMapServices sharedServices].apiKey = MAPKEY;
     [AMapLocationServices sharedServices].apiKey=MAPKEY;
-
+    [AMapSearchServices sharedServices].apiKey =MAPKEY;
     deviveid = [UIDevice currentDevice].identifierForVendor.UUIDString;
     _info = [[info alloc] init];
     

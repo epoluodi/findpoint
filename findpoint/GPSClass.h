@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import <MAMapKit/MAMapKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
+#import <AMapSearchKit/AMapSearchServices.h>
 
 @protocol  GPSLocationDelegate
 
@@ -17,6 +20,8 @@
 -(void)NoOpenLocation;
 //更新定位信息
 -(void)UpdateLocationInfo:(CLLocation *)location;
+// 更新地址信息
+-(void)updateReGeoInfo:(AMapReGeocode *)GeoCodeInfo;
 @end
 
 

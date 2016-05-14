@@ -34,6 +34,9 @@ static GDLocation *location;
     [locationmanger setAllowsBackgroundLocationUpdates:YES];
     
     
+    search = [[AMapSearchAPI alloc] init];
+    search.delegate = self;
+    
     return self;
 }
 
@@ -62,10 +65,13 @@ static GDLocation *location;
 -(void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location
 {
     NSLog(@"定位信息 %@",location);
-    _gpslocation = location;
-    _gdlocation = AMapLocationCoordinateConvert(location.coordinate, AMapLocationCoordinateTypeGPS);
+    _GetLocation = location;
+//    _gdlocation = AMapLocationCoordinateConvert(location.coordinate, AMapLocationCoordinateTypeGPS);
     if (delegate)
-        [delegate UpdateLocationInfo:_gpslocation];
+    {
+        if ([delegate respondsToSelector:@selector(UpdateLocationInfo:)])
+            [delegate UpdateLocationInfo:location];
+    }
 }
 
 -(void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
@@ -74,8 +80,37 @@ static GDLocation *location;
 }
 #pragma mark -
 
+#pragma mark 搜索地址
+
+-(void)getLocationGeoInfo:(CLLocation *)location
+{
+    [self searchReGeocodeWithCoordinate:location.coordinate];
+}
+
+-(void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
+{
+    NSLog(@"%@",error);
+}
+- (void)searchReGeocodeWithCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    AMapReGeocodeSearchRequest *regeo = [[AMapReGeocodeSearchRequest alloc] init];
+    
+    regeo.location                    = [AMapGeoPoint locationWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    regeo.requireExtension            = NO;
+    
+    [search AMapReGoecodeSearch:regeo];
+}
 
 
 
+-(void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
+{
+    if (response.regeocode != nil )
+    {
+        [delegate updateReGeoInfo:response.regeocode];
+    }
+ 
+}
+#pragma mark -
 
 @end

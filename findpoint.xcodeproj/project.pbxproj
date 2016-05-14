@@ -76,6 +76,8 @@
 		7BCF0CF71B1DFFE100DDD8D4 /* channelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCF0CF61B1DFFE100DDD8D4 /* channelCell.m */; };
 		7BCF0CFA1B1E020D00DDD8D4 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCF0CF91B1E020D00DDD8D4 /* Common.m */; };
 		7BCF0D021B1E06DA00DDD8D4 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCF0D011B1E06DA00DDD8D4 /* WebService.m */; };
+		7BE416361CE5FE15001D324B /* GPSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE416351CE5FE15001D324B /* GPSViewController.m */; };
+		7BE416381CE60D00001D324B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE416371CE60D00001D324B /* AMapSearchKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +201,9 @@
 		7BCF0CF91B1E020D00DDD8D4 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		7BCF0D001B1E06DA00DDD8D4 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		7BCF0D011B1E06DA00DDD8D4 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
+		7BE416341CE5FE15001D324B /* GPSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSViewController.h; sourceTree = "<group>"; };
+		7BE416351CE5FE15001D324B /* GPSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSViewController.m; sourceTree = "<group>"; };
+		7BE416371CE60D00001D324B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +216,7 @@
 				7B4CF66B1CDF7B14000D4415 /* UIKit.framework in Frameworks */,
 				7B4CF6691CDF7B09000D4415 /* Security.framework in Frameworks */,
 				7B4CF6671CDF7B00000D4415 /* libstdc++.6.0.9.tbd in Frameworks */,
+				7BE416381CE60D00001D324B /* AMapSearchKit.framework in Frameworks */,
 				7B4CF6721CDF8DCB000D4415 /* AMapLocationKit.framework in Frameworks */,
 				7B4CF6651CDF7AED000D4415 /* libz.tbd in Frameworks */,
 				7B4CF6631CDF7ADD000D4415 /* SystemConfiguration.framework in Frameworks */,
@@ -323,16 +329,10 @@
 		7B4CF6531CDF79B4000D4415 /* map */ = {
 			isa = PBXGroup;
 			children = (
+				7BE416371CE60D00001D324B /* AMapSearchKit.framework */,
 				7B4CF6711CDF8DCB000D4415 /* AMapLocationKit.framework */,
 				7B4CF6561CDF79D3000D4415 /* MAMapKit.framework */,
 				7B4CF6541CDF79BD000D4415 /* AMap.bundle */,
-			);
-			name = map;
-			sourceTree = "<group>";
-		};
-		7B4CF6701CDF7BDD000D4415 /* map */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -400,7 +400,6 @@
 		7BBC23271B1AF82800AA88DC /* findpoint */ = {
 			isa = PBXGroup;
 			children = (
-				7B4CF6701CDF7BDD000D4415 /* map */,
 				7B6C7A9C1B442B010012000B /* Notification */,
 				7BC0AAE91B40469C00D53A84 /* CustomerView */,
 				7BC0AAE61B40435000D53A84 /* txt */,
@@ -523,6 +522,8 @@
 				7B4CF63F1CDF6985000D4415 /* settingcell.xib */,
 				7B4CF6411CDF6A8C000D4415 /* SettingCell.h */,
 				7B4CF6421CDF6A8C000D4415 /* SettingCell.m */,
+				7BE416341CE5FE15001D324B /* GPSViewController.h */,
+				7BE416351CE5FE15001D324B /* GPSViewController.m */,
 			);
 			name = setting;
 			sourceTree = "<group>";
@@ -687,6 +688,7 @@
 				7BCF0CFA1B1E020D00DDD8D4 /* Common.m in Sources */,
 				7B4CA8571CE0DA500086111B /* MapViewController.m in Sources */,
 				7B17CC7A1B331E0500F60BFF /* LaunchView.m in Sources */,
+				7BE416361CE5FE15001D324B /* GPSViewController.m in Sources */,
 				7BB9C3D91B1CAC0D0004225C /* addchannel.m in Sources */,
 				7BB9C3D61B1CA63D0004225C /* channelViewController.m in Sources */,
 				7BC0AAEF1B4057BD00D53A84 /* DKCircleButton.m in Sources */,

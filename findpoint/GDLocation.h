@@ -7,26 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MAMapKit/MAMapKit.h>
-#import <AMapLocationKit/AMapLocationKit.h>
 #import "GPSClass.h"
 
 
 
 
 
-@interface GDLocation : NSObject<AMapLocationManagerDelegate>
+
+@interface GDLocation : NSObject<AMapLocationManagerDelegate,AMapSearchDelegate>
 {
     AMapLocationManager *locationmanger;
-    CLLocation *_gpslocation;
-    CLLocationCoordinate2D _gdlocation;
+    AMapSearchAPI *search;
     
 }
 
 
 @property (weak,nonatomic)NSObject<GPSLocationDelegate> *delegate;
-@property (weak,nonatomic,getter=_gpslocation)CLLocation *GetLocation;
-@property (assign,getter=_gdlocation)CLLocationCoordinate2D GDCoordinate2D;
+@property (copy,nonatomic)CLLocation *GetLocation;
+//@property (assign,getter=_gdlocation)CLLocationCoordinate2D GDCoordinate2D;
 +(instancetype)getInstancet;
 
 -(instancetype)init;
@@ -34,4 +32,6 @@
 -(void)StartLocation;
 //停止连续定位
 -(void)StopLocation;
+//获得地址搜索信息
+-(void)getLocationGeoInfo:(CLLocation *)location;
 @end
