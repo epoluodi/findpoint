@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginAndRegView.h"
-
-@interface settingMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "TencentClass.h"
+@interface settingMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,QQDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *nickimage;

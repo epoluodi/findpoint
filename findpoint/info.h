@@ -25,6 +25,8 @@
 @property (nonatomic) NSUInteger *channelcounts;
 @property (strong,nonatomic) NSString *channeldesc;
 
+
+
 #pragma Global
 @property (strong,nonatomic) NSString *_Gchannelid;
 

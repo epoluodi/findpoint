@@ -8,6 +8,7 @@
 
 #import "Common.h"
 #include <stdlib.h>
+#import <Common/FileCommon.h>
 
 static char base64EncodingTable[64] = {
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
@@ -19,60 +20,28 @@ static char base64EncodingTable[64] = {
 
 @implementation Common
 
-
-
-+(struct Deviceinfo )DeviceName
++(NSData *)downloadfile:(NSURL *)url
 {
-    struct Deviceinfo deviceinfo;
+    NSData * data=  [NSData dataWithContentsOfURL:url];
+    return data;
+}
 
-  
-    deviceinfo.dmodel =[UIDevice currentDevice].model;
-    deviceinfo.dname = [UIDevice currentDevice].systemName;
-    return deviceinfo;
++(void)SavePNGtoJpg:(NSData *)data filename:(NSString *)filename
+{
+    NSString *path = [FileCommon getCacheDirectory];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",filename]];
+    //NSString* new_folder = [doc_path stringByAppendingPathComponent:@"test"];
+    //创建目录
+    //[fm createDirectoryAtPath:new_folder withIntermediateDirectories:YES attributes:nil error:nil];
+    [fm createFileAtPath:_filename contents:data attributes:nil];
     
-}
-+(CGRect)GetALLScreen
-{
-    CGRect r = [ UIScreen mainScreen ].applicationFrame;
-    return r;
-}
-
-+(CGSize)GetScreenSIze
-{
-    CGSize r = [[ UIScreen mainScreen ] currentMode].size;
-    return r;
+    return ;
+    
 }
 
 
-+(CGRect)GetScreen
-{
-    CGRect r = [ UIScreen mainScreen ].bounds;
-    return r;
-}
 
-+(UIToolbar *)getInputToolbar:(id)sender sel:(SEL)sel
-{
-    UIToolbar * topView = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 30)];
-    
-    [topView setBarStyle:UIBarStyleBlackOpaque];
-    
-    
-    
-    UIBarButtonItem * btnSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    
-    
-    
-    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:sender action:sel];
-
-    
-    NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace,doneButton,nil];
-    
-    
-    
-    [topView setItems:buttonsArray];
-    return topView;
-
-}
 
 
 + (NSString *) base64StringFromData: (NSData *)data length: (int)length {

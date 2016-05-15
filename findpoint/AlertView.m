@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "AlertView.h"
-#import "Common.h"
+#import <Common/PublicCommon.h>
 
 @implementation AlertView
 @synthesize delegate;
@@ -47,7 +47,7 @@
     
     CGRect rect = CGRectMake(20, 70,
                              alertview.view.frame.size.width - 85 -
-                             ([Common GetALLScreen].size.width -320), 40);
+                             ([PublicCommon GetALLScreen].size.width -320), 40);
     text.frame =rect;
     text.clearButtonMode = UITextFieldViewModeUnlessEditing;
     text.borderStyle=UITextBorderStyleRoundedRect;
@@ -55,7 +55,7 @@
     text.textAlignment = UITextAlignmentCenter;
     text.delegate = self;
     text.keyboardType = inputype;
-    [text setInputAccessoryView:[Common getInputToolbar:self sel:@selector(inputclose)]];
+    [text setInputAccessoryView:[PublicCommon getInputToolbar:self sel:@selector(inputclose)]];
     [alertview.view addSubview:text];
     return [super init];
 }
@@ -94,7 +94,7 @@
     
     CGRect rect = CGRectMake(20, 70,
                              alertview.view.frame.size.width - 85 -
-                             ([Common GetALLScreen].size.width -320), 80);
+                             ([PublicCommon GetALLScreen].size.width -320), 80);
     textview.frame =rect;
     textview.font = [UIFont systemFontOfSize:18];
 
@@ -102,7 +102,7 @@
 
     textview.delegate = self;
     textview.keyboardType = inputype;
-    [textview setInputAccessoryView:[Common getInputToolbar:self sel:@selector(inputclose)]];
+    [textview setInputAccessoryView:[PublicCommon getInputToolbar:self sel:@selector(inputclose)]];
     [alertview.view addSubview:textview];
     return [super init];
 }

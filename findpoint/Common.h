@@ -40,18 +40,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @interface Common : NSObject
 
 
-
-
-+(CGRect)GetScreen;
-+(CGRect)GetALLScreen;
-+(CGSize)GetScreenSIze;
-
-+(struct Deviceinfo )DeviceName;
-+(UIToolbar *)getInputToolbar:(id)sender sel:(SEL)sel;
 + (NSString *) base64StringFromData: (NSData *)data length: (int)length;
 
-
-
++(void)SavePNGtoJpg:(NSData *)data filename:(NSString *)filename;
++(NSData *)downloadfile:(NSURL *)url;
 @end
 
 @protocol queryparams

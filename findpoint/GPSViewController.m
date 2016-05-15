@@ -46,7 +46,6 @@
 
 -(void)refreshlocation
 {
- 
     loc =[GDLocation getInstancet].GetLocation;
     [GDLocation getInstancet].delegate=self;
     [map setCenterCoordinate:loc.coordinate];

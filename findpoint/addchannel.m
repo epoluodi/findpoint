@@ -9,7 +9,7 @@
 #import "addchannel.h"
 #import "AppDelegate.h"
 #import "channelCell.h"
-#import "Common.h"
+#import <Common/PublicCommon.h>
 #import "WebService.h"
 #import "info.h"
 @interface addchannel ()
@@ -122,7 +122,7 @@
             [cell hideLabelname];
             modelswitch = [[UISwitch alloc] init];
             
-            modelswitch.frame= CGRectMake([Common GetALLScreen].size.width -modelswitch.frame.size.width-30 ,cell.labelinfo.frame.origin.y-5
+            modelswitch.frame= CGRectMake([PublicCommon GetALLScreen].size.width -modelswitch.frame.size.width-30 ,cell.labelinfo.frame.origin.y-5
                                           ,modelswitch.frame.size.width, modelswitch.frame.size.height);
            
             [modelswitch addTarget:self action:@selector(switchmode:) forControlEvents:UIControlEventValueChanged];
@@ -293,7 +293,7 @@
    
     
     CGRect newframe  = CGRectMake(10, 10,
-                                  ([Common GetALLScreen].size.width -40),110);
+                                  ([PublicCommon GetALLScreen].size.width -40),110);
     scrollview.frame=   newframe;
     
     

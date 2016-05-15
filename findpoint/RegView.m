@@ -7,7 +7,7 @@
 //
 
 #import "RegView.h"
-#import "Common.h"
+#import <Common/PublicCommon.h>
 
 @implementation RegView
 @synthesize usertxt;
@@ -36,7 +36,7 @@
         usertxt.delegate =self;
         usertxt.clearButtonMode = UITextFieldViewModeWhileEditing;
     
-       [usertxt setInputAccessoryView:[Common getInputToolbar:self sel:@selector(inputclose)]];
+       [usertxt setInputAccessoryView:[PublicCommon getInputToolbar:self sel:@selector(inputclose)]];
     
     useriamge.layer.cornerRadius = useriamge.frame.size.height/2;
     useriamge.layer.masksToBounds = YES;

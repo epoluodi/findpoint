@@ -8,14 +8,26 @@
 
 #import "settingMainViewController.h"
 #import "SettingCell.h"
-@interface settingMainViewController ()
+#import "Common.h"
 
+@interface settingMainViewController ()
+{
+ 
+    
+}
 @end
 
 @implementation settingMainViewController
 @synthesize nickname,nickimage,table;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    nickimage.layer.cornerRadius = 40;
+    nickimage.layer.borderColor=[[UIColor whiteColor]CGColor];
+    nickimage.layer.borderWidth=0.8f;
+    nickimage.layer.masksToBounds=YES;
+    
+
     
     [self initSettingTable];
     // Do any additional setup after loading the view.
@@ -53,7 +65,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,18 +77,14 @@
             
             break;
         case 1:
-            cell.SettingTypeEmun=MARKCOLOR;
-            
-            break;
-        case 2:
             cell.SettingTypeEmun=GPS;
             
             break;
-        case 3:
+        case 2:
             cell.SettingTypeEmun=SHAREAPP;
             
             break;
-        case 4:
+        case 3:
             cell.SettingTypeEmun=ABOUTAPP;
             
             break;
@@ -96,7 +104,22 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-        case 2:
+            
+        case 0:
+            if (![TencentClass checkQQ])
+            {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你没有安装QQ客户端,无法进行QQ登录" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:action1];
+                [self presentViewController:alert animated:YES completion:nil];
+                return;
+            }
+            
+            [TencentClass getInstance].delegate=self;
+            [[TencentClass getInstance] LoginQQ];
+            
+            break;
+        case 1:
             [self performSegueWithIdentifier:@"showgps" sender:self];
             break;
 
@@ -107,6 +130,38 @@
 
 #pragma mark -
 
+
+
+#pragma mark qqdelegate
+-(void)loginFail
+{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"QQ登录失败" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:action1];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    SettingCell *cell = [table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    cell.labstate.text=@"未登录";
+}
+
+-(void)loginSuccess:(NSString *)QQnick qqimg:(NSString *)qqimg
+{
+    
+    nickname.text=QQnick;
+    NSURL *url = [NSURL URLWithString:qqimg];
+    NSData *jpg = [Common downloadfile:url];
+    if (jpg){
+        UIImage *img = [UIImage imageWithData:jpg];
+        nickimage.image=img;
+        [Common SavePNGtoJpg:jpg filename:[TencentClass getInstance].oauth.openId];
+    }
+    
+    
+    
+    
+    
+}
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {

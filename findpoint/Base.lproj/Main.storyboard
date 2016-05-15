@@ -349,15 +349,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" red="1" green="0.92920294971583739" blue="0.33332182946096311" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8UC-3q-fNy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8UC-3q-fNy">
                                 <rect key="frame" x="120" y="48" width="80" height="80"/>
-                                <color key="backgroundColor" red="1" green="0.55457732781340507" blue="0.3835369202746941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="T9T-jm-u74"/>
                                     <constraint firstAttribute="height" constant="80" id="ivw-Yj-sko"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaE-WK-uGa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaE-WK-uGa">
                                 <rect key="frame" x="20" y="136" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fpz-9h-kTC"/>
@@ -472,6 +471,7 @@
     </scenes>
     <resources>
         <image name="addchannel" width="180" height="321"/>
+        <image name="app_logo.png" width="1024" height="1024"/>
         <image name="btn_return.png" width="64" height="64"/>
         <image name="btn_share.png" width="64" height="64"/>
         <image name="group" width="25" height="25"/>

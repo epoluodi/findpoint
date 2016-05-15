@@ -22,6 +22,9 @@
     [MAMapServices sharedServices].apiKey = MAPKEY;
     [AMapLocationServices sharedServices].apiKey=MAPKEY;
     [AMapSearchServices sharedServices].apiKey =MAPKEY;
+    
+    [TencentClass getInstance];
+    
     deviveid = [UIDevice currentDevice].identifierForVendor.UUIDString;
     _info = [[info alloc] init];
     
@@ -64,4 +67,19 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
+{
+    NSLog(@"openURL %@",options);
+    return [TencentOAuth HandleOpenURL:url];
+}
+
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+//{
+//    return [TencentOAuth HandleOpenURL:url];
+//}
+//
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+//{
+//    return [TencentOAuth HandleOpenURL:url];
+//}
 @end
