@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TencentClass.h"
 
-@interface info : NSObject
+@interface info : NSObject<QQDelegate>
 {
     NSUserDefaults *userinfo;
 }
+
+
+
+
+
 #pragma channel
 @property (strong,nonatomic)UIImage *channelimage;
 @property (strong,nonatomic)NSString *channelid;
@@ -24,12 +30,13 @@
 @property (strong,nonatomic) NSString *channelcreatedt;
 @property (nonatomic) NSUInteger *channelcounts;
 @property (strong,nonatomic) NSString *channeldesc;
-
+@property (copy,nonatomic)NSString *uid;
 
 
 #pragma Global
 @property (strong,nonatomic) NSString *_Gchannelid;
 
++(instancetype)getInstancent;
 
 
 @end

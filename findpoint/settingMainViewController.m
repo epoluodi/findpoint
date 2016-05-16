@@ -12,7 +12,7 @@
 
 @interface settingMainViewController ()
 {
- 
+    NSUserDefaults *userinfo;
     
 }
 @end
@@ -28,7 +28,7 @@
     nickimage.layer.masksToBounds=YES;
     
 
-    
+    userinfo = [NSUserDefaults standardUserDefaults];
     [self initSettingTable];
     // Do any additional setup after loading the view.
 }
@@ -143,6 +143,8 @@
     
     SettingCell *cell = [table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     cell.labstate.text=@"未登录";
+    
+    
 }
 
 -(void)loginSuccess:(NSString *)QQnick qqimg:(NSString *)qqimg
@@ -156,11 +158,13 @@
         nickimage.image=img;
         [Common SavePNGtoJpg:jpg filename:[TencentClass getInstance].oauth.openId];
     }
+    SettingCell *cell = [table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    cell.labstate.text=@"已登录";
+    [userinfo setBool:YES forKey:@"isregister"];//是否注册Q
+    [userinfo setObject:qqimg forKey:@"nickimage"];//当前头像
+    [userinfo setObject:QQnick forKey:@"nickname"];//当前 名称
     
-    
-    
-    
-    
+
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle

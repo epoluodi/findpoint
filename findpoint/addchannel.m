@@ -47,11 +47,11 @@
     channelimage.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicknickimage)];
     [channelimage addGestureRecognizer:singleTap1];
-    if (App.info.channelimage != nil)
-        channelimage.image = App.info.channelimage;
-    else
-        channelimage.image = [UIImage imageNamed:@"touxiang"];
-    
+//    if (App.info.channelimage != nil)
+//        channelimage.image = App.info.channelimage;
+//    else
+//        channelimage.image = [UIImage imageNamed:@"touxiang"];
+//    
     
     title = [[UINavigationItem alloc] init];
     title.title=@"添加频道";
@@ -494,7 +494,7 @@
             baseimage=@"0";
         NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"1",@"t_channeltype",//私人类型
                               (newinfo.isopen)?@"1":@"0",@"t_isopen",
-                              App.info.loginerid,@"t_userid",
+                              @"",@"t_userid",
                               newinfo.channelid,@"t_channelid",
                               newinfo.channelname, @"t_channelname",
                               newinfo.channelpwd,@"t_channelpwd",
@@ -530,18 +530,18 @@
                 [alert show];
             }
             else{
-                
-                App.info.channelname = newinfo.channelname;
-                App.info.channelcounts = newinfo.channelcounts;
-                App.info.channelcreatedt = newinfo.channelcreatedt;
-                App.info.channelid=newinfo.channelid;
-                App.info.channelpwd=newinfo.channelpwd;
-                App.info.channelimage=newinfo.channelimage;
+//                
+//                App.info.channelname = newinfo.channelname;
+//                App.info.channelcounts = newinfo.channelcounts;
+//                App.info.channelcreatedt = newinfo.channelcreatedt;
+//                App.info.channelid=newinfo.channelid;
+//                App.info.channelpwd=newinfo.channelpwd;
+//                App.info.channelimage=newinfo.channelimage;
                 NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
                 [outputFormatter setLocale:[NSLocale currentLocale]];
                 [outputFormatter setDateFormat:@"yyyy年MM月dd日"];
                 NSString *str = [outputFormatter stringFromDate:[NSDate date]];
-                App.info.channelcreatedt = str;
+//                App.info.channelcreatedt = str;
                 
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"创建成功，可以开始使用你的频道乐，可以将你的频道分享给朋友们" delegate:self cancelButtonTitle:@"完成" otherButtonTitles: @"分享",nil];
                 [alert show];
@@ -568,8 +568,8 @@
     switch ([tableview indexPathForSelectedRow].row) {
         case 0:
             newinfo.channelid =[dataarary objectAtIndex:0];
-            if ([App.info.channelid isEqualToString:newinfo.channelid])
-                return;
+//            if ([App.info.channelid isEqualToString:newinfo.channelid])
+//                return;
 
             [self checkchannelid:newinfo.channelid];
 

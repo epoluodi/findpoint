@@ -9,6 +9,8 @@
 #import "info.h"
 
 @implementation info
+@synthesize uid;
+
 @synthesize channelimage;
 @synthesize channelid;
 @synthesize channelname;
@@ -21,36 +23,27 @@
 
 @synthesize _Gchannelid;
 
+
+static info *_info;
++(instancetype)getInstancent
+{
+    if (!_info)
+    {
+        _info = [[info alloc] init];
+    }
+    return  _info;
+}
+
+
 -(instancetype)init
 {
     userinfo = [NSUserDefaults standardUserDefaults];
     BOOL isfirstrun = [userinfo boolForKey:@"isfirstrun"];
-//    if (!isfirstrun)
-//    {
-//        [self createuserinfo];
-        //连接服务器获得一个用户id
-        
-//        web = [[WebService alloc] initUserinfo:reguserid];
-//        int r = [web NewUserGetUserID:deviveid];
-//        if (r > 0)
-//        {
-//            _info.loginerid=[NSString stringWithFormat:@"%d",r];
-//            _info.loginer=[NSString stringWithFormat:@"点名号%d",r];
-//            NSLog(@"用户 ID %@",_info.loginerid);
-//            
-//            [userinfo setObject:_info.loginerid forKey:@"userid"];//用户ID
-//            [userinfo setBool:NO forKey:@"isregister"];//是否注册
-//            ;
-//            
-//            
-//        }
-//        
-//        
-//        
-//    }
-
-    
-    
+    if (!isfirstrun)
+    {
+        [self createuserinfo];
+        [userinfo setBool:YES forKey:@"isfirstrun"];
+    }
     return [super init];
 }
 
@@ -60,9 +53,9 @@
 -(void)createuserinfo
 {
     [userinfo setBool:NO forKey:@"isregister"];//是否注册
-    [userinfo setObject:nil forKey:@"userid"];//用户ID
     [userinfo setObject:nil forKey:@"now_channelid"];//当前加入的频道号
     [userinfo setObject:nil forKey:@"nickimage"];//当前头像
-
+    [userinfo setObject:@"-" forKey:@"nickname"];//当前 名称
+    
 }
 @end

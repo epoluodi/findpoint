@@ -48,7 +48,7 @@ static TencentClass *tencentclass;
 //                            kOPEN_PERMISSION_GET_VIP_RICH_INFO,
                             nil];
     oauth=[[TencentOAuth alloc] initWithAppId:QQappid andDelegate:self];
-
+    
     return [super init];
     
 }
@@ -141,6 +141,15 @@ static TencentClass *tencentclass;
     NSString *qqimg = [d objectForKey:@"figureurl_qq_2"];
     NSString *qqname = [d objectForKey:@"nickname"];
     [delegate loginSuccess:qqname qqimg:qqimg];
+    
+    NSUserDefaults *userinfo = [NSUserDefaults standardUserDefaults];
+    
+    //设置下次登录时的参数信息
+    [userinfo setObject:oauth.expirationDate forKey:@"expirationDate"];
+    [userinfo setObject:oauth.accessToken forKey:@"accessToken"];
+    [userinfo setObject:oauth.openId forKey:@"openId"];
+    
+    
 }
 
 -(void)tencentDidLogin

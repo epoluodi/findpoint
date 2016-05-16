@@ -23,11 +23,11 @@
     [AMapLocationServices sharedServices].apiKey=MAPKEY;
     [AMapSearchServices sharedServices].apiKey =MAPKEY;
     
-    [TencentClass getInstance];
+    [TencentClass getInstance];//初始化 QQ
     
     deviveid = [UIDevice currentDevice].identifierForVendor.UUIDString;
-    _info = [[info alloc] init];
-    
+    [info getInstancent];//初始化info
+    [info getInstancent].uid = deviveid;
     
     
     
