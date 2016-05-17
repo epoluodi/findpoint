@@ -19,7 +19,7 @@
 }
 
 
--(instancetype)initUserinfo:(NSString *)url
+-(instancetype)initUrl:(NSString *)url
 {
     service = [[HttpClass alloc] init:url];
     return [super init];
@@ -67,19 +67,21 @@
 #pragma 用户信息
 
 //新用户获得用户ID
--(int)NewUserGetUserID:(NSString *)deviceid
+-(BOOL)NewUserGetUserID:(NSString *)deviceid
 {
     [service clearArray];
     [service addParamsString:@"deviceid" values:deviceid];
     NSData *returndata =  [service httprequest:[service getDataForArrary]];
     if (returndata == nil)
-        return -1;
+        return NO;
     
     NSString *ret = [service getXmlString:returndata];
     if (ret == nil)
-        return -1;
-    return [ret intValue];
-    
+        return NO;
+    if ([ret isEqualToString:@"1"])
+        return YES;
+    else
+        return NO;
     
 }
 

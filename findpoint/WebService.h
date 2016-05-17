@@ -18,9 +18,9 @@
 }
 
 -(instancetype)initChannel:(NSString *)url;
--(instancetype)initUserinfo:(NSString *)url;
 
 
+-(instancetype)initUrl:(NSString *)url;
 
 
 
@@ -28,5 +28,5 @@
 -(int)createchannel:(NSString *)json;
 
 
--(int)NewUserGetUserID:(NSString *)deviceid;
+-(BOOL)NewUserGetUserID:(NSString *)deviceid;
 @end
