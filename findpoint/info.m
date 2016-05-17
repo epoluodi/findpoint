@@ -44,8 +44,38 @@ static info *_info;
         [self createuserinfo];
         [userinfo setBool:YES forKey:@"isfirstrun"];
     }
+    
+    if ([userinfo boolForKey:@"isregister"])
+    {
+        [TencentClass getInstance].oauth.accessToken = [userinfo stringForKey:@"accessToken"];
+        [TencentClass getInstance].oauth.openId = [userinfo stringForKey:@"openId"];
+        [TencentClass getInstance].oauth.expirationDate = (NSDate *)[userinfo objectForKey:@"expirationDate"];
+        
+        if (![[TencentClass getInstance] loginreset])
+        {
+            [userinfo setBool:NO forKey:@"isregister"];
+            [TencentClass getInstance].delegate = self;
+            [[TencentClass getInstance] LoginQQ];
+        }
+    }
+    
     return [super init];
 }
+
+
+#pragma mark qqdelegate
+-(void)loginFail
+{
+    [userinfo setBool:NO forKey:@"isregister"];//是否注册
+}
+
+-(void)loginSuccess:(NSString *)QQnick qqimg:(NSString *)qqimg
+{
+    [userinfo setBool:YES forKey:@"isregister"];//是否注册Q
+    [userinfo setObject:qqimg forKey:@"nickimage"];//当前头像
+    [userinfo setObject:QQnick forKey:@"nickname"];//当前 名称
+}
+
 
 
 

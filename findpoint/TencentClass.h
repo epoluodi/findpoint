@@ -35,6 +35,7 @@
 -(instancetype)init:(NSString *)QQappid;
 -(void)sendtxtmsg:(NSString *)msg;
 - (void) sendNewMsg:(NSString *)strurl pngname:(NSData *)imgdata title:(NSString*)title desc:(NSString *)desc;
+-(BOOL)loginreset;
 
 -(void)sendQQWPA:(NSString *)qqid;
 -(void)addQQfriend;

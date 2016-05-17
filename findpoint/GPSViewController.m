@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    map.showsLabels = NO;
+    map.showsLabels = YES;
     map.zoomEnabled=NO;
     map.scrollEnabled=NO;
     map.rotateEnabled=NO;

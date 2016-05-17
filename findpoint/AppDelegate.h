@@ -13,7 +13,7 @@
 
 #define MAPKEY @"7abad449503752055bbe35c553131a16"
 #define QQKEY @"AhXtCwxURKsgEman"
-#define WXKEY @"AhXtCwxURKsgEman"
+#define WXKEY @"wx83f4e870ad68cc6b"
 
 
 

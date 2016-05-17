@@ -152,6 +152,12 @@ static TencentClass *tencentclass;
     
 }
 
+
+-(BOOL)loginreset
+{
+    return oauth.isSessionValid;
+}
+
 -(void)tencentDidLogin
 {
     NSLog(@"登录完成");

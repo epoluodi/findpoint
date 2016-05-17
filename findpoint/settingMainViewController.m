@@ -13,7 +13,7 @@
 @interface settingMainViewController ()
 {
     NSUserDefaults *userinfo;
-    
+    BOOL isloginQQ;
 }
 @end
 
@@ -29,6 +29,10 @@
     
 
     userinfo = [NSUserDefaults standardUserDefaults];
+    isloginQQ =[userinfo boolForKey:@"isregister"];
+ 
+    
+    
     [self initSettingTable];
     // Do any additional setup after loading the view.
 }
@@ -74,22 +78,34 @@
     switch (indexPath.row) {
         case 0:
             cell.SettingTypeEmun=QQ;
-            
+            [cell initview];
+            if (isloginQQ)
+            {
+                cell.labstate.text=@"已登录";
+                nickname.text = [userinfo stringForKey:@"nickname"];
+                NSString *imgfile =[userinfo stringForKey:@"nickimage"];
+                NSURL *url = [NSURL URLWithString:imgfile];
+                NSData *jpg = [Common downloadfile:url];
+                if (jpg){
+                    UIImage *img = [UIImage imageWithData:jpg];
+                    nickimage.image=img;
+                }
+            }
             break;
         case 1:
             cell.SettingTypeEmun=GPS;
-            
+              [cell initview];
             break;
         case 2:
             cell.SettingTypeEmun=SHAREAPP;
-            
+              [cell initview];
             break;
         case 3:
             cell.SettingTypeEmun=ABOUTAPP;
-            
+              [cell initview];
             break;
     }
-    [cell initview];
+  
     return cell;
 }
 
@@ -143,7 +159,8 @@
     
     SettingCell *cell = [table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     cell.labstate.text=@"未登录";
-    
+    [userinfo setBool:NO forKey:@"isregister"];//是否注册
+
     
 }
 
