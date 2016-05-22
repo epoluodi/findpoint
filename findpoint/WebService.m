@@ -42,8 +42,7 @@
         return -1;
     return [ret intValue];
     
-    
-}
+    }
 
 //  创建 频道
 -(int)createchannel:(NSString *)json
@@ -66,15 +65,17 @@
 
 #pragma 用户信息
 
-//新用户获得用户ID
--(BOOL)NewUserGetUserID:(NSString *)deviceid
+
+-(BOOL)UserCreateinfo:(NSDictionary *)dict
 {
+    
+    NSData*jsondata = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
     [service clearArray];
-    [service addParamsString:@"deviceid" values:deviceid];
+    NSString *json = [[NSString alloc] initWithData:jsondata encoding:NSUTF8StringEncoding];
+    [service addParamsString:@"json" values:json];
     NSData *returndata =  [service httprequest:[service getDataForArrary]];
     if (returndata == nil)
         return NO;
-    
     NSString *ret = [service getXmlString:returndata];
     if (ret == nil)
         return NO;

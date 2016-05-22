@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9P9-FM-swu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9P9-FM-swu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--团队-->
@@ -331,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIQ-M7-dzz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-421" y="1270"/>
+            <point key="canvasLocation" x="85" y="1342"/>
         </scene>
         <!--个人-->
         <scene sceneID="FCv-BA-nhB">
@@ -393,80 +392,12 @@
                         <outlet property="nickimage" destination="8UC-3q-fNy" id="uSd-Wm-ZIg"/>
                         <outlet property="nickname" destination="WaE-WK-uGa" id="1bR-Ht-xEi"/>
                         <outlet property="table" destination="XyB-eS-1Px" id="daa-mt-NvC"/>
-                        <segue destination="cGf-cX-uzV" kind="modal" identifier="account" id="r6l-RH-t6y"/>
                         <segue destination="V7f-Py-uxJ" kind="modal" identifier="showgps" id="lhQ-JY-RKe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aa1-S8-Tg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="85" y="529"/>
-        </scene>
-        <!--Login And Reg View-->
-        <scene sceneID="idB-ih-5iy">
-            <objects>
-                <viewController storyboardIdentifier="reg1" id="cGf-cX-uzV" customClass="LoginAndRegView" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XLe-X4-neS"/>
-                        <viewControllerLayoutGuide type="bottom" id="EE6-SC-yfS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9PO-HA-EIr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fd3-VD-OHZ" customClass="CMSCoinView">
-                                <rect key="frame" x="35" y="90" width="250" height="383"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="lxF-Q0-E1V"/>
-                                    <constraint firstAttribute="height" constant="383" id="poc-Cf-D3M"/>
-                                </constraints>
-                            </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7c-kA-0jY">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="5Ro-ox-csM"/>
-                                    <constraint firstAttribute="height" constant="60" id="Uqd-0L-huD"/>
-                                </constraints>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roZ-e4-0I6" customClass="DKCircleButton">
-                                <rect key="frame" x="89" y="504" width="142" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="eyF-2i-vm6"/>
-                                </constraints>
-                                <state key="normal" title="确定">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="c7c-kA-0jY" secondAttribute="trailing" id="6gE-zS-GmQ"/>
-                            <constraint firstItem="roZ-e4-0I6" firstAttribute="top" secondItem="Fd3-VD-OHZ" secondAttribute="bottom" constant="25" id="7AR-e8-SlN"/>
-                            <constraint firstItem="c7c-kA-0jY" firstAttribute="centerX" secondItem="Fd3-VD-OHZ" secondAttribute="centerX" id="FAf-QC-Yds"/>
-                            <constraint firstItem="c7c-kA-0jY" firstAttribute="leading" secondItem="9PO-HA-EIr" secondAttribute="leading" id="IgS-iD-DUs"/>
-                            <constraint firstItem="roZ-e4-0I6" firstAttribute="centerX" secondItem="Fd3-VD-OHZ" secondAttribute="centerX" id="ab6-n7-qYF"/>
-                            <constraint firstItem="roZ-e4-0I6" firstAttribute="leading" secondItem="9PO-HA-EIr" secondAttribute="leadingMargin" constant="73" id="cMj-75-c5y"/>
-                            <constraint firstItem="c7c-kA-0jY" firstAttribute="top" secondItem="9PO-HA-EIr" secondAttribute="top" id="n7V-LT-g5c"/>
-                            <constraint firstAttribute="bottom" secondItem="roZ-e4-0I6" secondAttribute="bottom" constant="20" symbolic="YES" id="tHD-WN-Paq"/>
-                            <constraint firstItem="Fd3-VD-OHZ" firstAttribute="top" secondItem="c7c-kA-0jY" secondAttribute="bottom" constant="30" id="y3G-XR-t88"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="7AR-e8-SlN"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="CMSCView" destination="Fd3-VD-OHZ" id="Fnc-d2-Ue9"/>
-                        <outlet property="navbar" destination="c7c-kA-0jY" id="bCd-HP-2XG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rPD-3s-0QW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="79" y="1270"/>
         </scene>
     </scenes>
     <resources>

@@ -140,7 +140,6 @@ static TencentClass *tencentclass;
     NSDictionary *d = response.jsonResponse;
     NSString *qqimg = [d objectForKey:@"figureurl_qq_2"];
     NSString *qqname = [d objectForKey:@"nickname"];
-    [delegate loginSuccess:qqname qqimg:qqimg];
     
     NSUserDefaults *userinfo = [NSUserDefaults standardUserDefaults];
     
@@ -149,7 +148,8 @@ static TencentClass *tencentclass;
     [userinfo setObject:oauth.accessToken forKey:@"accessToken"];
     [userinfo setObject:oauth.openId forKey:@"openId"];
     
-    
+    [delegate loginSuccess:qqname qqimg:qqimg];
+
 }
 
 

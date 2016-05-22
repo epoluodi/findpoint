@@ -10,6 +10,7 @@
 #import "info.h"
 #import "WebService.h"
 #import "TencentClass.h"
+#import "WeChatClass.h"
 
 #define MAPKEY @"7abad449503752055bbe35c553131a16"
 #define QQKEY @"AhXtCwxURKsgEman"

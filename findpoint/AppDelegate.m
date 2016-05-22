@@ -23,11 +23,15 @@
     [AMapLocationServices sharedServices].apiKey=MAPKEY;
     [AMapSearchServices sharedServices].apiKey =MAPKEY;
     
+    
+    
     [TencentClass getInstance];//初始化 QQ
+    [WeChatClass getInstance];
     
     deviveid = [UIDevice currentDevice].identifierForVendor.UUIDString;
     [info getInstancent];//初始化info
     [info getInstancent].uid = deviveid;
+    [[info getInstancent] LoginUserForServer];
     
     
     
@@ -70,6 +74,7 @@
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
     NSLog(@"openURL %@",options);
+    [WeChatClass WxHandleOpenUrl:[WeChatClass getInstance] url:url];
     return [TencentOAuth HandleOpenURL:url];
 }
 

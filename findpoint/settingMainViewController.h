@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LoginAndRegView.h"
 #import "TencentClass.h"
-@interface settingMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,QQDelegate>
+#import "SheetUI.h"
+@interface settingMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,QQDelegate,SHeeUIDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *nickimage;

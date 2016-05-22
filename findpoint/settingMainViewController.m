@@ -9,11 +9,17 @@
 #import "settingMainViewController.h"
 #import "SettingCell.h"
 #import "Common.h"
+#import "info.h"
+#import "WebService.h"
+
+
 
 @interface settingMainViewController ()
 {
     NSUserDefaults *userinfo;
     BOOL isloginQQ;
+    SheetUI *shareview;
+    UIAlertController *sharealert;
 }
 @end
 
@@ -27,10 +33,10 @@
     nickimage.layer.borderWidth=0.8f;
     nickimage.layer.masksToBounds=YES;
     
-
+    
     userinfo = [NSUserDefaults standardUserDefaults];
     isloginQQ =[userinfo boolForKey:@"isregister"];
- 
+    
     
     
     [self initSettingTable];
@@ -94,18 +100,18 @@
             break;
         case 1:
             cell.SettingTypeEmun=GPS;
-              [cell initview];
+            [cell initview];
             break;
         case 2:
             cell.SettingTypeEmun=SHAREAPP;
-              [cell initview];
+            [cell initview];
             break;
         case 3:
             cell.SettingTypeEmun=ABOUTAPP;
-              [cell initview];
+            [cell initview];
             break;
     }
-  
+    
     return cell;
 }
 
@@ -138,7 +144,12 @@
         case 1:
             [self performSegueWithIdentifier:@"showgps" sender:self];
             break;
-
+        case 2:
+            shareview = [[SheetUI alloc] initclass:self];
+            shareview.ISWEiBO=NO;
+            sharealert =  [shareview SHowSheet:nil];
+            [self presentViewController:sharealert animated:YES completion:nil];
+            break;
     }
 }
 
@@ -160,7 +171,7 @@
     SettingCell *cell = [table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     cell.labstate.text=@"未登录";
     [userinfo setBool:NO forKey:@"isregister"];//是否注册
-
+    
     
 }
 
@@ -181,7 +192,31 @@
     [userinfo setObject:qqimg forKey:@"nickimage"];//当前头像
     [userinfo setObject:QQnick forKey:@"nickname"];//当前 名称
     
-
+    NSDictionary *d ;
+    
+    
+    d = [[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"logintype",
+         [userinfo stringForKey:@"nickname"],@"nickname",[info getInstancent].uid,@"deviceid",
+         [userinfo stringForKey:@"nickimage"],@"nickphotopath",
+         [userinfo stringForKey:@"openId"],@"qqopenid",nil];
+    
+    WebService *web = [[WebService alloc] initUrl:UserCreate];
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(globalQ, ^{
+        BOOL r= [web UserCreateinfo:d];
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *strmsg ;
+            if (!r){
+                strmsg = @"登录失败";
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:strmsg preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:action];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        });
+    });
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -191,7 +226,27 @@
 
 
 
+#pragma mark 分享委托
+-(void)setupshow
+{
+    
+}
+-(void)SetqueryParams:(int)type
+{
+    [sharealert dismissViewControllerAnimated:YES completion:nil];
+    switch (type) {
+        case 0:
+            
+            break;
+        case 1:
+            break;
 
+    }
+}
+-(void)cancelquery
+{
+    
+}
 
 
 
@@ -201,13 +256,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

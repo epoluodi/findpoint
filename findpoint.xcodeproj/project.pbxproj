@@ -22,6 +22,10 @@
 		7B4475FB1B3845B900FEB452 /* png10.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475F01B3845B900FEB452 /* png10.png */; };
 		7B4475FC1B3845B900FEB452 /* png11.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475F11B3845B900FEB452 /* png11.png */; };
 		7B4475FF1B385B6300FEB452 /* MainTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4475FE1B385B6300FEB452 /* MainTabBar.m */; };
+		7B46CCA81CF1E32A00D0928E /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B46CCA31CF1E32A00D0928E /* libWeChatSDK.a */; };
+		7B46CCA91CF1E32A00D0928E /* WeChatClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46CCA51CF1E32A00D0928E /* WeChatClass.m */; };
+		7B46CCAC1CF1E64000D0928E /* SheetUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46CCAB1CF1E64000D0928E /* SheetUI.m */; };
+		7B46CCAE1CF1E64C00D0928E /* png.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B46CCAD1CF1E64C00D0928E /* png.bundle */; };
 		7B4CA8571CE0DA500086111B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CA8561CE0DA500086111B /* MapViewController.m */; };
 		7B4CF6401CDF6985000D4415 /* settingcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4CF63F1CDF6985000D4415 /* settingcell.xib */; };
 		7B4CF6431CDF6A8C000D4415 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CF6421CDF6A8C000D4415 /* SettingCell.m */; };
@@ -128,6 +132,15 @@
 		7B4475F11B3845B900FEB452 /* png11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = png11.png; sourceTree = "<group>"; };
 		7B4475FD1B385B6300FEB452 /* MainTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBar.h; sourceTree = "<group>"; };
 		7B4475FE1B385B6300FEB452 /* MainTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBar.m; sourceTree = "<group>"; };
+		7B46CCA31CF1E32A00D0928E /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		7B46CCA41CF1E32A00D0928E /* WeChatClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatClass.h; sourceTree = "<group>"; };
+		7B46CCA51CF1E32A00D0928E /* WeChatClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatClass.m; sourceTree = "<group>"; };
+		7B46CCA61CF1E32A00D0928E /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		7B46CCA71CF1E32A00D0928E /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		7B46CCAA1CF1E64000D0928E /* SheetUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SheetUI.h; sourceTree = "<group>"; };
+		7B46CCAB1CF1E64000D0928E /* SheetUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SheetUI.m; sourceTree = "<group>"; };
+		7B46CCAD1CF1E64C00D0928E /* png.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = png.bundle; sourceTree = "<group>"; };
+		7B46CCAF1CF1E65800D0928E /* ShareClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareClass.h; sourceTree = "<group>"; };
 		7B4CA8551CE0DA500086111B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		7B4CA8561CE0DA500086111B /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		7B4CF63F1CDF6985000D4415 /* settingcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = settingcell.xib; sourceTree = "<group>"; };
@@ -232,6 +245,7 @@
 				7B4CF6631CDF7ADD000D4415 /* SystemConfiguration.framework in Frameworks */,
 				7B4CF6611CDF7ACE000D4415 /* CoreTelephony.framework in Frameworks */,
 				7B4CF65F1CDF7AC1000D4415 /* CoreLocation.framework in Frameworks */,
+				7B46CCA81CF1E32A00D0928E /* libWeChatSDK.a in Frameworks */,
 				7B4CF65D1CDF7AB6000D4415 /* OpenGLES.framework in Frameworks */,
 				7B4CF65B1CDF7AAD000D4415 /* QuartzCore.framework in Frameworks */,
 				7B4CF6591CDF7A9E000D4415 /* CoreGraphics.framework in Frameworks */,
@@ -288,6 +302,10 @@
 		7B23F3831B1B5399009779FC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7B46CCAD1CF1E64C00D0928E /* png.bundle */,
+				7B46CCAA1CF1E64000D0928E /* SheetUI.h */,
+				7B46CCAF1CF1E65800D0928E /* ShareClass.h */,
+				7B46CCAB1CF1E64000D0928E /* SheetUI.m */,
 				7BCF0CF81B1E020D00DDD8D4 /* Common.h */,
 				7BCF0CF91B1E020D00DDD8D4 /* Common.m */,
 				7BCF0CEF1B1DEB3400DDD8D4 /* info.h */,
@@ -314,6 +332,18 @@
 				7B4475F11B3845B900FEB452 /* png11.png */,
 			);
 			name = channelpng;
+			sourceTree = "<group>";
+		};
+		7B46CCA21CF1E32100D0928E /* WX */ = {
+			isa = PBXGroup;
+			children = (
+				7B46CCA31CF1E32A00D0928E /* libWeChatSDK.a */,
+				7B46CCA41CF1E32A00D0928E /* WeChatClass.h */,
+				7B46CCA51CF1E32A00D0928E /* WeChatClass.m */,
+				7B46CCA61CF1E32A00D0928E /* WXApi.h */,
+				7B46CCA71CF1E32A00D0928E /* WXApiObject.h */,
+			);
+			name = WX;
 			sourceTree = "<group>";
 		};
 		7B4CA8541CE0DA360086111B /* mapview */ = {
@@ -410,6 +440,7 @@
 		7BBC23271B1AF82800AA88DC /* findpoint */ = {
 			isa = PBXGroup;
 			children = (
+				7B46CCA21CF1E32100D0928E /* WX */,
 				7BE416531CE7856A001D324B /* QQ */,
 				7BE416391CE73F86001D324B /* app_logo.png */,
 				7B6C7A9C1B442B010012000B /* Notification */,
@@ -673,6 +704,7 @@
 				7B7C3C4F1CE2330600D6668D /* btn_share.png in Resources */,
 				7B4475F31B3845B900FEB452 /* png2.png in Resources */,
 				7BCF0CF41B1DFED700DDD8D4 /* channelCell.xib in Resources */,
+				7B46CCAE1CF1E64C00D0928E /* png.bundle in Resources */,
 				7BAAB8351CD8E4B4003EBE37 /* gps.png in Resources */,
 				7B4475FA1B3845B900FEB452 /* png9.png in Resources */,
 				7BBC23391B1AF82800AA88DC /* LaunchScreen.xib in Resources */,
@@ -698,6 +730,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B46CCA91CF1E32A00D0928E /* WeChatClass.m in Sources */,
 				7B17CC761B32FC0900F60BFF /* settingMainViewController.m in Sources */,
 				7B4CF6751CDF91C6000D4415 /* GDLocation.m in Sources */,
 				7B893F561B3B07AE00C1D776 /* LoginAndRegView.m in Sources */,
@@ -705,6 +738,7 @@
 				7BCF0CF71B1DFFE100DDD8D4 /* channelCell.m in Sources */,
 				7B23F3811B1B490B009779FC /* GPSClass.m in Sources */,
 				7BCF0CF11B1DEB3400DDD8D4 /* info.m in Sources */,
+				7B46CCAC1CF1E64000D0928E /* SheetUI.m in Sources */,
 				7B718C211B25E5E000AE4D8B /* MBProgressHUD.m in Sources */,
 				7B893F5B1B3B088900C1D776 /* LoginView.m in Sources */,
 				7BBC232E1B1AF82800AA88DC /* AppDelegate.m in Sources */,

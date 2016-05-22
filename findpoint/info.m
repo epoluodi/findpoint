@@ -7,6 +7,7 @@
 //
 
 #import "info.h"
+#import "WebService.h"
 
 @implementation info
 @synthesize uid;
@@ -45,6 +46,7 @@ static info *_info;
         [userinfo setBool:YES forKey:@"isfirstrun"];
     }
     
+    
     if ([userinfo boolForKey:@"isregister"])
     {
         [TencentClass getInstance].oauth.accessToken = [userinfo stringForKey:@"accessToken"];
@@ -57,9 +59,34 @@ static info *_info;
             [TencentClass getInstance].delegate = self;
             [[TencentClass getInstance] LoginQQ];
         }
+      
     }
+
     
     return [super init];
+}
+
+
+-(void)LoginUserForServer
+{
+    NSDictionary *d ;
+    BOOL Islogin=[userinfo boolForKey:@"isregister"];
+    if (Islogin){
+        d = [[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"logintype",
+            [userinfo stringForKey:@"nickname"],@"nickname",uid,@"deviceid",
+             [userinfo stringForKey:@"nickimage"],@"nickphotopath",
+             [userinfo stringForKey:@"openId"],@"qqopenid",nil];
+    }
+    else{
+        d = [[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"logintype",
+             @"",@"nickname",uid,@"deviceid",@"",@"nickphotopath",@"",@"qqopenid",nil];
+    }
+    WebService *web = [[WebService alloc] initUrl:UserCreate];
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(globalQ, ^{
+        [web UserCreateinfo:d];
+    });
+    
 }
 
 

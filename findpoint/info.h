@@ -38,5 +38,5 @@
 
 +(instancetype)getInstancent;
 
-
+-(void)LoginUserForServer;
 @end

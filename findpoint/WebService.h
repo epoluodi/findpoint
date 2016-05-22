@@ -28,5 +28,5 @@
 -(int)createchannel:(NSString *)json;
 
 
--(BOOL)NewUserGetUserID:(NSString *)deviceid;
+-(BOOL)UserCreateinfo:(NSDictionary *)dict;
 @end
