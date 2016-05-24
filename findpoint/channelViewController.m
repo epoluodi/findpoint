@@ -14,7 +14,7 @@
 
 @implementation channelViewController
 
-@synthesize navbar;
+@synthesize navbar,table;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -32,6 +32,10 @@
     
     [navbar pushNavigationItem:title animated:YES];
     
+    refresh = [[UIRefreshControl alloc] init];
+      refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"努力加载中……"];
+    [refresh addTarget:self action:@selector(refreshlistchannel) forControlEvents:UIControlEventValueChanged];
+    [table addSubview:refresh];
     
     
     // Do any additional setup after loading the view.
@@ -41,7 +45,8 @@
 
 -(void)refreshlistchannel
 {
-    NSLog(@"刷新频道列表");
+    if (refresh.isRefreshing)
+        NSLog(@"刷新频道列表");
 }
 
 

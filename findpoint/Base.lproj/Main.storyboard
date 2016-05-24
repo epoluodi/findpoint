@@ -22,7 +22,7 @@
                                     <constraint firstAttribute="height" constant="60" id="bJh-Wx-hln"/>
                                 </constraints>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zxx-es-AD3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zxx-es-AD3">
                                 <rect key="frame" x="0.0" y="61" width="320" height="458"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -30,6 +30,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Al6-1I-cMD" firstAttribute="leading" secondItem="11l-69-3jJ" secondAttribute="leading" id="1VM-tY-WiW"/>
+                            <constraint firstItem="zxx-es-AD3" firstAttribute="leading" secondItem="11l-69-3jJ" secondAttribute="leading" id="IIu-BP-Nai"/>
+                            <constraint firstAttribute="trailing" secondItem="zxx-es-AD3" secondAttribute="trailing" id="PT8-pQ-czI"/>
+                            <constraint firstItem="zxx-es-AD3" firstAttribute="top" secondItem="Al6-1I-cMD" secondAttribute="bottom" constant="1" id="WNo-bs-nwi"/>
+                            <constraint firstItem="MM6-YF-1km" firstAttribute="top" secondItem="zxx-es-AD3" secondAttribute="bottom" id="YjR-Va-too"/>
                             <constraint firstAttribute="trailing" secondItem="Al6-1I-cMD" secondAttribute="trailing" id="iqU-aO-hVk"/>
                             <constraint firstItem="Al6-1I-cMD" firstAttribute="top" secondItem="11l-69-3jJ" secondAttribute="top" id="jM1-rS-5Nx"/>
                         </constraints>
@@ -37,6 +41,7 @@
                     <tabBarItem key="tabBarItem" title="团队" image="group" id="Pcb-ff-o8H"/>
                     <connections>
                         <outlet property="navbar" destination="Al6-1I-cMD" id="KSj-9q-TLa"/>
+                        <outlet property="table" destination="zxx-es-AD3" id="bgZ-fG-rPB"/>
                         <segue destination="Fwm-1P-iRj" kind="modal" identifier="addchannel" id="cPi-sm-dvU"/>
                     </connections>
                 </viewController>
@@ -56,7 +61,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addchannel" translatesAutoresizingMaskIntoConstraints="NO" id="lsR-V3-05a">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingbackimg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lsR-V3-05a">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVM-4r-hov">
@@ -401,7 +406,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addchannel" width="180" height="321"/>
         <image name="app_logo.png" width="1024" height="1024"/>
         <image name="btn_return.png" width="64" height="64"/>
         <image name="btn_share.png" width="64" height="64"/>

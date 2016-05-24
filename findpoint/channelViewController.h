@@ -17,6 +17,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 
 

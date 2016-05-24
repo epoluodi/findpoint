@@ -108,63 +108,31 @@
 }
 
 
-
-
-
-
-
-
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-    if ([text isEqualToString:@""])
-    {
-        if (textview.text.length <= length)
-        {
-            textview.textColor = [UIColor blackColor];
-            [ok setEnabled:YES];
-            
-        }
-        
-        return true;
-    }
-    if (textview.text.length >= length)
-    {
-        textview.textColor = [UIColor redColor];
-        [ok setEnabled:NO];
-        return false;
-    }
-    else{
-        textview.textColor = [UIColor blackColor];
-        [ok setEnabled:YES];
-        return true;
-    }
-}
-
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if ([string isEqualToString:@""])
     {
-        if (text.text.length <= length)
+        if (text.text.length < length)
         {
             text.textColor = [UIColor blackColor];
             [ok setEnabled:YES];
             
         }
+        return YES;
         
-        return true;
     }
-    if (text.text.length >= length)
+    if (text.text.length +1> length)
     {
         text.textColor = [UIColor redColor];
-        [ok setEnabled:NO];
-        return false;
-    }
-    else{
-        text.textColor = [UIColor blackColor];
         [ok setEnabled:YES];
-        return true;
+        return NO;
     }
+ 
+    return YES;
+
 }
+
+
 
 
 -(void)showAlert:(UIViewController *)main

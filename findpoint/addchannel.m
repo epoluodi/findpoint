@@ -64,8 +64,8 @@
     rightButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(rightbtn)];
     [title setRightBarButtonItem:rightButton animated:YES];
     
+    [navbar setBarStyle:UIBarStyleBlackTranslucent];
 
-    [navbar setBackgroundImage:[UIImage imageNamed:@"login_back"] forBarMetrics:UIBarMetricsDefault];
    
     [navbar pushNavigationItem:title animated:YES];
     [self inittableview];
@@ -96,7 +96,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return 6;
+    return 5;
 }
 
 
@@ -137,12 +137,12 @@
             cell.labelinfo.text = @"频道密码";
           
             break;
+//        case 4:
+//            cell.labelinfo.text = @"频道人数";
+//            cell.labelname.text = @"10人";
+//            cell.labelname.enabled=NO;
+//            break;
         case 4:
-            cell.labelinfo.text = @"频道人数";
-            cell.labelname.text = @"10人";
-            cell.labelname.enabled=NO;
-            break;
-        case 5:
             cell.labelinfo.text = @"频道描述";
             break;
   
@@ -189,16 +189,16 @@
         case 1:
             alertview =[[AlertView alloc] initOneText:@"输入频道名称" message:@"为频道取一个个性的名称" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeDefault ];
             alertview.delegate=self;
-            [alertview setTextLen:10];
+            [alertview setTextLen:16];
             [alertview showAlert:self];
             break;
         case 3:
-            alertview =[[AlertView alloc] initOneText:@"输入频道密码" message:@"设置6位密码" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeASCIICapable ];
+            alertview =[[AlertView alloc] initOneText:@"输入频道密码" message:@"设置6位密码" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeNumberPad ];
             alertview.delegate=self;
             [alertview setTextLen:6];
             [alertview showAlert:self];
             break;
-        case 5:
+        case 4:
             alertview =[[AlertView alloc] initOneTextView:@"频道描述" message:@"给频道一个炫酷的描述,字数限制 50" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeDefault ];
             alertview.delegate=self;
             [alertview setTextLen:50];
@@ -487,7 +487,7 @@
         NSString *baseimage;
         if (newinfo.channelimage != nil)
         {
-            NSData *imagedata = UIImageJPEGRepresentation(newinfo.channelimage, 0.3f);
+            NSData *imagedata = UIImageJPEGRepresentation(newinfo.channelimage, 0.6f);
             baseimage = [imagedata base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
         }
         if (!baseimage)
@@ -653,7 +653,10 @@
 {
     
 }
-
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
