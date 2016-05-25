@@ -19,8 +19,9 @@
     WebService *web;
     AlertView *alertview;
     NSMutableArray *cellarrary;
-    info * newinfo;
-    BOOL ischeck;
+    NSString *channelname,*channelID,*channelpwd,*channeldesc;;
+    BOOL ischeck,isopen;
+    UIImage *channelimg;
 }
 @end
 
@@ -66,12 +67,10 @@
     
     [navbar setBarStyle:UIBarStyleBlackTranslucent];
 
-   
+    isopen=YES;
     [navbar pushNavigationItem:title animated:YES];
     [self inittableview];
-    
 
-    newinfo = [[info alloc] init];
     
     // Do any additional setup after loading the view.
 }
@@ -153,7 +152,7 @@
 }
 -(void)switchmode:(id)sender
 {
-    newinfo.isopen = ((UISwitch *)sender).on;
+    isopen = ((UISwitch *)sender).on;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -261,7 +260,7 @@
         
         NSString *imagename = [NSString stringWithFormat:@"png%d.png",selectimage];
         channelimage.image =  [UIImage imageNamed:imagename];
-        newinfo.channelimage =  [UIImage imageNamed:imagename];
+        channelimg =  [UIImage imageNamed:imagename];
          [channelimage setAlpha:1];
         
 
@@ -431,7 +430,7 @@
     //        return;
     //    }
     channelimage.image = image;
-    newinfo.channelimage = image;
+    channelimg = image;
     
     
 //    NSData *jpgdata = UIImageJPEGRepresentation(image, 80);
@@ -476,7 +475,7 @@
     
     dispatch_async(globalQ, ^{
         
-        if (!newinfo.channelname)
+        if (!channelname)
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"频道名称没有输入，请输入频道名称" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
@@ -485,25 +484,26 @@
         
         
         NSString *baseimage;
-        if (newinfo.channelimage != nil)
+        if (channelimg != nil)
         {
-            NSData *imagedata = UIImageJPEGRepresentation(newinfo.channelimage, 0.6f);
+            NSData *imagedata = UIImageJPEGRepresentation(channelimg, 0.6f);
             baseimage = [imagedata base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
         }
-        if (!baseimage)
+        else
             baseimage=@"0";
+        if (!channelpwd)
+            channelpwd=@"";
         NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"1",@"t_channeltype",//私人类型
-                              (newinfo.isopen)?@"1":@"0",@"t_isopen",
+                              (isopen)?@"1":@"0",@"t_isopen",
                               @"",@"t_userid",
-                              newinfo.channelid,@"t_channelid",
-                              newinfo.channelname, @"t_channelname",
-                              newinfo.channelpwd,@"t_channelpwd",
+                              channelID,@"t_channelid",
+                              channelname, @"t_channelname",
+                              channelpwd,@"t_channelpwd",
                               baseimage,@"t_photo",
-                              newinfo.channeldesc,@"t_desc",
+                              channeldesc,@"t_desc",
                               nil];
         
-        if (!newinfo.channelpwd)
-            newinfo.channelpwd=@"";
+    
         NSData *jsondata = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonstr = [[NSString alloc] initWithData:jsondata encoding:NSUTF8StringEncoding];
    
@@ -567,24 +567,21 @@
     [cell setChannelidTextColor:NO];
     switch ([tableview indexPathForSelectedRow].row) {
         case 0:
-            newinfo.channelid =[dataarary objectAtIndex:0];
+            channelID =[dataarary objectAtIndex:0];
 //            if ([App.info.channelid isEqualToString:newinfo.channelid])
 //                return;
 
-            [self checkchannelid:newinfo.channelid];
+            [self checkchannelid:channelID];
 
             break;
         case 1:
-            newinfo.channelname =[dataarary objectAtIndex:0];
+            channelname =[dataarary objectAtIndex:0];
             break;
         case 3:
-            newinfo.channelpwd =[dataarary objectAtIndex:0];
+            channelpwd =[dataarary objectAtIndex:0];
             break;
         case 4:
-            newinfo.channelcounts =10;
-            break;
-        case 5:
-            newinfo.channeldesc =[dataarary objectAtIndex:0];
+            channeldesc =[dataarary objectAtIndex:0];
             break;
     }
     

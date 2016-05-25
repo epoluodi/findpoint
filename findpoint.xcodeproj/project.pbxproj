@@ -86,6 +86,7 @@
 		7BE416471CE7729F001D324B /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BE416461CE7729F001D324B /* TencentOpenApi_IOS_Bundle.bundle */; };
 		7BE4164F1CE782A9001D324B /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE4164E1CE782A9001D324B /* TencentOpenAPI.framework */; };
 		7BE416521CE78567001D324B /* TencentClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE416511CE78567001D324B /* TencentClass.m */; };
+		B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B464B6581CF5A664009A6A6F /* channelmaincell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +227,7 @@
 		7BE4164E1CE782A9001D324B /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		7BE416501CE78567001D324B /* TencentClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentClass.h; sourceTree = "<group>"; };
 		7BE416511CE78567001D324B /* TencentClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentClass.m; sourceTree = "<group>"; };
+		B464B6581CF5A664009A6A6F /* channelmaincell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = channelmaincell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +522,7 @@
 				7BCF0CF31B1DFED700DDD8D4 /* channelCell.xib */,
 				7BCF0CF51B1DFFE100DDD8D4 /* channelCell.h */,
 				7BCF0CF61B1DFFE100DDD8D4 /* channelCell.m */,
+				B464B6581CF5A664009A6A6F /* channelmaincell.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				7B4CF6501CDF714A000D4415 /* settingbackimg.jpg in Resources */,
 				7BC0AAE81B40437500D53A84 /* readme.txt in Resources */,
 				7B7C3C531CE233BB00D6668D /* btn_return.png in Resources */,
+				B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */,
 				7B4475F71B3845B900FEB452 /* png6.png in Resources */,
 				7B4CF6401CDF6985000D4415 /* settingcell.xib in Resources */,
 				7B4475F41B3845B900FEB452 /* png3.png in Resources */,
