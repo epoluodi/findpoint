@@ -29,7 +29,7 @@
     
     rightButton = [[UIBarButtonItem alloc] initWithTitle:@"加入" style:UIBarButtonItemStyleBordered target:self action:@selector(rightbtn)];
     [title setRightBarButtonItem:rightButton animated:YES];
-    
+    title.title = @"团队列表";
     [navbar pushNavigationItem:title animated:YES];
     
     refresh = [[UIRefreshControl alloc] init];
@@ -42,6 +42,15 @@
 }
 
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    
+    
+}
+
 
 -(void)refreshlistchannel
 {
@@ -52,13 +61,15 @@
 
 -(void)leftbtn
 {
-   
+       [self performSegueWithIdentifier:@"addchannel" sender:self];
 }
 -(void)rightbtn
 {
-    
-    [self performSegueWithIdentifier:@"addchannel" sender:self];
+           [self performSegueWithIdentifier:@"showjoin" sender:self];
+
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -71,6 +71,8 @@
 		7BBC23341B1AF82800AA88DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BBC23321B1AF82800AA88DC /* Main.storyboard */; };
 		7BBC23361B1AF82800AA88DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BBC23351B1AF82800AA88DC /* Images.xcassets */; };
 		7BBC23391B1AF82800AA88DC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBC23371B1AF82800AA88DC /* LaunchScreen.xib */; };
+		7BBF69D21CF5FA8800C14D81 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBF69D01CF5FA8800C14D81 /* lock.png */; };
+		7BBF69D31CF5FA8800C14D81 /* open.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBF69D11CF5FA8800C14D81 /* open.png */; };
 		7BC0AAE81B40437500D53A84 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7BC0AAE71B40437500D53A84 /* readme.txt */; };
 		7BC0AAEF1B4057BD00D53A84 /* DKCircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0AAEE1B4057BD00D53A84 /* DKCircleButton.m */; };
 		7BCA9CB01B2342E9006D6156 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCA9CAF1B2342E9006D6156 /* AlertView.m */; };
@@ -204,6 +206,8 @@
 		7BBC23351B1AF82800AA88DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BBC23381B1AF82800AA88DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7BBC233E1B1AF82800AA88DC /* findpointTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = findpointTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BBF69D01CF5FA8800C14D81 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
+		7BBF69D11CF5FA8800C14D81 /* open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open.png; sourceTree = "<group>"; };
 		7BC0AAE71B40437500D53A84 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		7BC0AAED1B4057BD00D53A84 /* DKCircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCircleButton.h; sourceTree = "<group>"; };
 		7BC0AAEE1B4057BD00D53A84 /* DKCircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCircleButton.m; sourceTree = "<group>"; };
@@ -502,6 +506,8 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				7BBF69D01CF5FA8800C14D81 /* lock.png */,
+				7BBF69D11CF5FA8800C14D81 /* open.png */,
 				7B7C3C521CE233BB00D6668D /* btn_return.png */,
 				7B7C3C4E1CE2330600D6668D /* btn_share.png */,
 				7B4CF64F1CDF714A000D4415 /* settingbackimg.jpg */,
@@ -686,9 +692,11 @@
 			files = (
 				7BAAB8331CD8E266003EBE37 /* color.png in Resources */,
 				7B4475FC1B3845B900FEB452 /* png11.png in Resources */,
+				7BBF69D21CF5FA8800C14D81 /* lock.png in Resources */,
 				7BE4163A1CE73F86001D324B /* app_logo.png in Resources */,
 				7B4475F51B3845B900FEB452 /* png4.png in Resources */,
 				7B4CF6501CDF714A000D4415 /* settingbackimg.jpg in Resources */,
+				7BBF69D31CF5FA8800C14D81 /* open.png in Resources */,
 				7BC0AAE81B40437500D53A84 /* readme.txt in Resources */,
 				7B7C3C531CE233BB00D6668D /* btn_return.png in Resources */,
 				B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */,

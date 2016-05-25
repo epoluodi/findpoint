@@ -55,7 +55,7 @@
 //    
     
     title = [[UINavigationItem alloc] init];
-    title.title=@"添加频道";
+    title.title=@"添加团队";
     
     leftButton = [[UIBarButtonItem alloc]
                   initWithTitle:@"取消"                                   style:UIBarButtonItemStyleBordered                                   target:self                                   action:@selector(leftbtn)];
@@ -95,7 +95,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return 5;
+    return 4;
 }
 
 
@@ -109,31 +109,31 @@
   
     switch (indexPath.row) {
         case 0:
-            cell.labelinfo.text = @"频道号";
+            cell.labelinfo.text = @"团队号";
       
             break;
         case 1:
-            cell.labelinfo.text = @"频道名称";
+            cell.labelinfo.text = @"团队名称";
     
             break;
+//        case 2:
+//            cell.labelinfo.text = @"是否公开";
+//            [cell hideLabelname];
+//            modelswitch = [[UISwitch alloc] init];
+//            
+//            modelswitch.frame= CGRectMake([PublicCommon GetALLScreen].size.width -modelswitch.frame.size.width-30 ,cell.labelinfo.frame.origin.y-5
+//                                          ,modelswitch.frame.size.width, modelswitch.frame.size.height);
+//           
+//            [modelswitch addTarget:self action:@selector(switchmode:) forControlEvents:UIControlEventValueChanged];
+//            modelswitch.onTintColor=[[UIColor greenColor] colorWithAlphaComponent:0.3f];
+//            modelswitch.on=YES;
+//            
+//            [cell addSubview:modelswitch];
+//           
+//            
+//            break;
         case 2:
-            cell.labelinfo.text = @"是否公开";
-            [cell hideLabelname];
-            modelswitch = [[UISwitch alloc] init];
-            
-            modelswitch.frame= CGRectMake([PublicCommon GetALLScreen].size.width -modelswitch.frame.size.width-30 ,cell.labelinfo.frame.origin.y-5
-                                          ,modelswitch.frame.size.width, modelswitch.frame.size.height);
-           
-            [modelswitch addTarget:self action:@selector(switchmode:) forControlEvents:UIControlEventValueChanged];
-            modelswitch.onTintColor=[[UIColor greenColor] colorWithAlphaComponent:0.3f];
-            modelswitch.on=YES;
-            
-            [cell addSubview:modelswitch];
-           
-            
-            break;
-        case 3:
-            cell.labelinfo.text = @"频道密码";
+            cell.labelinfo.text = @"团队密码";
           
             break;
 //        case 4:
@@ -141,8 +141,8 @@
 //            cell.labelname.text = @"10人";
 //            cell.labelname.enabled=NO;
 //            break;
-        case 4:
-            cell.labelinfo.text = @"频道描述";
+        case 3:
+            cell.labelinfo.text = @"团队描述";
             break;
   
     }
@@ -186,19 +186,19 @@
             break;
             
         case 1:
-            alertview =[[AlertView alloc] initOneText:@"输入频道名称" message:@"为频道取一个个性的名称" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeDefault ];
+            alertview =[[AlertView alloc] initOneText:@"输入团队名称" message:@"为团队取一个个性的名称" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeDefault ];
             alertview.delegate=self;
             [alertview setTextLen:16];
             [alertview showAlert:self];
             break;
-        case 3:
-            alertview =[[AlertView alloc] initOneText:@"输入频道密码" message:@"设置6位密码" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeNumberPad ];
+        case 2:
+            alertview =[[AlertView alloc] initOneText:@"输入团队密码" message:@"设置6位密码" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeNumberPad ];
             alertview.delegate=self;
             [alertview setTextLen:6];
             [alertview showAlert:self];
             break;
-        case 4:
-            alertview =[[AlertView alloc] initOneTextView:@"频道描述" message:@"给频道一个炫酷的描述,字数限制 50" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeDefault ];
+        case 3:
+            alertview =[[AlertView alloc] initOneTextView:@"团队描述" message:@"设置一个炫酷的描述,字数限制 50" Style:UIAlertControllerStyleAlert inputtype:UIKeyboardTypeDefault ];
             alertview.delegate=self;
             [alertview setTextLen:50];
             [alertview showAlert:self];
@@ -215,7 +215,7 @@
 
 -(void)clicknickimage
 {
-    UIAlertController * alert =[UIAlertController alertControllerWithTitle:@"选择频道标志" message:@"\n\n\n\n\n" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController * alert =[UIAlertController alertControllerWithTitle:@"选择团队标志" message:@"\n\n\n\n\n" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancel];
@@ -459,7 +459,7 @@
 {
     if (ischeck ==NO)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"频道号没有验证，无法添加新的频道" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"团队号没有验证，无法添加新的团队" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -468,7 +468,7 @@
    
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
-    HUD.labelText = @"申请创建频道";
+    HUD.labelText = @"申请创建团队";
     [HUD show:YES];
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
@@ -477,7 +477,7 @@
         
         if (!channelname)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"频道名称没有输入，请输入频道名称" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"团队名称没有输入，请输入团队名称" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
             return;
         }
@@ -493,24 +493,20 @@
             baseimage=@"0";
         if (!channelpwd)
             channelpwd=@"";
+        if (!channeldesc)
+            channeldesc=@"";
         NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"1",@"t_channeltype",//私人类型
-                              (isopen)?@"1":@"0",@"t_isopen",
-                              @"",@"t_userid",
+                             
+                              [info getInstancent].uid,@"t_userid",
                               channelID,@"t_channelid",
                               channelname, @"t_channelname",
                               channelpwd,@"t_channelpwd",
                               baseimage,@"t_photo",
                               channeldesc,@"t_desc",
                               nil];
-        
-    
         NSData *jsondata = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonstr = [[NSString alloc] initWithData:jsondata encoding:NSUTF8StringEncoding];
-   
-        
-        
-        
-        
+
         //提交
         web = [[WebService alloc] initChannel:addchannelurl];
         int ret = [web createchannel:jsonstr];
@@ -520,7 +516,7 @@
             if (ret == 1)
             {
       
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"频道创建失败，重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"团队创建失败，可能团队号已经被创建，请重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
             }
             else if (ret ==-1)
@@ -530,20 +526,9 @@
                 [alert show];
             }
             else{
-//                
-//                App.info.channelname = newinfo.channelname;
-//                App.info.channelcounts = newinfo.channelcounts;
-//                App.info.channelcreatedt = newinfo.channelcreatedt;
-//                App.info.channelid=newinfo.channelid;
-//                App.info.channelpwd=newinfo.channelpwd;
-//                App.info.channelimage=newinfo.channelimage;
-                NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-                [outputFormatter setLocale:[NSLocale currentLocale]];
-                [outputFormatter setDateFormat:@"yyyy年MM月dd日"];
-                NSString *str = [outputFormatter stringFromDate:[NSDate date]];
-//                App.info.channelcreatedt = str;
+
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"创建成功，可以开始使用你的频道乐，可以将你的频道分享给朋友们" delegate:self cancelButtonTitle:@"完成" otherButtonTitles: @"分享",nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"创建成功，可以开始使用你的团队，可以将你的团队分享给朋友们" delegate:self cancelButtonTitle:@"完成" otherButtonTitles: @"分享",nil];
                 [alert show];
                 
             }
@@ -577,10 +562,10 @@
         case 1:
             channelname =[dataarary objectAtIndex:0];
             break;
-        case 3:
+        case 2:
             channelpwd =[dataarary objectAtIndex:0];
             break;
-        case 4:
+        case 3:
             channeldesc =[dataarary objectAtIndex:0];
             break;
     }
@@ -591,7 +576,7 @@
 {
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
-    HUD.labelText = @"检查频道号";
+    HUD.labelText = @"检查团队号";
     [HUD show:YES];
     ischeck = YES;
     
@@ -610,7 +595,7 @@
                 
                 [cell setChannelidTextColor:YES];
                 ischeck=NO;
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"频道号已经被占用！请重新设定新的频道号" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"团队号已经被占用！请重新设定新的团队号" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
             }
             else if (ret ==-1)

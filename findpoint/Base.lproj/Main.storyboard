@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingbackimg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="J23-vz-kqa">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Al6-1I-cMD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                 <constraints>
@@ -33,9 +36,13 @@
                             <constraint firstItem="zxx-es-AD3" firstAttribute="leading" secondItem="11l-69-3jJ" secondAttribute="leading" id="IIu-BP-Nai"/>
                             <constraint firstAttribute="trailing" secondItem="zxx-es-AD3" secondAttribute="trailing" id="PT8-pQ-czI"/>
                             <constraint firstItem="zxx-es-AD3" firstAttribute="top" secondItem="Al6-1I-cMD" secondAttribute="bottom" constant="1" id="WNo-bs-nwi"/>
+                            <constraint firstItem="J23-vz-kqa" firstAttribute="leading" secondItem="11l-69-3jJ" secondAttribute="leading" id="Wnw-LU-AGK"/>
                             <constraint firstItem="MM6-YF-1km" firstAttribute="top" secondItem="zxx-es-AD3" secondAttribute="bottom" id="YjR-Va-too"/>
+                            <constraint firstAttribute="bottom" secondItem="J23-vz-kqa" secondAttribute="bottom" id="ZNu-93-dV0"/>
                             <constraint firstAttribute="trailing" secondItem="Al6-1I-cMD" secondAttribute="trailing" id="iqU-aO-hVk"/>
                             <constraint firstItem="Al6-1I-cMD" firstAttribute="top" secondItem="11l-69-3jJ" secondAttribute="top" id="jM1-rS-5Nx"/>
+                            <constraint firstAttribute="trailing" secondItem="J23-vz-kqa" secondAttribute="trailing" id="k7U-Va-xJM"/>
+                            <constraint firstItem="J23-vz-kqa" firstAttribute="top" secondItem="11l-69-3jJ" secondAttribute="top" id="p0Z-ZR-LvZ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="团队" image="group" id="Pcb-ff-o8H"/>
@@ -43,6 +50,7 @@
                         <outlet property="navbar" destination="Al6-1I-cMD" id="KSj-9q-TLa"/>
                         <outlet property="table" destination="zxx-es-AD3" id="bgZ-fG-rPB"/>
                         <segue destination="Fwm-1P-iRj" kind="modal" identifier="addchannel" id="cPi-sm-dvU"/>
+                        <segue destination="mhh-SU-Euy" kind="modal" identifier="showjoin" id="h31-zm-tsu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Q2-cJ-Pdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -403,6 +411,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aa1-S8-Tg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="85" y="529"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6eb-9c-3HO">
+            <objects>
+                <viewController id="mhh-SU-Euy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OyS-gd-IdK"/>
+                        <viewControllerLayoutGuide type="bottom" id="srL-1h-8iU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eHD-TV-O9X">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BD9-PD-xPz">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="mhh-SU-Euy" id="xPZ-ao-Ytf"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="HRC-LC-1ve" id="cbs-aH-jQm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CLy-zs-Qhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="HRC-LC-1ve">
+                    <connections>
+                        <outlet property="delegate" destination="mhh-SU-Euy" id="Y07-3M-fLT"/>
+                        <outlet property="searchBar" destination="BD9-PD-xPz" id="oGM-h6-DfC"/>
+                        <outlet property="searchContentsController" destination="mhh-SU-Euy" id="avs-EA-vTy"/>
+                        <outlet property="searchResultsDataSource" destination="mhh-SU-Euy" id="oVB-rp-976"/>
+                        <outlet property="searchResultsDelegate" destination="mhh-SU-Euy" id="8OX-qj-zsG"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="582" y="918"/>
         </scene>
     </scenes>
     <resources>
