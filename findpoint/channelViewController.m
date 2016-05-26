@@ -14,7 +14,7 @@
 
 @implementation channelViewController
 
-@synthesize navbar,table;
+@synthesize table;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -30,14 +30,15 @@
     rightButton = [[UIBarButtonItem alloc] initWithTitle:@"加入" style:UIBarButtonItemStyleBordered target:self action:@selector(rightbtn)];
     [title setRightBarButtonItem:rightButton animated:YES];
     title.title = @"团队列表";
-    [navbar pushNavigationItem:title animated:YES];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+    [self.navigationController.navigationBar pushNavigationItem:title animated:YES];
     
     refresh = [[UIRefreshControl alloc] init];
       refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"努力加载中……"];
     [refresh addTarget:self action:@selector(refreshlistchannel) forControlEvents:UIControlEventValueChanged];
     [table addSubview:refresh];
     
-    
+    channellistcount = 0;
     // Do any additional setup after loading the view.
 }
 
@@ -46,17 +47,36 @@
 {
     [super viewWillAppear:animated];
     
-    
-    
-    
 }
 
-
+//下啦刷新
 -(void)refreshlistchannel
 {
-    if (refresh.isRefreshing)
+    if (refresh.isRefreshing){
         NSLog(@"刷新频道列表");
+    }
 }
+
+
+///刷新列表
+-(void)refreshchanncellist
+{
+    
+}
+
+#pragma mark table
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return channellistcount;
+
+}
+
+
 
 
 -(void)leftbtn

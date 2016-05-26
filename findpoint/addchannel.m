@@ -26,7 +26,7 @@
 @end
 
 @implementation addchannel
-@synthesize navbar;
+
 @synthesize tableview;
 @synthesize channelimage;
 
@@ -48,29 +48,24 @@
     channelimage.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicknickimage)];
     [channelimage addGestureRecognizer:singleTap1];
-//    if (App.info.channelimage != nil)
-//        channelimage.image = App.info.channelimage;
-//    else
-//        channelimage.image = [UIImage imageNamed:@"touxiang"];
-//    
+    //    if (App.info.channelimage != nil)
+    //        channelimage.image = App.info.channelimage;
+    //    else
+    //        channelimage.image = [UIImage imageNamed:@"touxiang"];
+    //
     
-    title = [[UINavigationItem alloc] init];
-    title.title=@"添加团队";
     
-    leftButton = [[UIBarButtonItem alloc]
-                  initWithTitle:@"取消"                                   style:UIBarButtonItemStyleBordered                                   target:self                                   action:@selector(leftbtn)];
     
-    [title setLeftBarButtonItem:leftButton];
     
     rightButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(rightbtn)];
-    [title setRightBarButtonItem:rightButton animated:YES];
+    self.navigationItem.title = @"添加团队";
+    [self.navigationItem setRightBarButtonItem:rightButton animated:YES];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
     
-    [navbar setBarStyle:UIBarStyleBlackTranslucent];
-
     isopen=YES;
-    [navbar pushNavigationItem:title animated:YES];
+    
     [self inittableview];
-
+    
     
     // Do any additional setup after loading the view.
 }
@@ -94,7 +89,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     return 4;
 }
 
@@ -106,48 +101,48 @@
 {
     channelCell *cell = [tableView dequeueReusableCellWithIdentifier:@"channelCell"];
     UISwitch *modelswitch;
-  
+    
     switch (indexPath.row) {
         case 0:
             cell.labelinfo.text = @"团队号";
-      
+            
             break;
         case 1:
             cell.labelinfo.text = @"团队名称";
-    
+            
             break;
-//        case 2:
-//            cell.labelinfo.text = @"是否公开";
-//            [cell hideLabelname];
-//            modelswitch = [[UISwitch alloc] init];
-//            
-//            modelswitch.frame= CGRectMake([PublicCommon GetALLScreen].size.width -modelswitch.frame.size.width-30 ,cell.labelinfo.frame.origin.y-5
-//                                          ,modelswitch.frame.size.width, modelswitch.frame.size.height);
-//           
-//            [modelswitch addTarget:self action:@selector(switchmode:) forControlEvents:UIControlEventValueChanged];
-//            modelswitch.onTintColor=[[UIColor greenColor] colorWithAlphaComponent:0.3f];
-//            modelswitch.on=YES;
-//            
-//            [cell addSubview:modelswitch];
-//           
-//            
-//            break;
+            //        case 2:
+            //            cell.labelinfo.text = @"是否公开";
+            //            [cell hideLabelname];
+            //            modelswitch = [[UISwitch alloc] init];
+            //
+            //            modelswitch.frame= CGRectMake([PublicCommon GetALLScreen].size.width -modelswitch.frame.size.width-30 ,cell.labelinfo.frame.origin.y-5
+            //                                          ,modelswitch.frame.size.width, modelswitch.frame.size.height);
+            //
+            //            [modelswitch addTarget:self action:@selector(switchmode:) forControlEvents:UIControlEventValueChanged];
+            //            modelswitch.onTintColor=[[UIColor greenColor] colorWithAlphaComponent:0.3f];
+            //            modelswitch.on=YES;
+            //
+            //            [cell addSubview:modelswitch];
+            //
+            //
+            //            break;
         case 2:
             cell.labelinfo.text = @"团队密码";
-          
+            
             break;
-//        case 4:
-//            cell.labelinfo.text = @"频道人数";
-//            cell.labelname.text = @"10人";
-//            cell.labelname.enabled=NO;
-//            break;
+            //        case 4:
+            //            cell.labelinfo.text = @"频道人数";
+            //            cell.labelname.text = @"10人";
+            //            cell.labelname.enabled=NO;
+            //            break;
         case 3:
             cell.labelinfo.text = @"团队描述";
             break;
-  
+            
     }
     [cellarrary addObject:cell];//添加对象到队列里面
-
+    
     return cell;
 }
 -(void)switchmode:(id)sender
@@ -170,7 +165,7 @@
 -(void)tableView:(UITableView*)tableView  willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [cell setBackgroundColor:[UIColor clearColor]];
-
+    
     
 }
 
@@ -223,54 +218,48 @@
     
     UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                              {
-                pickerview = [[UIImagePickerController alloc] init];//初始化
-            pickerview.delegate = self;
-            pickerview.allowsEditing = YES;//设置可编辑
-            UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-                                 pickerview.sourceType = sourceType;
-            [self presentModalViewController:pickerview animated:YES];//进入照相界面
-                             }];
-    
-    
-    UIAlertAction *photo = [UIAlertAction actionWithTitle:@"从相册中选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-                             {
                                  pickerview = [[UIImagePickerController alloc] init];//初始化
                                  pickerview.delegate = self;
                                  pickerview.allowsEditing = YES;//设置可编辑
-                                 UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                 UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
                                  pickerview.sourceType = sourceType;
                                  [self presentModalViewController:pickerview animated:YES];//进入照相界面
                              }];
     
     
+    UIAlertAction *photo = [UIAlertAction actionWithTitle:@"从相册中选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                            {
+                                pickerview = [[UIImagePickerController alloc] init];//初始化
+                                pickerview.delegate = self;
+                                pickerview.allowsEditing = YES;//设置可编辑
+                                UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                pickerview.sourceType = sourceType;
+                                [self presentModalViewController:pickerview animated:YES];//进入照相界面
+                            }];
+    
+    
     
     selectchannelimage = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         
- 
+        
         [UIView beginAnimations:@"chanege" context:nil];
         //动画持续时间
         [UIView setAnimationDuration:0.8f];
-    
+        
         //设置动画曲线，控制动画速度
         [UIView  setAnimationCurve: UIViewAnimationCurveEaseInOut];
         //设置动画方式，并指出动画发生的位置
-//        [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:channelimage  cache:YES];
+        //        [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:channelimage  cache:YES];
         //提交UIView动画
         [channelimage setAlpha:0.5];
         
         NSString *imagename = [NSString stringWithFormat:@"png%d.png",selectimage];
         channelimage.image =  [UIImage imageNamed:imagename];
         channelimg =  [UIImage imageNamed:imagename];
-         [channelimage setAlpha:1];
+        [channelimage setAlpha:1];
         
-
         [UIView commitAnimations];
         
-
-    
-        
-        
-       
     }];
     [alert addAction:selectchannelimage];
     [alert addAction:camera];
@@ -289,7 +278,7 @@
 -(void)initchannelintipng:(UIAlertController *)alert
 {
     UIScrollView * scrollview = [[UIScrollView alloc] init];
-   
+    
     
     CGRect newframe  = CGRectMake(10, 10,
                                   ([PublicCommon GetALLScreen].size.width -40),110);
@@ -307,7 +296,7 @@
     for (int i = 1; i<12; i++) {
         [self LoadBackPng:i scrollview:scrollview];
     }
-
+    
     
     
     [alert.view addSubview:scrollview];
@@ -342,16 +331,16 @@
     imageviwe.layer.shadowRadius =5;
     imageviwe.layer.shadowOpacity =0.8f;
     
-
+    
     UIButton *btn = [[UIButton  alloc] init];
-
+    
     btn.frame =CGRectMake(0, 0, imageviwe.frame.size.width, imageviwe.frame.size.height);
     btn.layer.cornerRadius = btn.frame.size.height/2;
     btn.layer.masksToBounds = YES;
     [btn setContentMode:UIViewContentModeScaleAspectFill];
     [btn setClipsToBounds:YES];
-//    btn.layer.borderWidth=2;
-//    btn.layer.borderColor = [[UIColor clearColor]CGColor];
+    //    btn.layer.borderWidth=2;
+    //    btn.layer.borderColor = [[UIColor clearColor]CGColor];
     
     [imageviwe addSubview:btn];
     btn.tag = index;
@@ -384,7 +373,7 @@
 
 -(void)animationbtn:(CALayer *)layer
 {
- 
+    
     [CATransaction setValue:(id)kCFBooleanFalse forKey:kCATransactionDisableActions];
     //动画执行时间
     [CATransaction setValue:[NSNumber numberWithFloat:5.0f] forKey:kCATransactionAnimationDuration];
@@ -393,12 +382,12 @@
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.fromValue = [NSNumber numberWithFloat:.5];
     opacityAnimation.toValue = [NSNumber numberWithFloat:1];
-  
+    
     
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnimation.fromValue = [NSNumber numberWithFloat:0];
     scaleAnimation.toValue = [NSNumber numberWithFloat:1.0];
-  
+    
     
     
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
@@ -406,12 +395,12 @@
     
     [animationGroup setAnimations:[NSArray arrayWithObjects:scaleAnimation, opacityAnimation, nil]];
     animationGroup.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
- 
+    
     
     [layer addAnimation:animationGroup forKey:nil];
     
     
-
+    
 }
 
 
@@ -433,17 +422,17 @@
     channelimg = image;
     
     
-//    NSData *jpgdata = UIImageJPEGRepresentation(image, 80);
-//    
-//    NSLog(@"%@",[self getPathdocument]);
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    
-//    NSString *filePath = [self getPathdocument];
-//    
-//    
-//    //    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
-//    
-//    [fileManager createFileAtPath:[filePath stringByAppendingString:@"/nickimage.jpg"] contents:jpgdata attributes:nil];
+    //    NSData *jpgdata = UIImageJPEGRepresentation(image, 80);
+    //
+    //    NSLog(@"%@",[self getPathdocument]);
+    //    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //
+    //    NSString *filePath = [self getPathdocument];
+    //
+    //
+    //    //    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+    //
+    //    [fileManager createFileAtPath:[filePath stringByAppendingString:@"/nickimage.jpg"] contents:jpgdata attributes:nil];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
@@ -451,10 +440,7 @@
 }
 
 
--(void)leftbtn
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 -(void)rightbtn
 {
     if (ischeck ==NO)
@@ -465,7 +451,7 @@
     }
     //链接网络添加频道
     
-   
+    
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.labelText = @"申请创建团队";
@@ -496,7 +482,7 @@
         if (!channeldesc)
             channeldesc=@"";
         NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"1",@"t_channeltype",//私人类型
-                             
+                              
                               [info getInstancent].uid,@"t_userid",
                               channelID,@"t_channelid",
                               channelname, @"t_channelname",
@@ -506,7 +492,7 @@
                               nil];
         NSData *jsondata = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonstr = [[NSString alloc] initWithData:jsondata encoding:NSUTF8StringEncoding];
-
+        
         //提交
         web = [[WebService alloc] initChannel:addchannelurl];
         int ret = [web createchannel:jsonstr];
@@ -515,27 +501,35 @@
             NSLog(@"检查结果:%d",ret);
             if (ret == 1)
             {
-      
+                
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"团队创建失败，可能团队号已经被创建，请重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
             }
             else if (ret ==-1)
             {
-               
+                
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络异常，请稍后再试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
             }
             else{
-
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"创建成功，可以开始使用你的团队，可以将你的团队分享给朋友们" delegate:self cancelButtonTitle:@"完成" otherButtonTitles: @"分享",nil];
-                [alert show];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"创建成功，可以开始使用你的团队，可以将你的团队分享给朋友们" preferredStyle:UIAlertControllerStyleAlert];
                 
+                UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"分享" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alert addAction:action1];
+                [alert addAction:action2];
+                
+                [self presentViewController:alert animated:YES completion:nil];
             }
         });
         
     });
-
+    
     
     
     
@@ -553,11 +547,11 @@
     switch ([tableview indexPathForSelectedRow].row) {
         case 0:
             channelID =[dataarary objectAtIndex:0];
-//            if ([App.info.channelid isEqualToString:newinfo.channelid])
-//                return;
-
+            //            if ([App.info.channelid isEqualToString:newinfo.channelid])
+            //                return;
+            
             [self checkchannelid:channelID];
-
+            
             break;
         case 1:
             channelname =[dataarary objectAtIndex:0];
@@ -591,7 +585,7 @@
             NSLog(@"检查结果:%d",ret);
             if (ret == 1)
             {
-                    channelCell *cell =(channelCell*) [cellarrary objectAtIndex:0];
+                channelCell *cell =(channelCell*) [cellarrary objectAtIndex:0];
                 
                 [cell setChannelidTextColor:YES];
                 ischeck=NO;
@@ -603,14 +597,14 @@
                 ischeck=NO;
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络异常，请稍后再试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
-              
+                
             }
             else{
                 ischeck=YES;
                 
             }
         });
-   
+        
     });
 }
 
@@ -627,7 +621,7 @@
         case 1:
             //分享
             break;
-
+            
     }
 }
 
@@ -646,13 +640,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

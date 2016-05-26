@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		7B17CC761B32FC0900F60BFF /* settingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B17CC751B32FC0900F60BFF /* settingMainViewController.m */; };
 		7B17CC7A1B331E0500F60BFF /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B17CC791B331E0500F60BFF /* LaunchView.m */; };
+		7B1DFD271CF733CE00D72E86 /* state1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1DFD231CF733CE00D72E86 /* state1.png */; };
+		7B1DFD281CF733CE00D72E86 /* state2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1DFD241CF733CE00D72E86 /* state2.png */; };
+		7B1DFD291CF733CE00D72E86 /* state3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1DFD251CF733CE00D72E86 /* state3.png */; };
+		7B1DFD2A1CF733CE00D72E86 /* state0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1DFD261CF733CE00D72E86 /* state0.png */; };
+		7B1DFD2D1CF7348100D72E86 /* ChannelMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */; };
 		7B23F3811B1B490B009779FC /* GPSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F3801B1B490B009779FC /* GPSClass.m */; };
 		7B4475F21B3845B900FEB452 /* png1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475E71B3845B900FEB452 /* png1.png */; };
 		7B4475F31B3845B900FEB452 /* png2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475E81B3845B900FEB452 /* png2.png */; };
@@ -119,6 +124,12 @@
 		7B17CC751B32FC0900F60BFF /* settingMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingMainViewController.m; sourceTree = "<group>"; };
 		7B17CC781B331E0500F60BFF /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchView.h; sourceTree = "<group>"; };
 		7B17CC791B331E0500F60BFF /* LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchView.m; sourceTree = "<group>"; };
+		7B1DFD231CF733CE00D72E86 /* state1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = state1.png; sourceTree = "<group>"; };
+		7B1DFD241CF733CE00D72E86 /* state2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = state2.png; sourceTree = "<group>"; };
+		7B1DFD251CF733CE00D72E86 /* state3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = state3.png; sourceTree = "<group>"; };
+		7B1DFD261CF733CE00D72E86 /* state0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = state0.png; sourceTree = "<group>"; };
+		7B1DFD2B1CF7348100D72E86 /* ChannelMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelMainCell.h; sourceTree = "<group>"; };
+		7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelMainCell.m; sourceTree = "<group>"; };
 		7B23F37F1B1B490B009779FC /* GPSClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSClass.h; sourceTree = "<group>"; };
 		7B23F3801B1B490B009779FC /* GPSClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSClass.m; sourceTree = "<group>"; };
 		7B4475E51B38304600FEB452 /* WebUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebUrl.h; sourceTree = "<group>"; };
@@ -506,6 +517,10 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				7B1DFD231CF733CE00D72E86 /* state1.png */,
+				7B1DFD241CF733CE00D72E86 /* state2.png */,
+				7B1DFD251CF733CE00D72E86 /* state3.png */,
+				7B1DFD261CF733CE00D72E86 /* state0.png */,
 				7BBF69D01CF5FA8800C14D81 /* lock.png */,
 				7BBF69D11CF5FA8800C14D81 /* open.png */,
 				7B7C3C521CE233BB00D6668D /* btn_return.png */,
@@ -529,6 +544,8 @@
 				7BCF0CF51B1DFFE100DDD8D4 /* channelCell.h */,
 				7BCF0CF61B1DFFE100DDD8D4 /* channelCell.m */,
 				B464B6581CF5A664009A6A6F /* channelmaincell.xib */,
+				7B1DFD2B1CF7348100D72E86 /* ChannelMainCell.h */,
+				7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -697,10 +714,14 @@
 				7B4475F51B3845B900FEB452 /* png4.png in Resources */,
 				7B4CF6501CDF714A000D4415 /* settingbackimg.jpg in Resources */,
 				7BBF69D31CF5FA8800C14D81 /* open.png in Resources */,
+				7B1DFD271CF733CE00D72E86 /* state1.png in Resources */,
+				7B1DFD2A1CF733CE00D72E86 /* state0.png in Resources */,
 				7BC0AAE81B40437500D53A84 /* readme.txt in Resources */,
+				7B1DFD281CF733CE00D72E86 /* state2.png in Resources */,
 				7B7C3C531CE233BB00D6668D /* btn_return.png in Resources */,
 				B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */,
 				7B4475F71B3845B900FEB452 /* png6.png in Resources */,
+				7B1DFD291CF733CE00D72E86 /* state3.png in Resources */,
 				7B4CF6401CDF6985000D4415 /* settingcell.xib in Resources */,
 				7B4475F41B3845B900FEB452 /* png3.png in Resources */,
 				7B4475F91B3845B900FEB452 /* png8.png in Resources */,
@@ -748,6 +769,7 @@
 				7B893F561B3B07AE00C1D776 /* LoginAndRegView.m in Sources */,
 				7BCF0D021B1E06DA00DDD8D4 /* WebService.m in Sources */,
 				7BCF0CF71B1DFFE100DDD8D4 /* channelCell.m in Sources */,
+				7B1DFD2D1CF7348100D72E86 /* ChannelMainCell.m in Sources */,
 				7B23F3811B1B490B009779FC /* GPSClass.m in Sources */,
 				7BCF0CF11B1DEB3400DDD8D4 /* info.m in Sources */,
 				7B46CCAC1CF1E64000D0928E /* SheetUI.m in Sources */,

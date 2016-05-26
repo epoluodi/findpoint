@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface channelViewController : UIViewController
+@interface channelViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     UINavigationItem *title;
     UIBarButtonItem *leftButton;
     UIBarButtonItem *rightButton;
     UIRefreshControl *refresh;
+    
+    int channellistcount;
 }
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
+
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
 

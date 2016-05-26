@@ -13,8 +13,8 @@
 
 @interface addchannel : UIViewController<UIImagePickerControllerDelegate,UITableViewDataSource,UITableViewDelegate,AlertViewDelegate,UIAlertViewDelegate>
 {
-    UINavigationItem *title;
-    UIBarButtonItem *leftButton;
+  
+  
     UIBarButtonItem *rightButton;
     MBProgressHUD *HUD;
     UIButton *selectbtn;
@@ -25,7 +25,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *channelimage;
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 
