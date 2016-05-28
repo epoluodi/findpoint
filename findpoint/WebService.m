@@ -62,6 +62,18 @@
 }
 
 
+#pragma GPS
+
+//提交GPS
+-(void)SubmitGPSInfo:(NSDictionary *)d
+{
+    NSData*jsondata = [NSJSONSerialization dataWithJSONObject:d options:NSJSONWritingPrettyPrinted error:nil];
+    [service clearArray];
+    NSString *json = [[NSString alloc] initWithData:jsondata encoding:NSUTF8StringEncoding];
+    [service addParamsString:@"json" values:json];
+    NSData *returndata =  [service httprequest:[service getDataForArrary]];
+    
+}
 
 #pragma 用户信息
 

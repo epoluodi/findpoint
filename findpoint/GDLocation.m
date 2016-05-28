@@ -67,6 +67,9 @@ static GDLocation *location;
 //    NSLog(@"定位信息 %@",location);
     _GetLocation = location;
 //    _gdlocation = AMapLocationCoordinateConvert(location.coordinate, AMapLocationCoordinateTypeGPS);
+    
+    
+    
     if (delegate)
     {
         if ([delegate respondsToSelector:@selector(UpdateLocationInfo:)])

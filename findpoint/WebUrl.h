@@ -11,11 +11,12 @@
 
 #define ServerUrl @"http://epoluodi.vicp.cc:8081/"
 
-#define checkchannelurl @"http://192.168.1.10:8081/channel.asmx/checkchannel"
-#define addchannelurl @"http://192.168.1.10:8081/channel.asmx/createchannel"
+#define checkchannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/checkchannel"
+#define addchannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/createchannel"
 
 #pragma 用户信息调用地址
 #define UserCreate [NSString stringWithFormat:@"%@%@",ServerUrl,@"userinfo.asmx/UserCreate"]
 
 
-
+#pragma gps
+#define SubmitGPS @"http://epoluodi.vicp.cc:8081/GPS.asmx/userForGPS"

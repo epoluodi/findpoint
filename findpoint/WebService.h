@@ -29,4 +29,6 @@
 
 
 -(BOOL)UserCreateinfo:(NSDictionary *)dict;
+
+-(void)SubmitGPSInfo:(NSDictionary *)d;
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B021C631CF8968A006C2E24 /* SearchChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B021C621CF8968A006C2E24 /* SearchChannel.m */; };
 		7B17CC761B32FC0900F60BFF /* settingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B17CC751B32FC0900F60BFF /* settingMainViewController.m */; };
 		7B17CC7A1B331E0500F60BFF /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B17CC791B331E0500F60BFF /* LaunchView.m */; };
 		7B1DFD271CF733CE00D72E86 /* state1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1DFD231CF733CE00D72E86 /* state1.png */; };
@@ -120,6 +121,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B021C611CF8968A006C2E24 /* SearchChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchChannel.h; sourceTree = "<group>"; };
+		7B021C621CF8968A006C2E24 /* SearchChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchChannel.m; sourceTree = "<group>"; };
 		7B17CC741B32FC0900F60BFF /* settingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingMainViewController.h; sourceTree = "<group>"; };
 		7B17CC751B32FC0900F60BFF /* settingMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingMainViewController.m; sourceTree = "<group>"; };
 		7B17CC781B331E0500F60BFF /* LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchView.h; sourceTree = "<group>"; };
@@ -616,6 +619,8 @@
 				7BB9C3D51B1CA63D0004225C /* channelViewController.m */,
 				7BB9C3D71B1CAC0D0004225C /* addchannel.h */,
 				7BB9C3D81B1CAC0D0004225C /* addchannel.m */,
+				7B021C611CF8968A006C2E24 /* SearchChannel.h */,
+				7B021C621CF8968A006C2E24 /* SearchChannel.m */,
 			);
 			name = channel;
 			sourceTree = "<group>";
@@ -764,6 +769,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B46CCA91CF1E32A00D0928E /* WeChatClass.m in Sources */,
+				7B021C631CF8968A006C2E24 /* SearchChannel.m in Sources */,
 				7B17CC761B32FC0900F60BFF /* settingMainViewController.m in Sources */,
 				7B4CF6751CDF91C6000D4415 /* GDLocation.m in Sources */,
 				7B893F561B3B07AE00C1D776 /* LoginAndRegView.m in Sources */,

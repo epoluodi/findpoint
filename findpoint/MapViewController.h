@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MAMapKit/MAMapKit.h>
+#import "GDLocation.h"
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController<GPSLocationDelegate>
+{
+    CLLocation *_location;
+    NSTimer *timer1;//上传GPS
+    AMapReGeocode *_geocode;
+}
 
 
 @property (weak, nonatomic) IBOutlet MAMapView *map;

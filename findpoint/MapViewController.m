@@ -7,7 +7,8 @@
 //
 
 #import "MapViewController.h"
-#import "GDLocation.h"
+#import "WebService.h"
+#import "info.h"
 
 @interface MapViewController ()
 
@@ -22,11 +23,54 @@
     map.showsUserLocation=YES;
     map.zoomLevel=17;
     map.userTrackingMode=MAUserTrackingModeFollow;
-
-
-//    [map setCenterCoordinate:([GDLocation getInstancet].GDCoordinate2D) animated:YES];
-    // Do any additional setup after loading the view.
+    
+    [GDLocation getInstancet].delegate=self;
+    
+    timer1 = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateGPS) userInfo:nil repeats:YES];
+    
 }
+
+
+-(void)updateGPS
+{
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+ 
+    NSDictionary *d =[[NSDictionary alloc] initWithObjectsAndKeys:
+                      [info getInstancent].uid,@"deviceid",
+                      @(_location.coordinate.latitude),@"lat",
+                      @(_location.coordinate.longitude),@"lng",
+                      @(_location.speed),@"speed",
+                      @(_location.altitude),@"altitude",
+                      [NSString stringWithFormat:@"%@%@%@",
+                       _geocode.addressComponent.district,
+                       _geocode.addressComponent.streetNumber.street,
+                       _geocode.addressComponent.streetNumber.number],@"addr",
+                      _geocode.addressComponent.city,@"city",
+        _geocode.addressComponent.province,@"province",nil];
+    dispatch_async(globalQ, ^{
+        WebService *web = [[WebService alloc] initUrl:SubmitGPS];
+    
+        [web SubmitGPSInfo:d];
+        
+    });
+
+    
+}
+-(void)UpdateLocationInfo:(CLLocation *)location
+{
+    _location= location;
+    if (!_geocode)
+         [[GDLocation getInstancet] getLocationGeoInfo:_location];
+    
+}
+-(void)updateReGeoInfo:(AMapReGeocode *)GeoCodeInfo
+{
+    _geocode = GeoCodeInfo;
+//    txtsheng.text=GeoCodeInfo.addressComponent.province;
+//    txtcity.text = GeoCodeInfo.addressComponent.city;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

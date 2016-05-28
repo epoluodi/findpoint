@@ -412,10 +412,10 @@
             </objects>
             <point key="canvasLocation" x="85" y="529"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Channel-->
         <scene sceneID="6eb-9c-3HO">
             <objects>
-                <viewController id="mhh-SU-Euy" sceneMemberID="viewController">
+                <viewController id="mhh-SU-Euy" customClass="SearchChannel" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OyS-gd-IdK"/>
                         <viewControllerLayoutGuide type="bottom" id="srL-1h-8iU"/>
