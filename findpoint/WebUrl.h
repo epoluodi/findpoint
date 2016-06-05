@@ -13,6 +13,11 @@
 
 #define checkchannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/checkchannel"
 #define addchannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/createchannel"
+#define qurychannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/querychannel"
+#define getselfchannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/getselfchannel"
+
+
+#define downloadjpg @"http://epoluodi.vicp.cc:8081/PublicCommon.asmx/Download"
 
 #pragma 用户信息调用地址
 #define UserCreate [NSString stringWithFormat:@"%@%@",ServerUrl,@"userinfo.asmx/UserCreate"]

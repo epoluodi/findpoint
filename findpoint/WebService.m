@@ -7,6 +7,7 @@
 //
 
 #import "WebService.h"
+#import "info.h"
 
 
 @implementation WebService
@@ -61,7 +62,40 @@
     
 }
 
+-(NSArray *)queryChannel:(NSString *)key
+{
+    [service clearArray];
+    [service addParamsString:@"key" values:key];
+    NSData *returndata =  [service httprequest:[service getDataForArrary]];
+    if (returndata == nil)
+        return nil;
+    
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return nil;
+    
+    NSArray * arry = [NSJSONSerialization JSONObjectWithData:[ret dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+    
+    return [arry copy];
+}
 
+
+-(NSArray *)getMyChannel
+{
+    [service clearArray];
+    [service addParamsString:@"userid" values:[info getInstancent].uid];
+    NSData *returndata =  [service httprequest:[service getDataForArrary]];
+    if (returndata == nil)
+        return nil;
+    
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return nil;
+    
+    NSArray * arry = [NSJSONSerialization JSONObjectWithData:[ret dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+    
+    return [arry copy];
+}
 #pragma GPS
 
 //提交GPS

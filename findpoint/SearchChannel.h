@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchChannel : UIViewController
+@interface SearchChannel : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
+{
+    __block int resultrows;
+    __block NSArray *resultlest;
+    
+}
+
+@property (weak, nonatomic) IBOutlet UILabel *memo;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchview;
+@property (weak, nonatomic) IBOutlet UITableView *table;
+
 
 @end

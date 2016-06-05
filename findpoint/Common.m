@@ -35,7 +35,7 @@ static char base64EncodingTable[64] = {
     //创建目录
     //[fm createDirectoryAtPath:new_folder withIntermediateDirectories:YES attributes:nil error:nil];
     [fm createFileAtPath:_filename contents:data attributes:nil];
-    
+
     return ;
     
 }

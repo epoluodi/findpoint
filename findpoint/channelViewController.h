@@ -14,8 +14,7 @@
     UIBarButtonItem *leftButton;
     UIBarButtonItem *rightButton;
     UIRefreshControl *refresh;
-    
-    int channellistcount;
+
 }
 
 

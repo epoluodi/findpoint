@@ -477,8 +477,12 @@
         }
         else
             baseimage=@"0";
-        if (!channelpwd)
+        isopen=0;
+        if (!channelpwd){
             channelpwd=@"";
+            isopen = 1;
+        }
+    
         if (!channeldesc)
             channeldesc=@"";
         NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"1",@"t_channeltype",//私人类型
@@ -489,6 +493,7 @@
                               channelpwd,@"t_channelpwd",
                               baseimage,@"t_photo",
                               channeldesc,@"t_desc",
+                              @(isopen),@"t_isopen",
                               nil];
         NSData *jsondata = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonstr = [[NSString alloc] initWithData:jsondata encoding:NSUTF8StringEncoding];
@@ -508,8 +513,9 @@
             else if (ret ==-1)
             {
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络异常，请稍后再试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络异常，请稍后再试" delegate:nil cancelButtonTitle:@"完成" otherButtonTitles: nil];
                 [alert show];
+                [self.navigationController popViewControllerAnimated:YES];
             }
             else{
                 

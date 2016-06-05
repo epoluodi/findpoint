@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "GroupInfo.h"
 #import "GPSClass.h"
 
 @interface AppDelegate ()
@@ -33,7 +33,7 @@
     [info getInstancent].uid = deviveid;
     [[info getInstancent] LoginUserForServer];
     
-    
+    [GroupInfo getInstancet];
     
     return YES;
 }

@@ -26,9 +26,15 @@
 
 -(int)checkchannelid:(NSString *)channcelid;
 -(int)createchannel:(NSString *)json;
+-(NSArray *)queryChannel:(NSString *)key;
+-(NSArray *)getMyChannel;
 
 
 -(BOOL)UserCreateinfo:(NSDictionary *)dict;
 
 -(void)SubmitGPSInfo:(NSDictionary *)d;
+
+
+
+
 @end

@@ -22,5 +22,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *channelstate;
 @property (weak, nonatomic) IBOutlet UIImageView *channelstatebackimg;
 
-
+-(void)showbackimg:(NSString *)mediaid;
 @end

@@ -39,7 +39,7 @@
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zxx-es-AD3">
                                 <rect key="frame" x="0.0" y="61" width="320" height="458"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -427,9 +427,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settingbackimg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1DS-tJ-akR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入团队编号或者关键字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOm-ac-UjB">
+                                <rect key="frame" x="0.0" y="123" width="320" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7ek-oB-bZs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.86768071339999997" green="0.86768071339999997" blue="0.86768071339999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c8v-6V-oG2">
                                 <rect key="frame" x="0.0" y="108" width="320" height="411"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VQE-NG-jx0">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
@@ -440,6 +449,8 @@
                         <constraints>
                             <constraint firstItem="VQE-NG-jx0" firstAttribute="top" secondItem="OyS-gd-IdK" secondAttribute="bottom" id="DuM-Yn-yEq"/>
                             <constraint firstAttribute="bottom" secondItem="1DS-tJ-akR" secondAttribute="bottom" id="Evh-UU-tAZ"/>
+                            <constraint firstItem="WOm-ac-UjB" firstAttribute="top" secondItem="VQE-NG-jx0" secondAttribute="bottom" constant="15" id="IY5-hD-ShB"/>
+                            <constraint firstAttribute="trailing" secondItem="WOm-ac-UjB" secondAttribute="trailing" id="Qrx-dx-3GV"/>
                             <constraint firstAttribute="trailing" secondItem="c8v-6V-oG2" secondAttribute="trailing" id="Wor-KO-ADm"/>
                             <constraint firstItem="c8v-6V-oG2" firstAttribute="leading" secondItem="eHD-TV-O9X" secondAttribute="leading" id="YBo-fl-jry"/>
                             <constraint firstItem="1DS-tJ-akR" firstAttribute="leading" secondItem="eHD-TV-O9X" secondAttribute="leading" id="akT-BQ-Gv3"/>
@@ -450,10 +461,16 @@
                             <constraint firstItem="srL-1h-8iU" firstAttribute="top" secondItem="c8v-6V-oG2" secondAttribute="bottom" id="moG-dC-9Ku"/>
                             <constraint firstAttribute="trailing" secondItem="VQE-NG-jx0" secondAttribute="trailing" id="n2Z-A9-mID"/>
                             <constraint firstAttribute="trailing" secondItem="1DS-tJ-akR" secondAttribute="trailing" id="rEr-za-IK4"/>
+                            <constraint firstItem="WOm-ac-UjB" firstAttribute="leading" secondItem="eHD-TV-O9X" secondAttribute="leading" id="xTZ-yN-FgC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MhY-Bj-VCK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="memo" destination="WOm-ac-UjB" id="Y60-NC-mR4"/>
+                        <outlet property="searchview" destination="VQE-NG-jx0" id="jIg-3g-yjh"/>
+                        <outlet property="table" destination="c8v-6V-oG2" id="SkH-JM-dIh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLy-zs-Qhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
