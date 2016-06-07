@@ -11,9 +11,13 @@
 #import "MBProgressHUD.h"
 #import "WebService.h"
 #import "ChannelMainCell.h"
+#import "GroupInfo.h"
+
 @interface SearchChannel (){
     MBProgressHUD *hub;
     WebService *web;
+    NSString *c_pwd ,*cid;
+    AlertView *alert;
 }
 
 @end
@@ -147,7 +151,50 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *d = resultlest[indexPath.row];
+    cid =[d objectForKey:@"CHID"];
+    if ( [[GroupInfo getInstancet] CheckGroup:cid] )
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你已经加入该团队" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    if ([[d objectForKey:@"ISOPEN"] isEqualToString:@"0"])
+    {
+        c_pwd= [d objectForKey:@"PWD"];
+        alert = [[AlertView alloc] initwithTextfield:@"提示" message:@"请输入加入密码" inputtype:UIKeyboardTypeNumberPad];
+        alert.delegate = self;
+        [alert showAlert:self];
+    }
+    else
+        [self joinchannel:cid];
 
+    
+}
+
+-(void)onbtn:(NSMutableArray *)dataarary
+{
+    NSString *_pwd = dataarary[0];
+    if ([_pwd isEqualToString:c_pwd])
+    {
+        [self joinchannel:cid];
+        return;
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"密码输入错误" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+}
+
+-(void)joinchannel:(NSString *)chid
+{
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 @protocol AlertViewDelegate
 @optional
-
 -(void)cancelbtn;
 -(void)onbtn:(NSMutableArray *)dataarary;
 @end
@@ -20,6 +19,7 @@
     __block UIAlertController *alertview;
     __block UITextField * text;
     __block UITextView *textview;
+    __block UITextField *tf;
     NSMutableArray *dataarary;
     int length;
     UIAlertAction *ok;
@@ -31,6 +31,8 @@
 
 -(instancetype)initOneText:(NSString *)title message:(NSString *)message Style:(UIAlertControllerStyle)Style inputtype:(UIKeyboardType)inputype;
 -(instancetype)initOneTextView:(NSString *)title message:(NSString *)message Style:(UIAlertControllerStyle)Style inputtype:(UIKeyboardType)inputype;
+-(instancetype)initwithTextfield:(NSString *)title message:(NSString *)message inputtype:(UIKeyboardType)inputype;
+
 
 -(void)showAlert:(UIViewController *)main;
 -(void)setTextLen:(int)len;

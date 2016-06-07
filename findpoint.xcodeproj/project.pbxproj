@@ -16,6 +16,7 @@
 		7B1DFD2A1CF733CE00D72E86 /* state0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1DFD261CF733CE00D72E86 /* state0.png */; };
 		7B1DFD2D1CF7348100D72E86 /* ChannelMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */; };
 		7B23F3811B1B490B009779FC /* GPSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F3801B1B490B009779FC /* GPSClass.m */; };
+		7B419BE11D0728B50037555D /* ChannelInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B419BE01D0728B50037555D /* ChannelInfoController.m */; };
 		7B4475F21B3845B900FEB452 /* png1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475E71B3845B900FEB452 /* png1.png */; };
 		7B4475F31B3845B900FEB452 /* png2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475E81B3845B900FEB452 /* png2.png */; };
 		7B4475F41B3845B900FEB452 /* png3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475E91B3845B900FEB452 /* png3.png */; };
@@ -136,6 +137,8 @@
 		7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelMainCell.m; sourceTree = "<group>"; };
 		7B23F37F1B1B490B009779FC /* GPSClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSClass.h; sourceTree = "<group>"; };
 		7B23F3801B1B490B009779FC /* GPSClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSClass.m; sourceTree = "<group>"; };
+		7B419BDF1D0728B50037555D /* ChannelInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelInfoController.h; sourceTree = "<group>"; };
+		7B419BE01D0728B50037555D /* ChannelInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelInfoController.m; sourceTree = "<group>"; };
 		7B4475E51B38304600FEB452 /* WebUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebUrl.h; sourceTree = "<group>"; };
 		7B4475E71B3845B900FEB452 /* png1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = png1.png; sourceTree = "<group>"; };
 		7B4475E81B3845B900FEB452 /* png2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = png2.png; sourceTree = "<group>"; };
@@ -626,6 +629,8 @@
 				7BB9C3D81B1CAC0D0004225C /* addchannel.m */,
 				7B021C611CF8968A006C2E24 /* SearchChannel.h */,
 				7B021C621CF8968A006C2E24 /* SearchChannel.m */,
+				7B419BDF1D0728B50037555D /* ChannelInfoController.h */,
+				7B419BE01D0728B50037555D /* ChannelInfoController.m */,
 			);
 			name = channel;
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				7B4CF6431CDF6A8C000D4415 /* SettingCell.m in Sources */,
 				7B893F521B3B029A00C1D776 /* CMSCoinView.m in Sources */,
 				7BB2D2E71B3C4B6500397F20 /* RegView.m in Sources */,
+				7B419BE11D0728B50037555D /* ChannelInfoController.m in Sources */,
 				7B6C7A9F1B4430A30012000B /* NotificationViewControl.m in Sources */,
 				7BE416521CE78567001D324B /* TencentClass.m in Sources */,
 			);

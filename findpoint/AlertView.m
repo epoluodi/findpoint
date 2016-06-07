@@ -61,6 +61,7 @@
 }
 
 
+
 -(instancetype)initOneTextView:(NSString *)title message:(NSString *)message Style:(UIAlertControllerStyle)Style inputtype:(UIKeyboardType)inputype
 {
     dataarary = [[NSMutableArray alloc] init];
@@ -107,6 +108,39 @@
     return [super init];
 }
 
+
+-(instancetype)initwithTextfield:(NSString *)title message:(NSString *)message inputtype:(UIKeyboardType)inputype
+{
+    alertview =[UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        if (delegate)
+            [delegate cancelbtn];
+    }];
+    ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [alertview dismissViewControllerAnimated:YES completion:nil];
+        if(delegate){
+            dataarary = [[NSMutableArray alloc] init];
+
+            [dataarary addObject:tf.text];
+            [delegate onbtn:dataarary];
+        }
+    }];
+    
+    [alertview addAction:cancel];
+    [alertview addAction:ok];
+    
+    
+    [alertview addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        tf = textField;
+        textField.placeholder = @"输入密码";
+        textField.keyboardType = inputype;
+  
+    }];
+    return [super init];
+
+}
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {

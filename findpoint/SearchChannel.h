@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SearchChannel : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource>
+#import "AlertView.h"
+@interface SearchChannel : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,AlertViewDelegate>
 {
     __block int resultrows;
     __block NSArray *resultlest;
