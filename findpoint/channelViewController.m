@@ -11,7 +11,8 @@
 #import "WebService.h"
 #import "ChannelMainCell.h"
 #import "GroupInfo.h"
-
+#import "SearchChannel.h"
+#import "ChannelInfoController.h"
 
 @interface channelViewController ()
 {
@@ -24,6 +25,7 @@
 
 @implementation channelViewController
 @synthesize table;
+@synthesize RefreshList;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -49,7 +51,7 @@
       refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"努力加载中……"];
     [refresh addTarget:self action:@selector(refreshlistchannel) forControlEvents:UIControlEventValueChanged];
     [table addSubview:refresh];
-    
+    RefreshList = refresh;
     UINib *nib = [UINib nibWithNibName:@"channelmaincell" bundle:nil];
     [table registerNib:nib forCellReuseIdentifier:@"cell"];
     table.delegate=self;
@@ -171,7 +173,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-          [self performSegueWithIdentifier:@"showchannel" sender:self];
+    NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:indexPath.row];
+    
+    selectchid = [d objectForKey:@"CHID"];
+    [self performSegueWithIdentifier:@"showchannel" sender:self];
 }
 
 
@@ -184,7 +189,7 @@
 }
 -(void)rightbtn
 {
-           [self performSegueWithIdentifier:@"showjoin" sender:self];
+    [self performSegueWithIdentifier:@"showjoin" sender:self];
 
 }
 
@@ -195,14 +200,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showjoin"])
+    {
+        SearchChannel *v =(SearchChannel *) [segue destinationViewController];
+        v.VC=self;
+        return;
+    }
+    if ([segue.identifier isEqualToString:@"showchannel"])
+    {
+        ChannelInfoController *v =(ChannelInfoController *) [segue destinationViewController];
+        v.VC=self;
+        v.ChannelID=selectchid;
+        return;
+    }
 }
-*/
+
 
 @end

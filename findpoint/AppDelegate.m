@@ -30,7 +30,7 @@
     
     deviveid = [UIDevice currentDevice].identifierForVendor.UUIDString;
     [info getInstancent];//初始化info
-    [info getInstancent].uid =deviveid;
+    [info getInstancent].uid =@"2100";//deviveid;
     [[info getInstancent] LoginUserForServer];
     
     [GroupInfo getInstancet];

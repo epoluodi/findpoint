@@ -80,6 +80,19 @@
 }
 
 
+-(BOOL)addChanneluser:(NSString *)chid
+{
+    [service clearArray];
+    [service addParamsString:@"userid" values:[info getInstancent].uid];
+    [service addParamsString:@"channelid" values:chid];
+    NSData *returndata =  [service httprequest:[service getDataForArrary]];
+    if (returndata == nil)
+        return NO;
+    return YES;
+}
+
+
+
 -(NSArray *)getMyChannel
 {
     [service clearArray];

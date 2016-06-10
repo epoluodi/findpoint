@@ -15,7 +15,7 @@
 #define addchannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/createchannel"
 #define qurychannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/querychannel"
 #define getselfchannelurl @"http://epoluodi.vicp.cc:8081/channel.asmx/getselfchannel"
-
+#define addchanneluser @"http://epoluodi.vicp.cc:8081/channel.asmx/addchanneluser"
 
 #define downloadjpg @"http://epoluodi.vicp.cc:8081/PublicCommon.asmx/Download"
 

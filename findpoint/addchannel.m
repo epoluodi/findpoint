@@ -57,7 +57,7 @@
     
     
     
-    rightButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(rightbtn)];
+    rightButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(rightbtn)];
     self.navigationItem.title = @"添加团队";
     [self.navigationItem setRightBarButtonItem:rightButton animated:YES];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];

@@ -7,7 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Common/PublicCommon.h>
+#import "channelViewController.h"
 
-@interface ChannelInfoController : UIViewController
+@interface ChannelInfoController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    UIBarButtonItem *rightButton;
+    NSDictionary *groupinfo;
+    int membercount;
+    NSArray *memberlist;
+}
+
+@property (weak, nonatomic) IBOutlet UIButton *btnexit;
+@property (weak, nonatomic) IBOutlet UICollectionView *grid;
+@property (weak,nonatomic) channelViewController *VC;
+
+@property (weak, nonatomic) IBOutlet UIImageView *backimg;
+
+@property (weak, nonatomic) IBOutlet UILabel *channelname;
+@property (weak, nonatomic) IBOutlet UILabel *members;
+@property (weak, nonatomic) IBOutlet UILabel *area;
+@property (weak, nonatomic) IBOutlet UILabel *memo;
+
+@property (weak,nonatomic) NSString *ChannelID;
+
 
 @end

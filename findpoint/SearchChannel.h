@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AlertView.h"
+#import "channelViewController.h"
 @interface SearchChannel : UIViewController<UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource,AlertViewDelegate>
 {
     __block int resultrows;
@@ -18,6 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *memo;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchview;
 @property (weak, nonatomic) IBOutlet UITableView *table;
-
+@property (weak,nonatomic) channelViewController *VC;
 
 @end

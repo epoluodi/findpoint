@@ -17,6 +17,8 @@
 		7B1DFD2D1CF7348100D72E86 /* ChannelMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */; };
 		7B23F3811B1B490B009779FC /* GPSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F3801B1B490B009779FC /* GPSClass.m */; };
 		7B419BE11D0728B50037555D /* ChannelInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B419BE01D0728B50037555D /* ChannelInfoController.m */; };
+		7B419BE31D0991510037555D /* gridcellfornick.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B419BE21D0991510037555D /* gridcellfornick.xib */; };
+		7B419BE61D0994E30037555D /* gridcellfornick.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B419BE51D0994E30037555D /* gridcellfornick.m */; };
 		7B4475F21B3845B900FEB452 /* png1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475E71B3845B900FEB452 /* png1.png */; };
 		7B4475F31B3845B900FEB452 /* png2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475E81B3845B900FEB452 /* png2.png */; };
 		7B4475F41B3845B900FEB452 /* png3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4475E91B3845B900FEB452 /* png3.png */; };
@@ -139,6 +141,9 @@
 		7B23F3801B1B490B009779FC /* GPSClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSClass.m; sourceTree = "<group>"; };
 		7B419BDF1D0728B50037555D /* ChannelInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelInfoController.h; sourceTree = "<group>"; };
 		7B419BE01D0728B50037555D /* ChannelInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelInfoController.m; sourceTree = "<group>"; };
+		7B419BE21D0991510037555D /* gridcellfornick.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = gridcellfornick.xib; sourceTree = "<group>"; };
+		7B419BE41D0994E30037555D /* gridcellfornick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gridcellfornick.h; sourceTree = "<group>"; };
+		7B419BE51D0994E30037555D /* gridcellfornick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gridcellfornick.m; sourceTree = "<group>"; };
 		7B4475E51B38304600FEB452 /* WebUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebUrl.h; sourceTree = "<group>"; };
 		7B4475E71B3845B900FEB452 /* png1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = png1.png; sourceTree = "<group>"; };
 		7B4475E81B3845B900FEB452 /* png2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = png2.png; sourceTree = "<group>"; };
@@ -557,6 +562,9 @@
 				B464B6581CF5A664009A6A6F /* channelmaincell.xib */,
 				7B1DFD2B1CF7348100D72E86 /* ChannelMainCell.h */,
 				7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */,
+				7B419BE21D0991510037555D /* gridcellfornick.xib */,
+				7B419BE41D0994E30037555D /* gridcellfornick.h */,
+				7B419BE51D0994E30037555D /* gridcellfornick.m */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -760,6 +768,7 @@
 				7B4475F61B3845B900FEB452 /* png5.png in Resources */,
 				7BE416471CE7729F001D324B /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				7BBC23361B1AF82800AA88DC /* Images.xcassets in Resources */,
+				7B419BE31D0991510037555D /* gridcellfornick.xib in Resources */,
 				7BAAB8391CD8E5D1003EBE37 /* about.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -808,6 +817,7 @@
 				7BB2D2E71B3C4B6500397F20 /* RegView.m in Sources */,
 				7B419BE11D0728B50037555D /* ChannelInfoController.m in Sources */,
 				7B6C7A9F1B4430A30012000B /* NotificationViewControl.m in Sources */,
+				7B419BE61D0994E30037555D /* gridcellfornick.m in Sources */,
 				7BE416521CE78567001D324B /* TencentClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

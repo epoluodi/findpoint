@@ -40,7 +40,7 @@
     [table setHidden:YES];
     table.delegate=self;
     table.dataSource=self;
-    web = [[WebService alloc] initUrl:qurychannelurl];
+
     
     // Do any additional setup after loading the view.
 }
@@ -56,6 +56,7 @@
 
 -(void)querychannel:(NSString *)key
 {
+    web = [[WebService alloc] initUrl:qurychannelurl];
     hub=[[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hub];
     [hub show:YES];
@@ -193,7 +194,36 @@
 
 -(void)joinchannel:(NSString *)chid
 {
-    
+    web = [[WebService alloc] initUrl:addchanneluser];
+    hub=[[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    [hub show:YES];
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(globalQ, ^{
+        BOOL r= [web addChanneluser:chid];
+
+        dispatch_async(mainQ, ^{
+            [hub hide:YES];
+            
+            if (r){
+                NSLog(@"加入成功");
+                [_VC.RefreshList beginRefreshing];
+                [_VC refreshlistchannel];
+                [self.navigationController popViewControllerAnimated:YES];
+                return ;
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"加入失败，请重新尝试！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                return ;
+            }
+        });
+        
+        
+        
+    });
 }
 
 - (void)didReceiveMemoryWarning {

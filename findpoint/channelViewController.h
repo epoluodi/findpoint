@@ -14,12 +14,13 @@
     UIBarButtonItem *leftButton;
     UIBarButtonItem *rightButton;
     UIRefreshControl *refresh;
+    NSString *selectchid;
 
 }
 
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
-
+@property (weak,nonatomic ,readonly) UIRefreshControl *RefreshList;
 
 
 -(void)refreshlistchannel;

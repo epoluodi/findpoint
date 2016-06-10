@@ -33,7 +33,7 @@
 -(BOOL)UserCreateinfo:(NSDictionary *)dict;
 
 -(void)SubmitGPSInfo:(NSDictionary *)d;
-
+-(BOOL)addChanneluser:(NSString *)chid;
 
 
 
