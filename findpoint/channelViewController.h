@@ -15,7 +15,7 @@
     UIBarButtonItem *rightButton;
     UIRefreshControl *refresh;
     NSString *selectchid;
-
+    NSString *selectmediaid;
 }
 
 

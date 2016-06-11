@@ -176,6 +176,7 @@
     NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:indexPath.row];
     
     selectchid = [d objectForKey:@"CHID"];
+    selectmediaid =[d objectForKey:@"CPHOTO"];
     [self performSegueWithIdentifier:@"showchannel" sender:self];
 }
 
@@ -215,6 +216,7 @@
     {
         ChannelInfoController *v =(ChannelInfoController *) [segue destinationViewController];
         v.VC=self;
+        v.mediaid = selectmediaid;
         v.ChannelID=selectchid;
         return;
     }

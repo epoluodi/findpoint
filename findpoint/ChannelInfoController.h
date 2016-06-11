@@ -16,12 +16,13 @@
     NSDictionary *groupinfo;
     int membercount;
     NSArray *memberlist;
+    UIImageView *gridbackimg;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *btnexit;
 @property (weak, nonatomic) IBOutlet UICollectionView *grid;
 @property (weak,nonatomic) channelViewController *VC;
-
+@property (weak,nonatomic)NSString *mediaid;
 @property (weak, nonatomic) IBOutlet UIImageView *backimg;
 
 @property (weak, nonatomic) IBOutlet UILabel *channelname;

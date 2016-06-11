@@ -10,6 +10,7 @@
 #import "GroupInfo.h"
 #import <Common/PublicCommon.h>
 #import "gridcellfornick.h"
+#import <Common/FileCommon.h>
 
 @interface ChannelInfoController ()
 
@@ -17,7 +18,7 @@
 
 @implementation ChannelInfoController
 @synthesize btnexit,grid;
-@synthesize VC;
+@synthesize VC,mediaid;
 @synthesize ChannelID;
 @synthesize channelname,memo,members,area;
 - (void)viewDidLoad {
@@ -45,23 +46,79 @@
     members.text= [NSString stringWithFormat:@"%@", [groupinfo objectForKey:@"PEOPLES"] ];
     area.text= [groupinfo objectForKey:@"CHAREA"];
     memo.text= [groupinfo objectForKey:@"DESC"];
-  
+    [self updategridlayout];
     [grid registerNib:[UINib nibWithNibName:@"gridcellfornick" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     membercount=20;
     grid.delegate=self;
     grid.dataSource=self;
+    gridbackimg = [[UIImageView alloc] init];
+    [grid setBackgroundView:gridbackimg];
+    gridbackimg.contentMode=UIViewContentModeCenter;
+    gridbackimg.alpha=0;
+ 
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnimation.fromValue = [NSNumber numberWithFloat:0.8];
+    scaleAnimation.toValue = [NSNumber numberWithFloat:1.0];
     
+    scaleAnimation.duration=0.4;
+    
+    [btnexit.layer addAnimation:scaleAnimation forKey:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSString *path = [FileCommon getCacheDirectory];
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString *filename = [NSString stringWithFormat:@"%@.png",mediaid];
+        NSString* _filename = [path stringByAppendingPathComponent:filename];
+        if ([fm fileExistsAtPath:_filename])
+        {
+            NSData *pngdata = [NSData dataWithContentsOfFile:_filename];
+            if (pngdata)
+            {
+                [UIView beginAnimations:@"chanege" context:nil];
+                //动画持续时间
+                [UIView setAnimationDuration:0.8f];
+                
+                //设置动画曲线，控制动画速度
+                [UIView  setAnimationCurve: UIViewAnimationCurveEaseInOut];
+                //设置动画方式，并指出动画发生的位置
+                //提交UIView动画
+                gridbackimg.image =  [UIImage imageWithData:pngdata];
+                [gridbackimg setAlpha:0.2];
+                
+                [UIView commitAnimations];
+            }
+        }
+        
+    });
     
 }
 
--(void)viewWillAppear:(BOOL)animated
+
+
+
+-(void)updategridlayout
 {
-    [super viewWillAppear:animated];
-    [self DrawLineView];
+    NSArray *layoutlist = grid.constraints;
+    int h=0;
+    for (NSLayoutConstraint *layout in layoutlist) {
+        if ([layout.identifier isEqualToString:@"girdheight"])
+        {
+            
+            if (iPhone6plus)
+                layout.constant=300;
+            if (iPhone6)
+                layout.constant=260;
+            if (iPhone5)
+                layout.constant=240;
+            h=layout.constant;
+        }
+    }
+    [self DrawLineView:h];
 }
+
 
 //画线
--(void)DrawLineView
+-(void)DrawLineView:(int)h
 {
     for (UIView *_v in [_backimg subviews]) {
         [_v removeFromSuperview];
@@ -69,7 +126,7 @@
     
     UIView *v = [[UIView alloc] init];
         v .frame  = CGRectMake(30,
-   grid.frame.origin.y +grid.frame.size.height+ 10+35 ,
+   grid.frame.origin.y +h+ 10+35 ,
                            [PublicCommon GetALLScreen].size.width -60, 1);
   
     [v setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.2f] ];
@@ -78,7 +135,7 @@
     
     v = [[UIView alloc] init];
     v .frame  = CGRectMake(30,
-                           grid.frame.origin.y +grid.frame.size.height+ 10+35 +35,
+                           grid.frame.origin.y +h+ 10+35 +35,
                            [PublicCommon GetALLScreen].size.width -60, 1);
 
     [v setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.2f] ];
@@ -86,7 +143,7 @@
     
     v = [[UIView alloc] init];
     v .frame  = CGRectMake(30,
-                           grid.frame.origin.y +grid.frame.size.height+ 10+35 +35+35,
+                           grid.frame.origin.y +h+ 10+35 +35+35,
                            [PublicCommon GetALLScreen].size.width -60, 1);
    
     [v setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.2f] ];
@@ -141,6 +198,11 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     gridcellfornick*cell = [grid dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    [cell displayAnim];
+    
+    
+    
+    
     return  cell;
     
     
@@ -156,7 +218,7 @@
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(5, 5, 10, 5);
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
 //UICollectionView被选中时调用的方法
@@ -173,6 +235,14 @@
 }
 
 
+//-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+//{
+//    return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"gridhead" forIndexPath:indexPath];
+//}
+//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+//    CGSize size={320,45};
+//    return size;
+//}
 
 #pragma mark -
 

@@ -71,6 +71,7 @@
 
 -(void)showimganim:(UIImage *)img
 {
+    [backimg setAlpha:0.0];
     [UIView beginAnimations:@"chanege" context:nil];
     //动画持续时间
     [UIView setAnimationDuration:0.5f];
@@ -80,7 +81,6 @@
     //设置动画方式，并指出动画发生的位置
     //        [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:channelimage  cache:YES];
     //提交UIView动画
-    [backimg setAlpha:0.0];
     backimg.image =  img;
     [backimg setAlpha:0.2];
     

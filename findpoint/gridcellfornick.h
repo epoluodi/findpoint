@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 
 
-
+-(void)displayAnim;
 @end
