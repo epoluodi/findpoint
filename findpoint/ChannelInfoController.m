@@ -12,6 +12,8 @@
 #import "gridcellfornick.h"
 #import <Common/FileCommon.h>
 #import "Common.h"
+#import "WebService.h"
+#import "MBProgressHUD.h"
 
 @interface ChannelInfoController ()
 
@@ -49,7 +51,7 @@
     memo.text= [groupinfo objectForKey:@"DESC"];
     [self updategridlayout];
     [grid registerNib:[UINib nibWithNibName:@"gridcellfornick" bundle:nil] forCellWithReuseIdentifier:@"cell"];
-    membercount=20;
+    membercount=0;
     grid.delegate=self;
     grid.dataSource=self;
     gridbackimg = [[UIImageView alloc] init];
@@ -65,39 +67,71 @@
     
     [btnexit.layer addAnimation:scaleAnimation forKey:nil];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString *path = [FileCommon getCacheDirectory];
-        NSFileManager *fm = [NSFileManager defaultManager];
-        NSString *filename = [NSString stringWithFormat:@"%@.png",mediaid];
-        NSString* _filename = [path stringByAppendingPathComponent:filename];
-        if ([fm fileExistsAtPath:_filename])
-        {
-            NSData *pngdata = [NSData dataWithContentsOfFile:_filename];
-            if (pngdata)
+
+    
+    [self RefreshChannelUserInfo];
+}
+
+//刷新团队信息
+-(void)RefreshChannelUserInfo
+{
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    ind = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    ind.color=[UIColor greenColor];
+    [grid addSubview:ind];
+    dispatch_async(globalQ, ^{
+        WebService *web = [[WebService alloc ] initUrl:getchanneluserinfo];
+        memberlist = [web getChannelUserInfo:ChannelID];
+        
+        dispatch_async(mainQ, ^{
+            if (!memberlist)
             {
-                [UIView beginAnimations:@"chanege" context:nil];
-                //动画持续时间
-                [UIView setAnimationDuration:0.8f];
-                
-                //设置动画曲线，控制动画速度
-                [UIView  setAnimationCurve: UIViewAnimationCurveEaseInOut];
-                //设置动画方式，并指出动画发生的位置
-                //提交UIView动画
-                
-                
-                gridbackimg.image =  [Common circleImageWithName:[UIImage imageWithData:pngdata]];
-                [gridbackimg setAlpha:0.2];
-                
-                [UIView commitAnimations];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"无法获得成员信息，请重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                [self.navigationController popViewControllerAnimated:YES];
+                return ;
             }
-        }
+            else
+            {
+                membercount =[memberlist count];
+                [ind removeFromSuperview];
+                [grid reloadData];
+                NSString *path = [FileCommon getCacheDirectory];
+                NSFileManager *fm = [NSFileManager defaultManager];
+                NSString *filename = [NSString stringWithFormat:@"%@.png",mediaid];
+                NSString* _filename = [path stringByAppendingPathComponent:filename];
+                if ([fm fileExistsAtPath:_filename])
+                {
+                    NSData *pngdata = [NSData dataWithContentsOfFile:_filename];
+                    if (pngdata)
+                    {
+                        [UIView beginAnimations:@"chanege" context:nil];
+                        //动画持续时间
+                        [UIView setAnimationDuration:0.8f];
+                        
+                        //设置动画曲线，控制动画速度
+                        [UIView  setAnimationCurve: UIViewAnimationCurveEaseInOut];
+                        //设置动画方式，并指出动画发生的位置
+                        //提交UIView动画
+                        
+                        
+                        gridbackimg.image =  [Common circleImageWithName:[UIImage imageWithData:pngdata]];
+                        [gridbackimg setAlpha:0.2];
+                        
+                        [UIView commitAnimations];
+                    }
+                }
+                
+            }
+        });
         
     });
     
+    
+    
+    
 }
-
-
-
 
 -(void)updategridlayout
 {
@@ -156,8 +190,21 @@
 }
 
 
+//退出
 -(void)OnBtnexit
 {
+    
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(globalQ, ^{
+ 
+        
+    });
+    
+    
+    
+    
     [VC.RefreshList beginRefreshing];
     [VC refreshlistchannel];
     [self.navigationController popViewControllerAnimated:YES];
@@ -201,7 +248,12 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     gridcellfornick*cell = [grid dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    [cell displayAnim];
+    NSDictionary *d = [memberlist objectAtIndex:indexPath.row];
+    
+    
+    cell.name.text = [d objectForKey:@"name"];
+    [cell showNickImg:[d objectForKey:@"photo"]];
+//    [cell displayAnim];
     
     
     

@@ -109,6 +109,25 @@
     
     return [arry copy];
 }
+
+
+-(NSArray *)getChannelUserInfo:(NSString *)chid
+{
+    [service clearArray];
+    [service addParamsString:@"channelid" values:chid];
+    NSData *returndata =  [service httprequest:[service getDataForArrary]];
+    if (returndata == nil)
+        return nil;
+    
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return nil;
+    
+    NSArray * arry = [NSJSONSerialization JSONObjectWithData:[ret dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+    
+    return [arry copy];
+}
+
 #pragma GPS
 
 //提交GPS

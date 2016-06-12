@@ -14,9 +14,10 @@
 {
     UIBarButtonItem *rightButton;
     NSDictionary *groupinfo;
-    int membercount;
-    NSArray *memberlist;
+    __block int membercount;
+    __block NSArray *memberlist;
     UIImageView *gridbackimg;
+    UIActivityIndicatorView *ind;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *btnexit;

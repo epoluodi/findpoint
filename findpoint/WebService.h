@@ -35,6 +35,7 @@
 -(void)SubmitGPSInfo:(NSDictionary *)d;
 -(BOOL)addChanneluser:(NSString *)chid;
 
+-(NSArray *)getChannelUserInfo:(NSString *)chid;
 
 
 @end

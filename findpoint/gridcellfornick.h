@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 
-
+-(void)showNickImg:(NSString *)strurl;
 -(void)displayAnim;
 @end
