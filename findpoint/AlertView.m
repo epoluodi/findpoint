@@ -114,8 +114,9 @@
     alertview =[UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        if (delegate)
-            [delegate cancelbtn];
+        [tf resignFirstResponder];
+        tf=nil;
+      
     }];
     ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
@@ -124,6 +125,8 @@
             dataarary = [[NSMutableArray alloc] init];
 
             [dataarary addObject:tf.text];
+            [tf resignFirstResponder];
+            tf=nil;
             [delegate onbtn:dataarary];
         }
     }];

@@ -21,12 +21,12 @@
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 #define iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
 #define iPhonePod ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
-struct Deviceinfo
-{
-   __unsafe_unretained NSString * dname;
-   __unsafe_unretained NSString * dmodel;
-    
-} ;
+//struct Deviceinfo
+//{
+//   __unsafe_unretained NSString * dname;
+//   __unsafe_unretained NSString * dmodel;
+//    
+//} ;
 
 
 
@@ -44,6 +44,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 +(void)SavePNGtoJpg:(NSData *)data filename:(NSString *)filename;
 +(NSData *)downloadfile:(NSURL *)url;
++ (UIImage *)circleImageWithName:(UIImage *)img;
+
+
 @end
 
 @protocol queryparams

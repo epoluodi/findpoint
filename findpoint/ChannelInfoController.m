@@ -11,6 +11,7 @@
 #import <Common/PublicCommon.h>
 #import "gridcellfornick.h"
 #import <Common/FileCommon.h>
+#import "Common.h"
 
 @interface ChannelInfoController ()
 
@@ -82,7 +83,9 @@
                 [UIView  setAnimationCurve: UIViewAnimationCurveEaseInOut];
                 //设置动画方式，并指出动画发生的位置
                 //提交UIView动画
-                gridbackimg.image =  [UIImage imageWithData:pngdata];
+                
+                
+                gridbackimg.image =  [Common circleImageWithName:[UIImage imageWithData:pngdata]];
                 [gridbackimg setAlpha:0.2];
                 
                 [UIView commitAnimations];
