@@ -193,21 +193,37 @@
 //退出
 -(void)OnBtnexit
 {
-    
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hud];
+    [hud show:YES];
     
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     dispatch_async(globalQ, ^{
- 
+        WebService *web = [[WebService alloc] initUrl:delChanneluserinfo];
+        BOOL r =[web delChannelUserInfo:ChannelID];
+        dispatch_async(mainQ, ^{
+            [hud hide:YES];
+            if (r){
+                [VC.RefreshList beginRefreshing];
+                [VC refreshlistchannel];
+                [self.navigationController popViewControllerAnimated:YES];
+                return ;
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"网络异常，请重试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                return;
+            }
+            
+        });
         
     });
     
     
     
-    
-    [VC.RefreshList beginRefreshing];
-    [VC refreshlistchannel];
-    [self.navigationController popViewControllerAnimated:YES];
+   
 }
 
 -(void)rightbtn

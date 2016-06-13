@@ -36,6 +36,6 @@
 -(BOOL)addChanneluser:(NSString *)chid;
 
 -(NSArray *)getChannelUserInfo:(NSString *)chid;
-
+-(BOOL)delChannelUserInfo:(NSString *)chid;
 
 @end

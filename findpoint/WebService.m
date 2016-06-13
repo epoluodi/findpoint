@@ -128,6 +128,24 @@
     return [arry copy];
 }
 
+-(BOOL)delChannelUserInfo:(NSString *)chid
+{
+    [service clearArray];
+    [service addParamsString:@"channelid" values:chid];
+    [service addParamsString:@"userid" values:[info getInstancent].uid];
+    NSData *returndata =  [service httprequest:[service getDataForArrary]];
+    if (returndata == nil)
+        return nil;
+    
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return nil;
+    if ([ret isEqualToString:@"1"])
+        return YES;
+    return NO;
+}
+
+
 #pragma GPS
 
 //提交GPS
