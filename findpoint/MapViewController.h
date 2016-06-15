@@ -9,16 +9,25 @@
 #import <UIKit/UIKit.h>
 #import <MAMapKit/MAMapKit.h>
 #import "GDLocation.h"
+#import "GroupInfo.h"
 
 @interface MapViewController : UIViewController<GPSLocationDelegate>
 {
     CLLocation *_location;
     NSTimer *timer1;//上传GPS
     AMapReGeocode *_geocode;
+    BOOL isrun;
+    
+    //UI
+    UIButton *btnloc ;
+    UIButton *channelname;
+    NSDictionary *groupinfo;
+    
+    
 }
 
-
 @property (weak, nonatomic) IBOutlet MAMapView *map;
+@property (weak,nonatomic)NSString *channelid;
 
 
 @end

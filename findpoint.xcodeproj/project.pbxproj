@@ -92,6 +92,8 @@
 		7BCF0CF71B1DFFE100DDD8D4 /* channelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCF0CF61B1DFFE100DDD8D4 /* channelCell.m */; };
 		7BCF0CFA1B1E020D00DDD8D4 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCF0CF91B1E020D00DDD8D4 /* Common.m */; };
 		7BCF0D021B1E06DA00DDD8D4 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCF0D011B1E06DA00DDD8D4 /* WebService.m */; };
+		7BD9C2761D11906900EB744F /* loc.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD9C2751D11906900EB744F /* loc.png */; };
+		7BD9C2781D11A37400EB744F /* uicontrol.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD9C2771D11A37400EB744F /* uicontrol.xib */; };
 		7BE416361CE5FE15001D324B /* GPSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE416351CE5FE15001D324B /* GPSViewController.m */; };
 		7BE416381CE60D00001D324B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE416371CE60D00001D324B /* AMapSearchKit.framework */; };
 		7BE4163A1CE73F86001D324B /* app_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE416391CE73F86001D324B /* app_logo.png */; };
@@ -248,6 +250,8 @@
 		7BCF0CF91B1E020D00DDD8D4 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		7BCF0D001B1E06DA00DDD8D4 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		7BCF0D011B1E06DA00DDD8D4 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
+		7BD9C2751D11906900EB744F /* loc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loc.png; sourceTree = "<group>"; };
+		7BD9C2771D11A37400EB744F /* uicontrol.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = uicontrol.xib; sourceTree = "<group>"; };
 		7BE416341CE5FE15001D324B /* GPSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSViewController.h; sourceTree = "<group>"; };
 		7BE416351CE5FE15001D324B /* GPSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSViewController.m; sourceTree = "<group>"; };
 		7BE416371CE60D00001D324B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 			children = (
 				7B4CA8551CE0DA500086111B /* MapViewController.h */,
 				7B4CA8561CE0DA500086111B /* MapViewController.m */,
+				7BD9C2771D11A37400EB744F /* uicontrol.xib */,
 			);
 			name = mapview;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				7BD9C2751D11906900EB744F /* loc.png */,
 				7B1DFD231CF733CE00D72E86 /* state1.png */,
 				7B1DFD241CF733CE00D72E86 /* state2.png */,
 				7B1DFD251CF733CE00D72E86 /* state3.png */,
@@ -739,7 +745,9 @@
 				7BBF69D31CF5FA8800C14D81 /* open.png in Resources */,
 				7B1DFD271CF733CE00D72E86 /* state1.png in Resources */,
 				7B1DFD2A1CF733CE00D72E86 /* state0.png in Resources */,
+				7BD9C2761D11906900EB744F /* loc.png in Resources */,
 				7BC0AAE81B40437500D53A84 /* readme.txt in Resources */,
+				7BD9C2781D11A37400EB744F /* uicontrol.xib in Resources */,
 				7B1DFD281CF733CE00D72E86 /* state2.png in Resources */,
 				7B7C3C531CE233BB00D6668D /* btn_return.png in Resources */,
 				B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */,
