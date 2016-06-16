@@ -23,7 +23,8 @@
     UIButton *channelname;
     NSDictionary *groupinfo;
     UIView *controlview;
-    
+    UIButton *btngb,*btnmeet,*btnlen;
+    UIButton *btnchannel;
 }
 
 @property (weak, nonatomic) IBOutlet MAMapView *map;

@@ -10,6 +10,7 @@
 #import "WebService.h"
 #import "info.h"
 
+
 @interface MapViewController ()
 
 @end
@@ -59,25 +60,43 @@
     [btnloc addTarget:self action:@selector(Clickbtnloc) forControlEvents:UIControlEventTouchUpInside];
     [map addSubview:btnloc];
     
-    channelname = [[UIButton alloc] init];
-    [channelname setTitle:@"选择团队" forState:UIControlStateNormal];
-    channelname.frame=CGRectMake(16, map.frame.size.height -8 -75, map.frame.size.width-32, 24);
-    [channelname setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
-    [channelname setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal ];
-    [map addSubview:channelname];
+  
     
     
     controlview = [[UIView alloc] init];
-    controlview.frame=CGRectMake(0, 0, 100, 200);
+    controlview.frame=CGRectMake(map.frame.size.width-60-10, 30, 60, 220);
     controlview.layer.borderWidth=1.2f;
     controlview.layer.borderColor = [[UIColor colorWithRed:0.361 green:0.671 blue:0.886 alpha:1.00] CGColor];
     controlview.layer.cornerRadius=6;
     controlview.layer.masksToBounds=YES;
     [controlview setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
     [map addSubview:controlview];
+ 
+    btngb = [[UIButton alloc] init];
+    btngb.frame=CGRectMake(10, 10, 40, 60);
+    [btngb setImage:[UIImage imageNamed:@"boradcast"] forState:UIControlStateNormal];
+    [controlview addSubview:btngb];
+    
+    btnmeet = [[UIButton alloc] init];
+    btnmeet.frame=CGRectMake(10, btngb.frame.origin.y + 60 +10, 40, 60);
+    [btnmeet setImage:[UIImage imageNamed:@"meetpoint"] forState:UIControlStateNormal];
+    [controlview addSubview:btnmeet];
+    
+    btnlen = [[UIButton alloc] init];
+    btnlen.frame=CGRectMake(10, btnmeet.frame.origin.y + 60 +10, 40, 60);
+    [btnlen setImage:[UIImage imageNamed:@"len"] forState:UIControlStateNormal];
+    [controlview addSubview:btnlen];
     
     
-    
+    btnchannel = [[UIButton alloc] init];
+     btnchannel.frame=CGRectMake(map.frame.size.width-60-10, controlview.frame.origin.y + 220 +10, 60, 70);
+     [btnchannel setImage:[UIImage imageNamed:@"channel"] forState:UIControlStateNormal];
+    [btnchannel setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+    btnchannel.layer.borderWidth=0.9f;
+    btnchannel.layer.borderColor = [[UIColor colorWithRed:0.917f green:0.5f blue:0.062f alpha:1.00] CGColor];
+    btnchannel.layer.cornerRadius=6;
+    btnchannel.layer.masksToBounds=YES;
+    [map addSubview:btnchannel];
     
 }
 
@@ -85,6 +104,21 @@
 {
     _channelid=channelid;
     groupinfo = [[GroupInfo getInstancet] getGroupForGroupid:_channelid];
+    if (!channelname){
+        channelname = [[UIButton alloc] init];
+        channelname.frame=CGRectMake(16, map.frame.size.height -8 -75, map.frame.size.width-32, 24);
+        [channelname setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+        [channelname setTitleColor:[UIColor colorWithRed:0.917f green:0.5f blue:0.062f alpha:1.00] forState:UIControlStateNormal ];
+        channelname.layer.borderWidth=0.9f;
+        channelname.layer.borderColor = [[UIColor colorWithRed:0.917f green:0.5f blue:0.062f alpha:1.00] CGColor];
+        channelname.layer.cornerRadius=6;
+        channelname.layer.masksToBounds=YES;
+  
+        [map addSubview:channelname];
+    }
+    [channelname setTitle:[groupinfo objectForKey:@"CHNAME"] forState:UIControlStateNormal];
+
+
     NSLog(@"%@",groupinfo);
     
 }

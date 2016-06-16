@@ -14,6 +14,7 @@
 #import "Common.h"
 #import "WebService.h"
 #import "MBProgressHUD.h"
+#import "MapViewController.h"
 
 @interface ChannelInfoController ()
 
@@ -229,6 +230,8 @@
 -(void)rightbtn
 {
     self.tabBarController.selectedIndex=1;
+    MapViewController *mapvc = (MapViewController *) self.tabBarController.viewControllers[1];
+    mapvc.channelid = ChannelID;
 }
 
 - (void)didReceiveMemoryWarning {

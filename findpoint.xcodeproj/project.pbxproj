@@ -84,6 +84,7 @@
 		7BBF69D31CF5FA8800C14D81 /* open.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BBF69D11CF5FA8800C14D81 /* open.png */; };
 		7BC0AAE81B40437500D53A84 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7BC0AAE71B40437500D53A84 /* readme.txt */; };
 		7BC0AAEF1B4057BD00D53A84 /* DKCircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC0AAEE1B4057BD00D53A84 /* DKCircleButton.m */; };
+		7BC18C481D12F50200B2CC34 /* channel.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC18C471D12F50200B2CC34 /* channel.png */; };
 		7BC66C1A1D044CCD00AEF132 /* GroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC66C191D044CCD00AEF132 /* GroupInfo.m */; };
 		7BCA9CB01B2342E9006D6156 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCA9CAF1B2342E9006D6156 /* AlertView.m */; };
 		7BCA9CB31B24950E006D6156 /* png.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BCA9CB21B24950E006D6156 /* png.xcassets */; };
@@ -93,7 +94,6 @@
 		7BCF0CFA1B1E020D00DDD8D4 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCF0CF91B1E020D00DDD8D4 /* Common.m */; };
 		7BCF0D021B1E06DA00DDD8D4 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCF0D011B1E06DA00DDD8D4 /* WebService.m */; };
 		7BD9C2761D11906900EB744F /* loc.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BD9C2751D11906900EB744F /* loc.png */; };
-		7BD9C2781D11A37400EB744F /* uicontrol.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD9C2771D11A37400EB744F /* uicontrol.xib */; };
 		7BE416361CE5FE15001D324B /* GPSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE416351CE5FE15001D324B /* GPSViewController.m */; };
 		7BE416381CE60D00001D324B /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE416371CE60D00001D324B /* AMapSearchKit.framework */; };
 		7BE4163A1CE73F86001D324B /* app_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BE416391CE73F86001D324B /* app_logo.png */; };
@@ -103,7 +103,6 @@
 		B45B62B01D12A76800C57F30 /* len.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AD1D12A76800C57F30 /* len.png */; };
 		B45B62B11D12A76800C57F30 /* meetpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AE1D12A76800C57F30 /* meetpoint.png */; };
 		B45B62B21D12A76800C57F30 /* boradcast.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AF1D12A76800C57F30 /* boradcast.png */; };
-		B45B62B51D12A89400C57F30 /* ControlBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B45B62B41D12A89400C57F30 /* ControlBtn.m */; };
 		B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B464B6581CF5A664009A6A6F /* channelmaincell.xib */; };
 /* End PBXBuildFile section */
 
@@ -240,6 +239,7 @@
 		7BC0AAE71B40437500D53A84 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		7BC0AAED1B4057BD00D53A84 /* DKCircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKCircleButton.h; sourceTree = "<group>"; };
 		7BC0AAEE1B4057BD00D53A84 /* DKCircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKCircleButton.m; sourceTree = "<group>"; };
+		7BC18C471D12F50200B2CC34 /* channel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = channel.png; sourceTree = "<group>"; };
 		7BC66C181D044CCD00AEF132 /* GroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfo.h; sourceTree = "<group>"; };
 		7BC66C191D044CCD00AEF132 /* GroupInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfo.m; sourceTree = "<group>"; };
 		7BCA9CAE1B2342E9006D6156 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
@@ -255,7 +255,6 @@
 		7BCF0D001B1E06DA00DDD8D4 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		7BCF0D011B1E06DA00DDD8D4 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
 		7BD9C2751D11906900EB744F /* loc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loc.png; sourceTree = "<group>"; };
-		7BD9C2771D11A37400EB744F /* uicontrol.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = uicontrol.xib; sourceTree = "<group>"; };
 		7BE416341CE5FE15001D324B /* GPSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSViewController.h; sourceTree = "<group>"; };
 		7BE416351CE5FE15001D324B /* GPSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSViewController.m; sourceTree = "<group>"; };
 		7BE416371CE60D00001D324B /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
@@ -267,8 +266,6 @@
 		B45B62AD1D12A76800C57F30 /* len.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = len.png; sourceTree = "<group>"; };
 		B45B62AE1D12A76800C57F30 /* meetpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meetpoint.png; sourceTree = "<group>"; };
 		B45B62AF1D12A76800C57F30 /* boradcast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boradcast.png; sourceTree = "<group>"; };
-		B45B62B31D12A89400C57F30 /* ControlBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlBtn.h; sourceTree = "<group>"; };
-		B45B62B41D12A89400C57F30 /* ControlBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlBtn.m; sourceTree = "<group>"; };
 		B464B6581CF5A664009A6A6F /* channelmaincell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = channelmaincell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,9 +394,6 @@
 			children = (
 				7B4CA8551CE0DA500086111B /* MapViewController.h */,
 				7B4CA8561CE0DA500086111B /* MapViewController.m */,
-				7BD9C2771D11A37400EB744F /* uicontrol.xib */,
-				B45B62B31D12A89400C57F30 /* ControlBtn.h */,
-				B45B62B41D12A89400C57F30 /* ControlBtn.m */,
 			);
 			name = mapview;
 			sourceTree = "<group>";
@@ -549,6 +543,7 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				7BC18C471D12F50200B2CC34 /* channel.png */,
 				B45B62AD1D12A76800C57F30 /* len.png */,
 				B45B62AE1D12A76800C57F30 /* meetpoint.png */,
 				B45B62AF1D12A76800C57F30 /* boradcast.png */,
@@ -763,7 +758,6 @@
 				7B1DFD2A1CF733CE00D72E86 /* state0.png in Resources */,
 				7BD9C2761D11906900EB744F /* loc.png in Resources */,
 				7BC0AAE81B40437500D53A84 /* readme.txt in Resources */,
-				7BD9C2781D11A37400EB744F /* uicontrol.xib in Resources */,
 				7B1DFD281CF733CE00D72E86 /* state2.png in Resources */,
 				7B7C3C531CE233BB00D6668D /* btn_return.png in Resources */,
 				B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */,
@@ -790,6 +784,7 @@
 				B45B62B21D12A76800C57F30 /* boradcast.png in Resources */,
 				7BBC23391B1AF82800AA88DC /* LaunchScreen.xib in Resources */,
 				7B893F581B3B080300C1D776 /* LoginView.xib in Resources */,
+				7BC18C481D12F50200B2CC34 /* channel.png in Resources */,
 				7B4475F61B3845B900FEB452 /* png5.png in Resources */,
 				7BE416471CE7729F001D324B /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				7BBC23361B1AF82800AA88DC /* Images.xcassets in Resources */,
@@ -830,7 +825,6 @@
 				7BC66C1A1D044CCD00AEF132 /* GroupInfo.m in Sources */,
 				7B4475FF1B385B6300FEB452 /* MainTabBar.m in Sources */,
 				7BCF0CFA1B1E020D00DDD8D4 /* Common.m in Sources */,
-				B45B62B51D12A89400C57F30 /* ControlBtn.m in Sources */,
 				7B4CA8571CE0DA500086111B /* MapViewController.m in Sources */,
 				7B17CC7A1B331E0500F60BFF /* LaunchView.m in Sources */,
 				7BE416361CE5FE15001D324B /* GPSViewController.m in Sources */,
