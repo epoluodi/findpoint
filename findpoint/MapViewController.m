@@ -66,6 +66,19 @@
     [channelname setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal ];
     [map addSubview:channelname];
     
+    
+    controlview = [[UIView alloc] init];
+    controlview.frame=CGRectMake(0, 0, 100, 200);
+    controlview.layer.borderWidth=1.2f;
+    controlview.layer.borderColor = [[UIColor colorWithRed:0.361 green:0.671 blue:0.886 alpha:1.00] CGColor];
+    controlview.layer.cornerRadius=6;
+    controlview.layer.masksToBounds=YES;
+    [controlview setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+    [map addSubview:controlview];
+    
+    
+    
+    
 }
 
 -(void)setChannelid:(NSString *)channelid

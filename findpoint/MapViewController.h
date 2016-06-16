@@ -22,7 +22,7 @@
     UIButton *btnloc ;
     UIButton *channelname;
     NSDictionary *groupinfo;
-    
+    UIView *controlview;
     
 }
 
