@@ -16,6 +16,8 @@
 		7B1DFD2A1CF733CE00D72E86 /* state0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1DFD261CF733CE00D72E86 /* state0.png */; };
 		7B1DFD2D1CF7348100D72E86 /* ChannelMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */; };
 		7B23F3811B1B490B009779FC /* GPSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F3801B1B490B009779FC /* GPSClass.m */; };
+		7B411C951D158F5D007B3C59 /* btnno.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B411C931D158F5D007B3C59 /* btnno.png */; };
+		7B411C961D158F5D007B3C59 /* btnok.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B411C941D158F5D007B3C59 /* btnok.png */; };
 		7B419BE11D0728B50037555D /* ChannelInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B419BE01D0728B50037555D /* ChannelInfoController.m */; };
 		7B419BE31D0991510037555D /* gridcellfornick.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B419BE21D0991510037555D /* gridcellfornick.xib */; };
 		7B419BE61D0994E30037555D /* gridcellfornick.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B419BE51D0994E30037555D /* gridcellfornick.m */; };
@@ -144,6 +146,8 @@
 		7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelMainCell.m; sourceTree = "<group>"; };
 		7B23F37F1B1B490B009779FC /* GPSClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSClass.h; sourceTree = "<group>"; };
 		7B23F3801B1B490B009779FC /* GPSClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSClass.m; sourceTree = "<group>"; };
+		7B411C931D158F5D007B3C59 /* btnno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnno.png; sourceTree = "<group>"; };
+		7B411C941D158F5D007B3C59 /* btnok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnok.png; sourceTree = "<group>"; };
 		7B419BDF1D0728B50037555D /* ChannelInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelInfoController.h; sourceTree = "<group>"; };
 		7B419BE01D0728B50037555D /* ChannelInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelInfoController.m; sourceTree = "<group>"; };
 		7B419BE21D0991510037555D /* gridcellfornick.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = gridcellfornick.xib; sourceTree = "<group>"; };
@@ -543,6 +547,8 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				7B411C931D158F5D007B3C59 /* btnno.png */,
+				7B411C941D158F5D007B3C59 /* btnok.png */,
 				7BC18C471D12F50200B2CC34 /* channel.png */,
 				B45B62AD1D12A76800C57F30 /* len.png */,
 				B45B62AE1D12A76800C57F30 /* meetpoint.png */,
@@ -761,6 +767,7 @@
 				7B1DFD281CF733CE00D72E86 /* state2.png in Resources */,
 				7B7C3C531CE233BB00D6668D /* btn_return.png in Resources */,
 				B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */,
+				7B411C951D158F5D007B3C59 /* btnno.png in Resources */,
 				7B4475F71B3845B900FEB452 /* png6.png in Resources */,
 				7B1DFD291CF733CE00D72E86 /* state3.png in Resources */,
 				7B4CF6401CDF6985000D4415 /* settingcell.xib in Resources */,
@@ -778,6 +785,7 @@
 				7B7C3C4F1CE2330600D6668D /* btn_share.png in Resources */,
 				7B4475F31B3845B900FEB452 /* png2.png in Resources */,
 				7BCF0CF41B1DFED700DDD8D4 /* channelCell.xib in Resources */,
+				7B411C961D158F5D007B3C59 /* btnok.png in Resources */,
 				7B46CCAE1CF1E64C00D0928E /* png.bundle in Resources */,
 				7BAAB8351CD8E4B4003EBE37 /* gps.png in Resources */,
 				7B4475FA1B3845B900FEB452 /* png9.png in Resources */,

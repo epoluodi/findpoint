@@ -64,6 +64,9 @@ static GroupInfo *groupinfo;
     return [groups objectForKey:groupid];
 }
 
-
+-(NSInteger)getChannels
+{
+    return [groups count];
+}
 
 @end

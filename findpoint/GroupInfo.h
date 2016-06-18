@@ -29,5 +29,5 @@
 //添加通道
 -(void)addgroupInfo:(NSDictionary *)grouparry;
 -(void)clearGroups;
-
+-(NSInteger)getChannels;
 @end

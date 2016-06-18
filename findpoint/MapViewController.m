@@ -43,7 +43,7 @@
 
 //初始化地图控制UI
 -(void)initUI{
-    
+    NSLog(@"1 %f",map.frame.size.height );
     //定位
     btnloc = [[UIButton alloc] init];
     btnloc.frame=CGRectMake(10,
@@ -96,29 +96,114 @@
     btnchannel.layer.borderColor = [[UIColor colorWithRed:0.917f green:0.5f blue:0.062f alpha:1.00] CGColor];
     btnchannel.layer.cornerRadius=6;
     btnchannel.layer.masksToBounds=YES;
+    [btnchannel addTarget:self action:@selector(selectchannel) forControlEvents:UIControlEventTouchUpInside];
     [map addSubview:btnchannel];
     
 }
 
+
+//点击选择团队
+-(void)selectchannel
+{
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    
+    effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    effectview.alpha=0.8f;
+    
+    effectview.frame =self.tabBarController.view.frame;
+    
+    pickview =[[UIPickerView alloc] init];
+    [pickview setBackgroundColor: [UIColor clearColor]];
+    pickview.dataSource=self;
+    pickview.delegate=self;
+    pickview.frame=CGRectMake(16, effectview.frame.size.height /2 -80, effectview.frame.size.width-32, 190);
+    [effectview addSubview:pickview];
+    
+    btnok=[[UIButton alloc] init];
+    [btnok setBackgroundImage:[UIImage imageNamed:@"btnok"] forState:UIControlStateNormal];
+    btnok.frame=CGRectMake(effectview.frame.size.width / 2 +36, effectview.frame.size.height-80-60, 60, 60);
+    [effectview addSubview:btnok];
+    
+    
+    btnno=[[UIButton alloc] init];
+    [btnno setBackgroundImage:[UIImage imageNamed:@"btnno"] forState:UIControlStateNormal];
+    btnno.frame=CGRectMake(effectview.frame.size.width / 2 -36 - 60, effectview.frame.size.height-80-60, 60, 60);
+    [effectview addSubview:btnno];
+    [btnno addTarget:self action:@selector(closeSelectChannelView) forControlEvents:UIControlEventTouchUpInside];
+    [self.tabBarController.view addSubview:effectview];
+    
+}
+
+
+
+
+#pragma mark pickview delegate
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 50;
+}
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+
+    return [[GroupInfo getInstancet] getChannels] ;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:row];
+    return [d objectForKey:@"CHNAME"];
+}
+
+
+
+#pragma mark -
+
+
+-(void)closeSelectChannelView
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView animateWithDuration:0.3 animations:^{
+        effectview.alpha = 0;
+    } completion:^(BOOL finished) {
+        [pickview removeFromSuperview];
+        pickview=nil;
+        [effectview removeFromSuperview];
+        effectview=nil;
+    }];
+    
+    [UIView commitAnimations];
+
+}
+
+
+//设置团队信息
 -(void)setChannelid:(NSString *)channelid
 {
     _channelid=channelid;
     groupinfo = [[GroupInfo getInstancet] getGroupForGroupid:_channelid];
-    if (!channelname){
-        channelname = [[UIButton alloc] init];
-        channelname.frame=CGRectMake(16, map.frame.size.height -8 -75, map.frame.size.width-32, 24);
-        [channelname setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
-        [channelname setTitleColor:[UIColor colorWithRed:0.917f green:0.5f blue:0.062f alpha:1.00] forState:UIControlStateNormal ];
-        channelname.layer.borderWidth=0.9f;
-        channelname.layer.borderColor = [[UIColor colorWithRed:0.917f green:0.5f blue:0.062f alpha:1.00] CGColor];
-        channelname.layer.cornerRadius=6;
-        channelname.layer.masksToBounds=YES;
-  
-        [map addSubview:channelname];
-    }
-    [channelname setTitle:[groupinfo objectForKey:@"CHNAME"] forState:UIControlStateNormal];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (!channelname){
+            NSLog(@"2 %f",map.frame.size.height );
+            channelname = [[UIButton alloc] init];
+            channelname.frame=CGRectMake(0, map.frame.size.height -25, map.frame.size.width, 24);
+            [channelname setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+            [channelname setTitleColor:[UIColor blueColor] forState:UIControlStateNormal ];
+            channelname.layer.borderWidth=0.9f;
+            channelname.layer.borderColor = [[UIColor colorWithRed:0.917f green:0.5f blue:0.062f alpha:1.00] CGColor];
+            channelname.layer.cornerRadius=6;
+            channelname.layer.masksToBounds=YES;
+            [map addSubview:channelname];
+        }
+        [channelname setTitle:[groupinfo objectForKey:@"CHNAME"] forState:UIControlStateNormal];
 
-
+    });
     NSLog(@"%@",groupinfo);
     
 }
@@ -130,6 +215,8 @@
 //    map.userTrackingMode=MAUserTrackingModeFollow;
 }
 
+
+//更新GPS
 -(void)updateGPS
 {
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -155,6 +242,9 @@
 
     
 }
+
+
+//更新GPS
 -(void)UpdateLocationInfo:(CLLocation *)location
 {
     _location= location;

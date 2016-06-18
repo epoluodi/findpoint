@@ -11,7 +11,7 @@
 #import "GDLocation.h"
 #import "GroupInfo.h"
 
-@interface MapViewController : UIViewController<GPSLocationDelegate>
+@interface MapViewController : UIViewController<GPSLocationDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     CLLocation *_location;
     NSTimer *timer1;//上传GPS
@@ -25,10 +25,15 @@
     UIView *controlview;
     UIButton *btngb,*btnmeet,*btnlen;
     UIButton *btnchannel;
+    UIVisualEffectView *effectview;
+    UIPickerView *pickview;
+    
+    UIButton *btnok,*btnno;
 }
 
 @property (weak, nonatomic) IBOutlet MAMapView *map;
 @property (weak,nonatomic)NSString *channelid;
+
 
 
 @end
