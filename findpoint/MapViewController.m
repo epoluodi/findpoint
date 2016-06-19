@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    marklist = [[NSMutableDictionary alloc] init];
     map.showsCompass=NO;
     map.showsUserLocation=YES;
     map.zoomLevel=17;
@@ -30,7 +31,22 @@
     
     timer1 = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateGPS) userInfo:nil repeats:YES];
     isrun=NO;
+    
+    timer2=[NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(refreshUserGPSInfo) userInfo:nil repeats:YES];
+    [timer2 fire];
+    
+    
 }
+
+-(void)dealloc
+{
+    [timer1 invalidate];
+    timer1=nil;
+    [timer2 invalidate];
+    timer2=nil;
+    
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -43,7 +59,7 @@
 
 //初始化地图控制UI
 -(void)initUI{
-    NSLog(@"1 %f",map.frame.size.height );
+    
     //定位
     btnloc = [[UIButton alloc] init];
     btnloc.frame=CGRectMake(10,
@@ -123,7 +139,7 @@
     [btnok setBackgroundImage:[UIImage imageNamed:@"btnok"] forState:UIControlStateNormal];
     btnok.frame=CGRectMake(effectview.frame.size.width / 2 +36, effectview.frame.size.height-80-60, 60, 60);
     [effectview addSubview:btnok];
-    
+    [btnok addTarget:self action:@selector(OnSelectchannel) forControlEvents:UIControlEventTouchUpInside];
     
     btnno=[[UIButton alloc] init];
     [btnno setBackgroundImage:[UIImage imageNamed:@"btnno"] forState:UIControlStateNormal];
@@ -165,6 +181,15 @@
 #pragma mark -
 
 
+//选择一个团队
+-(void)OnSelectchannel
+{
+    int row= [pickview selectedRowInComponent:0];
+    NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:row];
+    [self setChannelid:[d objectForKey:@"CHID"]];
+    [self closeSelectChannelView];
+}
+
 -(void)closeSelectChannelView
 {
     [UIView beginAnimations:nil context:nil];
@@ -190,7 +215,7 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (!channelname){
-            NSLog(@"2 %f",map.frame.size.height );
+        
             channelname = [[UIButton alloc] init];
             channelname.frame=CGRectMake(0, map.frame.size.height -25, map.frame.size.width, 24);
             [channelname setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
@@ -205,8 +230,61 @@
 
     });
     NSLog(@"%@",groupinfo);
+    [timer2 fire];
+}
+
+
+-(void)refreshUserGPSInfo
+{
+    NSLog(@"定时器开始运行！");
+    if ([_channelid isEqualToString:@""])
+        return;
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    
+    dispatch_async(globalQ, ^{
+        
+        WebService *web = [[WebService alloc] initUrl:getChannelForGPS];
+        NSArray * gpslist = [web getChannelGPS:_channelid];
+        if (!gpslist)
+            return ;
+        NSLog(@"gps 数据：%@",gpslist);
+        NSMutableArray *key = [[NSMutableArray alloc] initWithArray:[marklist allKeys]];
+        
+        
+        
+        for (NSDictionary *d in gpslist) {
+            if ([key containsObject:[d objectForKey:@"deviceid"]])
+            {
+                [key removeObject:[d objectForKey:@"deviceid"]];
+                
+                CustomerPointAnnotaton *mapmark  = [marklist objectForKey:[d objectForKey:@"deviceid"]];
+                CLLocationCoordinate2D coordinate;
+                coordinate.latitude = ((NSString *)[d  objectForKey:@"lat"]).doubleValue;
+                coordinate.longitude = ((NSString *)[d  objectForKey:@"lng"]).doubleValue;
+                mapmark.coordinate =coordinate;
+                mapmark.title = @"";
+            
+            }
+        }
+        
+        dispatch_async(mainQ, ^{
+            
+            
+            
+            
+            
+        });
+    });
+    
+    
+    
+    
     
 }
+
+
 //点击定位
 -(void)Clickbtnloc
 {

@@ -18,6 +18,7 @@
 		7B23F3811B1B490B009779FC /* GPSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F3801B1B490B009779FC /* GPSClass.m */; };
 		7B411C951D158F5D007B3C59 /* btnno.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B411C931D158F5D007B3C59 /* btnno.png */; };
 		7B411C961D158F5D007B3C59 /* btnok.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B411C941D158F5D007B3C59 /* btnok.png */; };
+		7B411C991D16F9BC007B3C59 /* CustomerPointAnnotaton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B411C981D16F9BC007B3C59 /* CustomerPointAnnotaton.m */; };
 		7B419BE11D0728B50037555D /* ChannelInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B419BE01D0728B50037555D /* ChannelInfoController.m */; };
 		7B419BE31D0991510037555D /* gridcellfornick.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B419BE21D0991510037555D /* gridcellfornick.xib */; };
 		7B419BE61D0994E30037555D /* gridcellfornick.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B419BE51D0994E30037555D /* gridcellfornick.m */; };
@@ -148,6 +149,8 @@
 		7B23F3801B1B490B009779FC /* GPSClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSClass.m; sourceTree = "<group>"; };
 		7B411C931D158F5D007B3C59 /* btnno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnno.png; sourceTree = "<group>"; };
 		7B411C941D158F5D007B3C59 /* btnok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnok.png; sourceTree = "<group>"; };
+		7B411C971D16F9BC007B3C59 /* CustomerPointAnnotaton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerPointAnnotaton.h; sourceTree = "<group>"; };
+		7B411C981D16F9BC007B3C59 /* CustomerPointAnnotaton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerPointAnnotaton.m; sourceTree = "<group>"; };
 		7B419BDF1D0728B50037555D /* ChannelInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelInfoController.h; sourceTree = "<group>"; };
 		7B419BE01D0728B50037555D /* ChannelInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelInfoController.m; sourceTree = "<group>"; };
 		7B419BE21D0991510037555D /* gridcellfornick.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = gridcellfornick.xib; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 			children = (
 				7B4CA8551CE0DA500086111B /* MapViewController.h */,
 				7B4CA8561CE0DA500086111B /* MapViewController.m */,
+				7B411C971D16F9BC007B3C59 /* CustomerPointAnnotaton.h */,
+				7B411C981D16F9BC007B3C59 /* CustomerPointAnnotaton.m */,
 			);
 			name = mapview;
 			sourceTree = "<group>";
@@ -845,6 +850,7 @@
 				7BB2D2E71B3C4B6500397F20 /* RegView.m in Sources */,
 				7B419BE11D0728B50037555D /* ChannelInfoController.m in Sources */,
 				7B6C7A9F1B4430A30012000B /* NotificationViewControl.m in Sources */,
+				7B411C991D16F9BC007B3C59 /* CustomerPointAnnotaton.m in Sources */,
 				7B419BE61D0994E30037555D /* gridcellfornick.m in Sources */,
 				7BE416521CE78567001D324B /* TencentClass.m in Sources */,
 			);

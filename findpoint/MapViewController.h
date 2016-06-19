@@ -10,6 +10,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import "GDLocation.h"
 #import "GroupInfo.h"
+#import "CustomerPointAnnotaton.h"
 
 @interface MapViewController : UIViewController<GPSLocationDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
@@ -29,6 +30,9 @@
     UIPickerView *pickview;
     
     UIButton *btnok,*btnno;
+    NSTimer *timer2;
+   
+    NSMutableDictionary<NSString *,CustomerPointAnnotaton  *>*marklist;
 }
 
 @property (weak, nonatomic) IBOutlet MAMapView *map;

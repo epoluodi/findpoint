@@ -37,5 +37,6 @@
 
 -(NSArray *)getChannelUserInfo:(NSString *)chid;
 -(BOOL)delChannelUserInfo:(NSString *)chid;
+-(NSArray *)getChannelGPS:(NSString *)chid;
 
 @end
