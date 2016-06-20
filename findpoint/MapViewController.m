@@ -64,7 +64,6 @@
     btnloc = [[UIButton alloc] init];
     btnloc.frame=CGRectMake(10,
                         map.frame.size.height -8 -120, 38, 38);
-    NSLog(@"%@",NSStringFromCGRect(btnloc.frame));
     [btnloc setImage:[UIImage imageNamed:@"loc"] forState:UIControlStateNormal];
     [btnloc setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
     [btnloc setImageEdgeInsets:
@@ -77,6 +76,22 @@
     [map addSubview:btnloc];
     
   
+    btnrefresh = [[UIButton alloc] init];
+    btnrefresh.frame=CGRectMake(10,
+                            map.frame.size.height -8 -120  -8-38, 38, 38);
+    [btnrefresh setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+    [btnrefresh setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
+    [btnrefresh setImageEdgeInsets:
+     UIEdgeInsetsMake(5, 5, 5, 5)];
+    btnrefresh.layer.borderWidth=1.2f;
+    btnrefresh.layer.borderColor = [[UIColor colorWithRed:0.361 green:0.671 blue:0.886 alpha:1.00] CGColor];
+    btnrefresh.layer.cornerRadius=6;
+    btnrefresh.layer.masksToBounds=YES;
+    [btnrefresh addTarget:self action:@selector(Onbtnrefresh) forControlEvents:UIControlEventTouchUpInside];
+    [map addSubview:btnrefresh];
+
+    
+    
     
     
     controlview = [[UIView alloc] init];
@@ -117,6 +132,11 @@
     
 }
 
+
+-(void)Onbtnrefresh
+{
+    [timer2 fire];
+}
 
 //点击选择团队
 -(void)selectchannel
@@ -251,30 +271,31 @@
             return ;
         NSLog(@"gps 数据：%@",gpslist);
         NSMutableArray *key = [[NSMutableArray alloc] initWithArray:[marklist allKeys]];
-        
+        CustomerPointAnnotaton *mapmark;
         
         
         for (NSDictionary *d in gpslist) {
             if ([key containsObject:[d objectForKey:@"deviceid"]])
             {
                 [key removeObject:[d objectForKey:@"deviceid"]];
-                
-                CustomerPointAnnotaton *mapmark  = [marklist objectForKey:[d objectForKey:@"deviceid"]];
-                CLLocationCoordinate2D coordinate;
-                coordinate.latitude = ((NSString *)[d  objectForKey:@"lat"]).doubleValue;
-                coordinate.longitude = ((NSString *)[d  objectForKey:@"lng"]).doubleValue;
-                mapmark.coordinate =coordinate;
-                mapmark.title = @"";
-            
+                mapmark = [marklist objectForKey:[d objectForKey:@"deviceid"]];
             }
+            else
+                mapmark = [[CustomerPointAnnotaton alloc] init];
+            CLLocationCoordinate2D coordinate;
+            coordinate.latitude = ((NSString *)[d  objectForKey:@"lat"]).doubleValue;
+            coordinate.longitude = ((NSString *)[d  objectForKey:@"lng"]).doubleValue;
+            mapmark.coordinate =coordinate;
+            mapmark.data=d;
+            [marklist setObject:mapmark forKey:[d objectForKey:@"deviceid"]];
         }
-        
+        for (NSString *s  in key) {
+            [marklist removeObjectForKey:s];
+        }
         dispatch_async(mainQ, ^{
-            
-            
-            
-            
-            
+            [map addAnnotations:[marklist allValues]];
+            [map showAnnotations:[marklist allValues] animated:YES];
+        
         });
     });
     
@@ -284,7 +305,33 @@
     
 }
 
+#pragma mark 地图委托
 
+-(MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
+        static NSString *  pointReuseIndetifier = @"pointReuseIndetifier";
+        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
+        if (annotationView == nil)
+        {
+            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:pointReuseIndetifier];
+        }
+        
+        annotationView.canShowCallout               = YES;
+        annotationView.animatesDrop                 = YES;
+        annotationView.draggable                    = YES;
+        annotationView.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+#pragma mark -
 //点击定位
 -(void)Clickbtnloc
 {

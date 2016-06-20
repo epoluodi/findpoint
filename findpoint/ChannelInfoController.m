@@ -144,10 +144,12 @@
             
             if (iPhone6plus)
                 layout.constant=300;
-            if (iPhone6)
+            else if (iPhone6)
                 layout.constant=260;
-            if (iPhone5)
+            else if (iPhone5)
                 layout.constant=240;
+            else
+                layout.constant=160;
             h=layout.constant;
         }
     }
@@ -273,14 +275,7 @@
     cell.name.text = [d objectForKey:@"name"];
     [cell showNickImg:[d objectForKey:@"photo"]];
 //    [cell displayAnim];
-    
-    
-    
-    
     return  cell;
-    
-    
-    
 }
 
 
@@ -292,7 +287,7 @@
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(5, 5, 5, 5);
+    return UIEdgeInsetsMake(2, 5, 2, 5);
 }
 
 //UICollectionView被选中时调用的方法

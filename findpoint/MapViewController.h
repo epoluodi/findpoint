@@ -12,7 +12,7 @@
 #import "GroupInfo.h"
 #import "CustomerPointAnnotaton.h"
 
-@interface MapViewController : UIViewController<GPSLocationDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+@interface MapViewController : UIViewController<GPSLocationDelegate,UIPickerViewDataSource,UIPickerViewDelegate,MAMapViewDelegate>
 {
     CLLocation *_location;
     NSTimer *timer1;//上传GPS
@@ -20,7 +20,7 @@
     BOOL isrun;
     
     //UI
-    UIButton *btnloc ;
+    UIButton *btnloc,*btnrefresh ;
     UIButton *channelname;
     NSDictionary *groupinfo;
     UIView *controlview;
@@ -32,7 +32,7 @@
     UIButton *btnok,*btnno;
     NSTimer *timer2;
    
-    NSMutableDictionary<NSString *,CustomerPointAnnotaton  *>*marklist;
+    __block NSMutableDictionary<NSString *,CustomerPointAnnotaton  *>*marklist;
 }
 
 @property (weak, nonatomic) IBOutlet MAMapView *map;
