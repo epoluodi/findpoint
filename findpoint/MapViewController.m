@@ -294,7 +294,7 @@
         }
         dispatch_async(mainQ, ^{
             [map addAnnotations:[marklist allValues]];
-            [map showAnnotations:[marklist allValues] animated:YES];
+//            [map showAnnotations:[marklist allValues] animated:NO];
         
         });
     });
