@@ -16,6 +16,7 @@
 		7B1DFD2A1CF733CE00D72E86 /* state0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1DFD261CF733CE00D72E86 /* state0.png */; };
 		7B1DFD2D1CF7348100D72E86 /* ChannelMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */; };
 		7B23F3811B1B490B009779FC /* GPSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F3801B1B490B009779FC /* GPSClass.m */; };
+		7B28C3C11D1996F200F6CA64 /* MarkVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B28C3C01D1996F200F6CA64 /* MarkVIew.m */; };
 		7B411C951D158F5D007B3C59 /* btnno.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B411C931D158F5D007B3C59 /* btnno.png */; };
 		7B411C961D158F5D007B3C59 /* btnok.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B411C941D158F5D007B3C59 /* btnok.png */; };
 		7B411C991D16F9BC007B3C59 /* CustomerPointAnnotaton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B411C981D16F9BC007B3C59 /* CustomerPointAnnotaton.m */; };
@@ -148,6 +149,8 @@
 		7B1DFD2C1CF7348100D72E86 /* ChannelMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelMainCell.m; sourceTree = "<group>"; };
 		7B23F37F1B1B490B009779FC /* GPSClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSClass.h; sourceTree = "<group>"; };
 		7B23F3801B1B490B009779FC /* GPSClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSClass.m; sourceTree = "<group>"; };
+		7B28C3BF1D1996F200F6CA64 /* MarkVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkVIew.h; sourceTree = "<group>"; };
+		7B28C3C01D1996F200F6CA64 /* MarkVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkVIew.m; sourceTree = "<group>"; };
 		7B411C931D158F5D007B3C59 /* btnno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnno.png; sourceTree = "<group>"; };
 		7B411C941D158F5D007B3C59 /* btnok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnok.png; sourceTree = "<group>"; };
 		7B411C971D16F9BC007B3C59 /* CustomerPointAnnotaton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerPointAnnotaton.h; sourceTree = "<group>"; };
@@ -405,6 +408,8 @@
 				7B4CA8561CE0DA500086111B /* MapViewController.m */,
 				7B411C971D16F9BC007B3C59 /* CustomerPointAnnotaton.h */,
 				7B411C981D16F9BC007B3C59 /* CustomerPointAnnotaton.m */,
+				7B28C3BF1D1996F200F6CA64 /* MarkVIew.h */,
+				7B28C3C01D1996F200F6CA64 /* MarkVIew.m */,
 			);
 			name = mapview;
 			sourceTree = "<group>";
@@ -839,6 +844,7 @@
 				7B893F5B1B3B088900C1D776 /* LoginView.m in Sources */,
 				7BBC232E1B1AF82800AA88DC /* AppDelegate.m in Sources */,
 				7BCA9CB01B2342E9006D6156 /* AlertView.m in Sources */,
+				7B28C3C11D1996F200F6CA64 /* MarkVIew.m in Sources */,
 				7BC66C1A1D044CCD00AEF132 /* GroupInfo.m in Sources */,
 				7B4475FF1B385B6300FEB452 /* MainTabBar.m in Sources */,
 				7BCF0CFA1B1E020D00DDD8D4 /* Common.m in Sources */,

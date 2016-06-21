@@ -49,6 +49,7 @@ static GroupInfo *groupinfo;
 -(void)clearGroups
 {
     [groups removeAllObjects];
+    GroupCount=0;
 }
 
 -(NSDictionary *)getGroupForindex:(int)index

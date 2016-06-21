@@ -94,6 +94,7 @@
                 {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"目前没有加入到任何团队中！！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                     [alert show];
+                    [table reloadData];
                     return ;
                 }
                 else

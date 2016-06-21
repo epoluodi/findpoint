@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import "WebService.h"
 #import "info.h"
+#import "MarkVIew.h"
 
 
 @interface MapViewController ()
@@ -26,12 +27,13 @@
     map.showsUserLocation=YES;
     map.zoomLevel=17;
     map.userTrackingMode=MAUserTrackingModeFollow;
+    map.delegate=self;
     map.scaleOrigin = CGPointMake(map.scaleOrigin.x, map.scaleOrigin.y+5);
     [GDLocation getInstancet].delegate=self;
     
     timer1 = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateGPS) userInfo:nil repeats:YES];
     isrun=NO;
-    
+//
     timer2=[NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(refreshUserGPSInfo) userInfo:nil repeats:YES];
     [timer2 fire];
     
@@ -230,7 +232,18 @@
 //设置团队信息
 -(void)setChannelid:(NSString *)channelid
 {
+    
     _channelid=channelid;
+    if (!_channelid)
+    {
+        [marklist removeAllObjects];
+
+        [map removeAnnotation:map.annotations];
+        [channelname removeFromSuperview];
+        channelname=nil;
+        [timer2 invalidate];
+        return;
+    }
     groupinfo = [[GroupInfo getInstancet] getGroupForGroupid:_channelid];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -264,7 +277,8 @@
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     
     dispatch_async(globalQ, ^{
-        
+        if (!_channelid)
+            return ;
         WebService *web = [[WebService alloc] initUrl:getChannelForGPS];
         NSArray * gpslist = [web getChannelGPS:_channelid];
         if (!gpslist)
@@ -309,35 +323,39 @@
 
 -(MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
-    if ([annotation isKindOfClass:[MAPointAnnotation class]])
-    {
-        static NSString *  pointReuseIndetifier = @"pointReuseIndetifier";
-        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
-        if (annotationView == nil)
-        {
-            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation
-                                                             reuseIdentifier:pointReuseIndetifier];
-        }
-        
-        annotationView.canShowCallout               = YES;
-        annotationView.animatesDrop                 = YES;
-        annotationView.draggable                    = YES;
-        annotationView.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-
-        
-        return annotationView;
-    }
+    MarkVIew *mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:nil];
+    mark.canShowCallout               = YES;
+    mark.draggable                    = YES;
+    mark.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
-    return nil;
+    
+//    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+//    {
+//        static NSString *  pointReuseIndetifier = @"pointReuseIndetifier";
+//        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
+//        if (annotationView == nil)
+//        {
+//            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation
+//                                                             reuseIdentifier:pointReuseIndetifier];
+//        }
+//        
+//        annotationView.canShowCallout               = YES;
+//        annotationView.animatesDrop                 = YES;
+//        annotationView.draggable                    = YES;
+//        annotationView.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//
+//        
+//        return annotationView;
+//    }
+    
+    return mark;
 }
 
 #pragma mark -
 //点击定位
 -(void)Clickbtnloc
 {
-    
-    [map setCenterCoordinate:_location.coordinate animated:YES];
-//    map.userTrackingMode=MAUserTrackingModeFollow;
+    [map setUserTrackingMode:MAUserTrackingModeFollow animated:YES];
 }
 
 

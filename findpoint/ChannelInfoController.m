@@ -208,6 +208,10 @@
         dispatch_async(mainQ, ^{
             [hud hide:YES];
             if (r){
+             
+                MapViewController * mapvc =  self.tabBarController.viewControllers[1];
+                [mapvc setChannelid:nil];
+          
                 [VC.RefreshList beginRefreshing];
                 [VC refreshlistchannel];
                 [self.navigationController popViewControllerAnimated:YES];
