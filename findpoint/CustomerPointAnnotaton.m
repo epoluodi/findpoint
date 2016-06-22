@@ -10,4 +10,28 @@
 
 @implementation CustomerPointAnnotaton
 
+@synthesize coordinate = _coordinate;
+@synthesize title = _title;
+@synthesize subtitle = _subtitle;
+
+#pragma mark - life cycle
+
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    if (self = [super init])
+    {
+        self.coordinate = coordinate;
+        
+    }
+    return self;
+}
+
+-(NSString *)title
+{
+    return @"111";
+}
+-(NSString *)subtitle
+{
+    return @"123213123";
+}
 @end

@@ -172,7 +172,7 @@
     [service clearArray];
     NSString *json = [[NSString alloc] initWithData:jsondata encoding:NSUTF8StringEncoding];
     [service addParamsString:@"json" values:json];
-    NSData *returndata =  [service httprequest:[service getDataForArrary]];
+    [service httprequest:[service getDataForArrary]];
     
 }
 

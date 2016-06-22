@@ -34,7 +34,7 @@
     timer1 = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateGPS) userInfo:nil repeats:YES];
     isrun=NO;
 //
-    timer2=[NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(refreshUserGPSInfo) userInfo:nil repeats:YES];
+    timer2=[NSTimer scheduledTimerWithTimeInterval:45 target:self selector:@selector(refreshUserGPSInfo) userInfo:nil repeats:YES];
     [timer2 fire];
     
     
@@ -283,32 +283,40 @@
         NSArray * gpslist = [web getChannelGPS:_channelid];
         if (!gpslist)
             return ;
-        NSLog(@"gps 数据：%@",gpslist);
-        NSMutableArray *key = [[NSMutableArray alloc] initWithArray:[marklist allKeys]];
-        CustomerPointAnnotaton *mapmark;
+
+ 
         
         
-        for (NSDictionary *d in gpslist) {
-            if ([key containsObject:[d objectForKey:@"deviceid"]])
-            {
-                [key removeObject:[d objectForKey:@"deviceid"]];
-                mapmark = [marklist objectForKey:[d objectForKey:@"deviceid"]];
-            }
-            else
-                mapmark = [[CustomerPointAnnotaton alloc] init];
-            CLLocationCoordinate2D coordinate;
-            coordinate.latitude = ((NSString *)[d  objectForKey:@"lat"]).doubleValue;
-            coordinate.longitude = ((NSString *)[d  objectForKey:@"lng"]).doubleValue;
-            mapmark.coordinate =coordinate;
-            mapmark.data=d;
-            [marklist setObject:mapmark forKey:[d objectForKey:@"deviceid"]];
-        }
-        for (NSString *s  in key) {
-            [marklist removeObjectForKey:s];
-        }
+    
         dispatch_async(mainQ, ^{
+            NSMutableArray *key = [[NSMutableArray alloc] initWithArray:[marklist allKeys]];
+       
+            CustomerPointAnnotaton *mapmark;
+            
+            for (NSDictionary *d in gpslist) {
+                if ([key containsObject:[d objectForKey:@"deviceid"]])
+                {
+                    [key removeObject:[d objectForKey:@"deviceid"]];
+                    mapmark = [marklist objectForKey:[d objectForKey:@"deviceid"]];
+                }
+                else
+                    mapmark = [[CustomerPointAnnotaton alloc] init];
+                CLLocationCoordinate2D coordinate;
+                coordinate.latitude = ((NSString *)[d  objectForKey:@"lat"]).doubleValue;
+                coordinate.longitude = ((NSString *)[d  objectForKey:@"lng"]).doubleValue;
+                mapmark.coordinate =coordinate;
+                mapmark.data=d;
+        
+                [marklist setObject:mapmark forKey:[d objectForKey:@"deviceid"]];
+         
+            }
+            for (NSString *s  in key) {
+                [marklist removeObjectForKey:s];
+            }
+       
+    
             [map addAnnotations:[marklist allValues]];
-//            [map showAnnotations:[marklist allValues] animated:NO];
+
         
         });
     });
@@ -320,16 +328,41 @@
 }
 
 #pragma mark 地图委托
+- (void)mapView:(MAMapView *)mapView didAnnotationViewCalloutTapped:(MAAnnotationView *)view
+{
+    NSLog(@"callout view :%@", view);
+}
+
 
 -(MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
-    MarkVIew *mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:nil];
-    mark.canShowCallout               = YES;
-    mark.draggable                    = YES;
-    mark.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    if ([[annotation title] isEqualToString:@"当前位置"])
+        return nil;
+    MarkVIew *mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"AnimatedAnnotationIdentifier"];
+
+    return mark;
+//        static NSString *animatedAnnotationIdentifier = @"AnimatedAnnotationIdentifier";
+//    MarkVIew *annotationView;
+////        MarkVIew *annotationView = (MarkVIew *)[mapView dequeueReusableAnnotationViewWithIdentifier:animatedAnnotationIdentifier];
+////        
+//        if (annotationView == nil)
+//        {
+//            annotationView = [[MarkVIew alloc] initWithAnnotation:annotation
+//                                                                reuseIdentifier:animatedAnnotationIdentifier];
+//        }
+//        
+//        annotationView.canShowCallout   = YES;
+//        annotationView.draggable        = YES;
+//        
+//        return annotationView;
     
     
-//    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+  
+
+
+//    
+//    
+//    if (![annotation isKindOfClass:[MAPointAnnotation class]])
 //    {
 //        static NSString *  pointReuseIndetifier = @"pointReuseIndetifier";
 //        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
@@ -347,8 +380,8 @@
 //        
 //        return annotationView;
 //    }
-    
-    return mark;
+//
+
 }
 
 #pragma mark -

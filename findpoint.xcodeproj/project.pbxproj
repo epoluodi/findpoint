@@ -70,6 +70,7 @@
 		7B893F561B3B07AE00C1D776 /* LoginAndRegView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B893F551B3B07AE00C1D776 /* LoginAndRegView.m */; };
 		7B893F581B3B080300C1D776 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B893F571B3B080300C1D776 /* LoginView.xib */; };
 		7B893F5B1B3B088900C1D776 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B893F5A1B3B088900C1D776 /* LoginView.m */; };
+		7B8D2EA11D1AEC2C004D2829 /* AnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8D2EA01D1AEC2C004D2829 /* AnimatedAnnotationView.m */; };
 		7B9231CE1D184B7F0052F962 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9231CD1D184B7F0052F962 /* refresh.png */; };
 		7BAAB8311CD8E1C6003EBE37 /* jiantou.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAB8301CD8E1C6003EBE37 /* jiantou.png */; };
 		7BAAB8331CD8E266003EBE37 /* color.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAAB8321CD8E266003EBE37 /* color.png */; };
@@ -224,6 +225,8 @@
 		7B893F571B3B080300C1D776 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		7B893F591B3B088900C1D776 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		7B893F5A1B3B088900C1D776 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		7B8D2E9F1D1AEC2C004D2829 /* AnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotationView.h; sourceTree = "<group>"; };
+		7B8D2EA01D1AEC2C004D2829 /* AnimatedAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedAnnotationView.m; sourceTree = "<group>"; };
 		7B9231CD1D184B7F0052F962 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
 		7BAAB8301CD8E1C6003EBE37 /* jiantou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiantou.png; sourceTree = "<group>"; };
 		7BAAB8321CD8E266003EBE37 /* color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color.png; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 		7B4CA8541CE0DA360086111B /* mapview */ = {
 			isa = PBXGroup;
 			children = (
+				7B8D2E9F1D1AEC2C004D2829 /* AnimatedAnnotationView.h */,
+				7B8D2EA01D1AEC2C004D2829 /* AnimatedAnnotationView.m */,
 				7B4CA8551CE0DA500086111B /* MapViewController.h */,
 				7B4CA8561CE0DA500086111B /* MapViewController.m */,
 				7B411C971D16F9BC007B3C59 /* CustomerPointAnnotaton.h */,
@@ -850,6 +855,7 @@
 				7BCF0CFA1B1E020D00DDD8D4 /* Common.m in Sources */,
 				7B4CA8571CE0DA500086111B /* MapViewController.m in Sources */,
 				7B17CC7A1B331E0500F60BFF /* LaunchView.m in Sources */,
+				7B8D2EA11D1AEC2C004D2829 /* AnimatedAnnotationView.m in Sources */,
 				7BE416361CE5FE15001D324B /* GPSViewController.m in Sources */,
 				7BB9C3D91B1CAC0D0004225C /* addchannel.m in Sources */,
 				7BB9C3D61B1CA63D0004225C /* channelViewController.m in Sources */,

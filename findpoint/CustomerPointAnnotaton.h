@@ -8,9 +8,19 @@
 
 #import <MAMapKit/MAMapKit.h>
 
-@interface CustomerPointAnnotaton : MAPointAnnotation
+@interface CustomerPointAnnotaton : NSObject<MAAnnotation>
 
 @property (copy,nonatomic)NSDictionary *gpsinfo;
 @property (copy,nonatomic)NSString *uid;
 @property (copy,nonatomic)NSDictionary *data;
+
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
+
+
+@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
+
+
 @end

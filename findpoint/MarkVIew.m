@@ -29,22 +29,22 @@
     {
         self.bounds = CGRectMake(0.f, 0.f, 30, 30);
         
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor clearColor];
         
         /* Create portrait image view and add to view hierarchy. */
         nickimg = [[UIImageView alloc] initWithFrame:CGRectMake(0  , 0, 30, 30)];
         [self addSubview:nickimg];
-        
-        self.layer.cornerRadius=15;
-        self.layer.masksToBounds=YES;
-        self.backgroundColor = [UIColor clearColor];
+//
+        nickimg.layer.cornerRadius=15;
+        nickimg.layer.masksToBounds=YES;
+
+        self.canShowCallout=YES;
         nickimg.image=[UIImage imageNamed:@"state3"];
    
     }
-    
+
     return self;
 }
-
 
 
 @end
