@@ -10,7 +10,8 @@
 #import "WebService.h"
 #import "info.h"
 #import "MarkVIew.h"
-
+#import "Common.h"
+#import <Common/FileCommon.h>
 
 @interface MapViewController ()
 
@@ -306,7 +307,8 @@
                 coordinate.longitude = ((NSString *)[d  objectForKey:@"lng"]).doubleValue;
                 mapmark.coordinate =coordinate;
                 mapmark.data=d;
-        
+                mapmark.title=[d objectForKey:@"name"];
+                mapmark.uid = [d objectForKey:@"deviceid"];
                 [marklist setObject:mapmark forKey:[d objectForKey:@"deviceid"]];
          
             }
@@ -338,49 +340,35 @@
 {
     if ([[annotation title] isEqualToString:@"当前位置"])
         return nil;
-    MarkVIew *mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"AnimatedAnnotationIdentifier"];
+    
+    CustomerPointAnnotaton *cann = (CustomerPointAnnotaton *)annotation;
+    
+    MarkVIew *mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"mark"];
+    NSDictionary *d = cann.data;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *path = [FileCommon getCacheDirectory];
+    NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",[d objectForKey:@"openid"]]];
+    NSData *pngdata;
+    if ([fm fileExistsAtPath:_filename])
+    {
+        pngdata = [NSData dataWithContentsOfFile:_filename];
 
+    }
+    else
+    {
+        NSURL *url = [NSURL URLWithString:[d objectForKey:@"photo"]];
+        pngdata = [NSData dataWithContentsOfURL:url];
+        if (pngdata)
+        {
+            [fm createFileAtPath:_filename contents:pngdata attributes:nil];
+        }
+    }
+    
+    if (pngdata)
+        mark.nickimg.image=[UIImage imageWithData:pngdata];
+    
     return mark;
-//        static NSString *animatedAnnotationIdentifier = @"AnimatedAnnotationIdentifier";
-//    MarkVIew *annotationView;
-////        MarkVIew *annotationView = (MarkVIew *)[mapView dequeueReusableAnnotationViewWithIdentifier:animatedAnnotationIdentifier];
-////        
-//        if (annotationView == nil)
-//        {
-//            annotationView = [[MarkVIew alloc] initWithAnnotation:annotation
-//                                                                reuseIdentifier:animatedAnnotationIdentifier];
-//        }
-//        
-//        annotationView.canShowCallout   = YES;
-//        annotationView.draggable        = YES;
-//        
-//        return annotationView;
-    
-    
-  
 
-
-//    
-//    
-//    if (![annotation isKindOfClass:[MAPointAnnotation class]])
-//    {
-//        static NSString *  pointReuseIndetifier = @"pointReuseIndetifier";
-//        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
-//        if (annotationView == nil)
-//        {
-//            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation
-//                                                             reuseIdentifier:pointReuseIndetifier];
-//        }
-//        
-//        annotationView.canShowCallout               = YES;
-//        annotationView.animatesDrop                 = YES;
-//        annotationView.draggable                    = YES;
-//        annotationView.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//
-//        
-//        return annotationView;
-//    }
-//
 
 }
 

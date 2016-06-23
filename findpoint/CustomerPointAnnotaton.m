@@ -26,12 +26,5 @@
     return self;
 }
 
--(NSString *)title
-{
-    return @"111";
-}
--(NSString *)subtitle
-{
-    return @"123213123";
-}
+
 @end

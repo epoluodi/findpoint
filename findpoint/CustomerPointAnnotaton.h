@@ -10,7 +10,6 @@
 
 @interface CustomerPointAnnotaton : NSObject<MAAnnotation>
 
-@property (copy,nonatomic)NSDictionary *gpsinfo;
 @property (copy,nonatomic)NSString *uid;
 @property (copy,nonatomic)NSDictionary *data;
 

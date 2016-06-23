@@ -27,12 +27,12 @@
     
     if (self)
     {
-        self.bounds = CGRectMake(0.f, 0.f, 30, 30);
+        self.bounds = CGRectMake(0.f, 0.f, 40, 40);
         
         self.backgroundColor = [UIColor clearColor];
         
         /* Create portrait image view and add to view hierarchy. */
-        nickimg = [[UIImageView alloc] initWithFrame:CGRectMake(0  , 0, 30, 30)];
+        nickimg = [[UIImageView alloc] initWithFrame:CGRectMake(0  , 0, 40, 40)];
         [self addSubview:nickimg];
 //
         nickimg.layer.cornerRadius=15;

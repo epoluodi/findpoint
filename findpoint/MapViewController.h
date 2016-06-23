@@ -11,7 +11,7 @@
 #import "GDLocation.h"
 #import "GroupInfo.h"
 #import "CustomerPointAnnotaton.h"
-#import "AnimatedAnnotationView.h"
+
 @interface MapViewController : UIViewController<GPSLocationDelegate,UIPickerViewDataSource,UIPickerViewDelegate,MAMapViewDelegate>
 {
     CLLocation *_location;
