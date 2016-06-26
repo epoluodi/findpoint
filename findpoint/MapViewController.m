@@ -38,7 +38,7 @@
     timer2=[NSTimer scheduledTimerWithTimeInterval:45 target:self selector:@selector(refreshUserGPSInfo) userInfo:nil repeats:YES];
     [timer2 fire];
     
-    
+    _self=self;
 }
 
 -(void)dealloc
@@ -109,6 +109,7 @@
     btngb = [[UIButton alloc] init];
     btngb.frame=CGRectMake(10, 10, 40, 60);
     [btngb setImage:[UIImage imageNamed:@"boradcast"] forState:UIControlStateNormal];
+    [btngb addTarget:self action:@selector(showboradcastsheet) forControlEvents:UIControlEventTouchUpInside];
     [controlview addSubview:btngb];
     
     btnmeet = [[UIButton alloc] init];
@@ -174,7 +175,59 @@
 }
 
 
+//显示广播
+-(void)showboradcastsheet
+{
+    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"广播信息" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"请各位上报位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"请各位到集合点" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"今天活动结束" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *action4 = [UIAlertAction actionWithTitle:@"自定义消息" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [_self showCustomMsg];
+    }];
+  
+    UIAlertAction *action5 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:action1];
+    [alert addAction:action2];
+    [alert addAction:action3];
+    [alert addAction:action4];
+    [alert addAction:action5];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
 
+-(void)showCustomMsg
+{
+    UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"广播信息" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction *action5 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        customtext = textField;
+        textField.clearButtonMode=UITextFieldViewModeWhileEditing;
+        
+        textField.placeholder=@"输入自定消息内容";
+    }];
+    
+    [alert addAction:action1];
+    [alert addAction:action5];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+-(void)submitboradcast:(NSString *)msg
+{
+    if (!_channelid)
+        return;
+}
 
 #pragma mark pickview delegate
 
@@ -193,13 +246,22 @@
     return [[GroupInfo getInstancet] getChannels] ;
 }
 
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+//-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+//{
+//    NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:row];
+//    return [d objectForKey:@"CHNAME"];
+//}
+
+-(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
-    NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:row];
-    return [d objectForKey:@"CHNAME"];
+     NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:row];
+    
+    UILabel *l = [[UILabel alloc] init];
+    l.textColor = [UIColor whiteColor];
+    l.text=[d objectForKey:@"CHNAME"];
+    l.textAlignment=NSTextAlignmentCenter;
+    return l;
 }
-
-
 
 #pragma mark -
 
@@ -284,11 +346,6 @@
         NSArray * gpslist = [web getChannelGPS:_channelid];
         if (!gpslist)
             return ;
-
- 
-        
-        
-    
         dispatch_async(mainQ, ^{
             NSMutableArray *key = [[NSMutableArray alloc] initWithArray:[marklist allKeys]];
        
@@ -322,12 +379,10 @@
         
         });
     });
-    
-    
-    
-    
-    
 }
+
+
+
 
 #pragma mark 地图委托
 - (void)mapView:(MAMapView *)mapView didAnnotationViewCalloutTapped:(MAAnnotationView *)view

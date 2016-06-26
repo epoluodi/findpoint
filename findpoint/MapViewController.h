@@ -28,9 +28,10 @@
     UIButton *btnchannel;
     UIVisualEffectView *effectview;
     UIPickerView *pickview;
-    
+    UITextField *customtext;
     UIButton *btnok,*btnno;
     NSTimer *timer2;
+    __block id _self;
    
     __block NSMutableDictionary<NSString *,CustomerPointAnnotaton  *>*marklist;
 }

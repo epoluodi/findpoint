@@ -46,6 +46,7 @@
                              stringByReplacingOccurrencesOfString:@"<" withString:@""]
                             stringByReplacingOccurrencesOfString:@">" withString:@""]
                            stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"推送toekn %@",pushToken);
 }
 
 
