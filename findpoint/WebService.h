@@ -39,4 +39,6 @@
 -(BOOL)delChannelUserInfo:(NSString *)chid;
 -(NSArray *)getChannelGPS:(NSString *)chid;
 
+-(void)submittoken:(NSString *)token;
+
 @end

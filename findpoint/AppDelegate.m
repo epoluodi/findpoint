@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GroupInfo.h"
 #import "GPSClass.h"
+#import "WebService.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    
+    
     // Override point for customization after application launch.
     [MAMapServices sharedServices].apiKey = MAPKEY;
     [AMapLocationServices sharedServices].apiKey=MAPKEY;
@@ -35,18 +39,30 @@
     
     [GroupInfo getInstancet];
     
+    
+
+    
     return YES;
 }
 
 
 
+
+
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-     pushToken = [[[[deviceToken description]
-                             stringByReplacingOccurrencesOfString:@"<" withString:@""]
-                            stringByReplacingOccurrencesOfString:@">" withString:@""]
-                           stringByReplacingOccurrencesOfString:@" " withString:@""];
+    pushToken = [[[[deviceToken description]
+                   stringByReplacingOccurrencesOfString:@"<" withString:@""]
+                  stringByReplacingOccurrencesOfString:@">" withString:@""]
+                 stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"推送toekn %@",pushToken);
+    
+//    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(globalQ, ^{
+//        WebService *web = [[WebService alloc] initUrl:pushsubmit];
+//        [web submittoken:pushToken];
+//    });
+    
 }
 
 

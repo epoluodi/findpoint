@@ -732,6 +732,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 					7BBC233D1B1AF82800AA88DC = {

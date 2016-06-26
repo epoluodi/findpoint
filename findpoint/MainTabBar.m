@@ -18,7 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings
+                                                                         settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge)
+                                                                         categories:nil]];
+    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入
     //开启连续定位
     [[GDLocation getInstancet] StartLocation];
     

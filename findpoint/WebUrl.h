@@ -22,6 +22,8 @@
 
 #define downloadjpg @"http://epoluodi.vicp.cc:8081/PublicCommon.asmx/Download"
 
+#pragma 推送
+#define pushsubmit [NSString stringWithFormat:@"%@%@",ServerUrl,@"push.asmx/submittoken"]
 #pragma 用户信息调用地址
 #define UserCreate [NSString stringWithFormat:@"%@%@",ServerUrl,@"userinfo.asmx/UserCreate"]
 

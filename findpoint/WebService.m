@@ -163,6 +163,15 @@
     return [arry copy];
 }
 
+#pragma 推送
+-(void)submittoken:(NSString *)token
+{
+    [service clearArray];
+    [service addParamsString:@"userid" values:[info getInstancent].uid];
+    [service addParamsString:@"token" values:token];
+    [service httprequest:[service getDataForArrary]];
+}
+
 #pragma GPS
 
 //提交GPS
