@@ -145,6 +145,12 @@
 //点击选择团队
 -(void)selectchannel
 {
+    
+    if ([[GroupInfo getInstancet] getChannels]==0)
+        return;
+    
+    
+    
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     
     effectview = [[UIVisualEffectView alloc] initWithEffect:blur];

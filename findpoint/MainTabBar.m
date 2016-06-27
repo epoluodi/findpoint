@@ -18,9 +18,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //接受按钮
+    UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
+    acceptAction.identifier = @"acceptAction";
+    acceptAction.title = @"上报位置";
+    acceptAction.activationMode = UIUserNotificationActivationModeForeground;
+    //拒绝按钮
+    UIMutableUserNotificationAction *rejectAction = [[UIMutableUserNotificationAction alloc] init];
+    rejectAction.identifier = @"rejectAction";
+    rejectAction.title = @"拒绝";
+    rejectAction.activationMode = UIUserNotificationActivationModeBackground;
+    rejectAction.authenticationRequired = NO;//需要解锁才能处理，如果action.activationMode = UIUserNotificationActivationModeForeground;则这个属性被忽略；
+//    rejectAction.destructive = YES;
+
+    UIMutableUserNotificationCategory *categorys = [[UIMutableUserNotificationCategory alloc] init];
+    categorys.identifier = @"boardcast";
+    NSArray *actions = @[acceptAction,rejectAction];
+    [categorys setActions:actions forContext:UIUserNotificationActionContextMinimal];
+    
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings
                                                                          settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge)
-                                                                         categories:nil]];
+                                                                         categories:[NSSet setWithObjects:categorys, nil]]];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入
     //开启连续定位
     [[GDLocation getInstancet] StartLocation];

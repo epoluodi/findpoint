@@ -46,6 +46,10 @@
 }
 
 
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"推送错误 %@",error);
+}
 
 
 
@@ -57,14 +61,18 @@
                  stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"推送toekn %@",pushToken);
     
-//    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_async(globalQ, ^{
-//        WebService *web = [[WebService alloc] initUrl:pushsubmit];
-//        [web submittoken:pushToken];
-//    });
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(globalQ, ^{
+        WebService *web = [[WebService alloc] initUrl:pushsubmit];
+        [web submittoken:pushToken];
+    });
     
 }
-
+-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler
+{
+    NSLog(@"%@",identifier);
+    completionHandler();
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
