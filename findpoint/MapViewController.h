@@ -31,6 +31,7 @@
     UITextField *customtext;
     UIButton *btnok,*btnno;
     NSTimer *timer2;
+    __block NSMutableArray<NSString *>* devicelist;
     __block id _self;
    
     __block NSMutableDictionary<NSString *,CustomerPointAnnotaton  *>*marklist;

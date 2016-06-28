@@ -24,6 +24,7 @@
     [super viewDidLoad];
     
     marklist = [[NSMutableDictionary alloc] init];
+    devicelist = [[NSMutableArray alloc] init];
     map.showsCompass=NO;
     map.showsUserLocation=YES;
     map.zoomLevel=17;
@@ -186,13 +187,14 @@
 {
     UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"广播信息" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"请各位上报位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [self submitboradcast:@"请各位上报位置" msgtype:@"boardcast"];
+
     }];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"请各位到集合点" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [self submitboradcast:@"请各位到集合点" msgtype:@"answer"];
     }];
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"今天活动结束" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [self submitboradcast:@"今天活动结束" msgtype:nil];
     }];
     UIAlertAction *action4 = [UIAlertAction actionWithTitle:@"自定义消息" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [_self showCustomMsg];
@@ -212,7 +214,7 @@
 {
     UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"广播信息" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [self submitboradcast:customtext.text msgtype:nil];
     }];
     
     UIAlertAction *action5 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -229,10 +231,15 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
--(void)submitboradcast:(NSString *)msg
+-(void)submitboradcast:(NSString *)msg msgtype:(NSString *)msgtype
 {
     if (!_channelid)
         return;
+    NSString *strlist = [devicelist componentsJoinedByString:@","];
+    
+    
+    
+    
 }
 
 #pragma mark pickview delegate
@@ -356,8 +363,9 @@
             NSMutableArray *key = [[NSMutableArray alloc] initWithArray:[marklist allKeys]];
        
             CustomerPointAnnotaton *mapmark;
-            
+            [devicelist removeAllObjects];
             for (NSDictionary *d in gpslist) {
+                [devicelist addObject:[d objectForKey:@"deviceid"]];
                 if ([key containsObject:[d objectForKey:@"deviceid"]])
                 {
                     [key removeObject:[d objectForKey:@"deviceid"]];
