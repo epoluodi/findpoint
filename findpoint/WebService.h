@@ -40,5 +40,7 @@
 -(NSArray *)getChannelGPS:(NSString *)chid;
 
 -(void)submittoken:(NSString *)token;
+-(BOOL)sendpush:(NSString *)devicelist msg:(NSString *)msg msgtype:(NSString *)msgtype;
+
 
 @end

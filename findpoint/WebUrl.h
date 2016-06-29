@@ -24,6 +24,9 @@
 
 #pragma 推送
 #define pushsubmit [NSString stringWithFormat:@"%@%@",ServerUrl,@"push.asmx/submitToken"]
+#define sendPush [NSString stringWithFormat:@"%@%@",ServerUrl,@"push.asmx/sendPush"]
+
+
 #pragma 用户信息调用地址
 #define UserCreate [NSString stringWithFormat:@"%@%@",ServerUrl,@"userinfo.asmx/UserCreate"]
 

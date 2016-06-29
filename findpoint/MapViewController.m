@@ -236,7 +236,22 @@
     if (!_channelid)
         return;
     NSString *strlist = [devicelist componentsJoinedByString:@","];
-    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(globalQ, ^{
+        
+        WebService *web = [[WebService alloc] initUrl:sendPush];
+        BOOL r=  [web sendpush:strlist msg:msg msgtype:msgtype];
+        dispatch_async(mainQ, ^{
+            NSString *alertmag;
+            if (r)
+                alertmag = @"广播已经发送";
+            else
+                alertmag = @"广播发送失败";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:alertmag delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        });
+    });
     
     
     

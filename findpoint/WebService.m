@@ -172,6 +172,24 @@
     [service httprequest:[service getDataForArrary]];
 }
 
+-(BOOL)sendpush:(NSString *)devicelist msg:(NSString *)msg msgtype:(NSString *)msgtype
+{
+    [service clearArray];
+    [service addParamsString:@"devicelist" values:devicelist];
+    [service addParamsString:@"msg" values:msg];
+    [service addParamsString:@"json" values:@""];
+    [service addParamsString:@"msgtype" values:msgtype];
+    NSData* returndata =  [service httprequest:[service getDataForArrary]];
+    
+    if (returndata == nil)
+        return NO;
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return NO;
+    if ([ret isEqualToString:@"1"])
+        return YES;
+    return NO;
+}
 #pragma GPS
 
 //提交GPS
