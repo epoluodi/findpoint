@@ -10,6 +10,8 @@
 #import "GroupInfo.h"
 #import "GPSClass.h"
 #import "WebService.h"
+#import "NotificationGPS.h"
+#import "MainTabBar.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +21,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    
     
     
     // Override point for customization after application launch.
@@ -40,15 +42,18 @@
     [GroupInfo getInstancet];
     
     
-
+    
     
     return YES;
 }
 
 
--(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    NSLog(@"推送错误 %@",error);
+   
+    
+    MainTabBar *main = (MainTabBar *)_window.rootViewController;
+    [main NoiticaionForremot:userInfo];
 }
 
 
@@ -71,11 +76,49 @@
 -(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler
 {
     NSLog(@"%@",identifier);
-   
+    if ([identifier isEqualToString:@"accept"]){
+        CLLocation *loc;
+        NotificationGPS *ngps;
+        [GDLocation getInstancet].delegate=self;
+        if ([GDLocation getInstancet].IsLocation){
+            loc= [GDLocation getInstancet].GetLocation;
+            ngps = [[NotificationGPS alloc] init];
+            [ngps updateGPS:loc];
+        }
+        else{
+            [MAMapServices sharedServices].apiKey = MAPKEY;
+            [AMapLocationServices sharedServices].apiKey=MAPKEY;
+            [AMapSearchServices sharedServices].apiKey =MAPKEY;
+            [GDLocation getInstancet];
+            sleep(1);
+            [[GDLocation getInstancet] SingleLocation];
+        }
+    }
     
+    if ([identifier isEqualToString:@"recive"]){
+        NotificationGPS *ngps;
+        ngps = [[NotificationGPS alloc] init];
+        [ngps sendpush:[userInfo objectForKey:@"json"]];
+    }
     
     completionHandler();
 }
+
+
+
+
+
+
+
+#pragma mark 定位
+-(void)updateSingleLocInfo:(CLLocation *)loc GeoCode:(AMapLocationReGeocode *)getoinfo
+{
+    NotificationGPS *ngps = [[NotificationGPS alloc] init];
+    [ngps updateGPS:loc];
+}
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -10,4 +10,7 @@
 
 @interface MainTabBar : UITabBarController
 
+
+
+-(void)NoiticaionForremot:(NSDictionary *)json;
 @end

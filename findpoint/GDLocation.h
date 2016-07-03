@@ -21,7 +21,7 @@
     
 }
 
-
+@property (assign) BOOL IsLocation;
 @property (weak,nonatomic)NSObject<GPSLocationDelegate> *delegate;
 @property (copy,nonatomic)CLLocation *GetLocation;
 //@property (assign,getter=_gdlocation)CLLocationCoordinate2D GDCoordinate2D;
@@ -34,4 +34,6 @@
 -(void)StopLocation;
 //获得地址搜索信息
 -(void)getLocationGeoInfo:(CLLocation *)location;
+//单词定位
+-(void)SingleLocation;
 @end

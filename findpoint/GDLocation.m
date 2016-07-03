@@ -10,6 +10,7 @@
 
 @implementation GDLocation
 @synthesize delegate;
+@synthesize IsLocation;
 static GDLocation *location;
 
 //静态函数获取当前实例
@@ -33,7 +34,7 @@ static GDLocation *location;
     
     [locationmanger setAllowsBackgroundLocationUpdates:YES];
     
-    
+    IsLocation=NO;
     search = [[AMapSearchAPI alloc] init];
     search.delegate = self;
     
@@ -49,15 +50,23 @@ static GDLocation *location;
             [delegate NoOpenLocation];
         return;
     }
+    IsLocation=YES;
     [locationmanger startUpdatingLocation];
 }
 
 -(void)StopLocation
 {
+    IsLocation=NO;
     [locationmanger stopUpdatingLocation];
 }
 
-
+-(void)SingleLocation
+{
+    [locationmanger requestLocationWithReGeocode:NO completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+        if (delegate)
+            [delegate updateSingleLocInfo:location GeoCode:regeocode];
+    }];
+}
 
 
 #pragma mark 定位代理

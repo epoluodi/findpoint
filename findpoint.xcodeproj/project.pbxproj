@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B006F221D28C5DB00F40B2C /* NotificationGPS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B006F211D28C5DB00F40B2C /* NotificationGPS.m */; };
 		7B021C631CF8968A006C2E24 /* SearchChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B021C621CF8968A006C2E24 /* SearchChannel.m */; };
 		7B17CC761B32FC0900F60BFF /* settingMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B17CC751B32FC0900F60BFF /* settingMainViewController.m */; };
 		7B17CC7A1B331E0500F60BFF /* LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B17CC791B331E0500F60BFF /* LaunchView.m */; };
@@ -135,6 +136,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B006F201D28C5DB00F40B2C /* NotificationGPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationGPS.h; sourceTree = "<group>"; };
+		7B006F211D28C5DB00F40B2C /* NotificationGPS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationGPS.m; sourceTree = "<group>"; };
 		7B021C611CF8968A006C2E24 /* SearchChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchChannel.h; sourceTree = "<group>"; };
 		7B021C621CF8968A006C2E24 /* SearchChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchChannel.m; sourceTree = "<group>"; };
 		7B17CC741B32FC0900F60BFF /* settingMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingMainViewController.h; sourceTree = "<group>"; };
@@ -367,6 +370,8 @@
 				7BCA9CAF1B2342E9006D6156 /* AlertView.m */,
 				7BC66C181D044CCD00AEF132 /* GroupInfo.h */,
 				7BC66C191D044CCD00AEF132 /* GroupInfo.m */,
+				7B006F201D28C5DB00F40B2C /* NotificationGPS.h */,
+				7B006F211D28C5DB00F40B2C /* NotificationGPS.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -838,6 +843,7 @@
 				7B4CF6751CDF91C6000D4415 /* GDLocation.m in Sources */,
 				7B893F561B3B07AE00C1D776 /* LoginAndRegView.m in Sources */,
 				7BCF0D021B1E06DA00DDD8D4 /* WebService.m in Sources */,
+				7B006F221D28C5DB00F40B2C /* NotificationGPS.m in Sources */,
 				7BCF0CF71B1DFFE100DDD8D4 /* channelCell.m in Sources */,
 				7B1DFD2D1CF7348100D72E86 /* ChannelMainCell.m in Sources */,
 				7B23F3811B1B490B009779FC /* GPSClass.m in Sources */,

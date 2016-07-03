@@ -8,6 +8,7 @@
 
 #import "MainTabBar.h"
 #import "GDLocation.h"
+#import "NotificationGPS.h"
 
 @interface MainTabBar ()
 
@@ -20,13 +21,13 @@
     [super viewDidLoad];
     //接受按钮
     UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
-    acceptAction.identifier = @"acceptAction";
+    acceptAction.identifier = @"accept";
     acceptAction.title = @"上报位置";
     acceptAction.activationMode = UIUserNotificationActivationModeBackground;
     acceptAction.authenticationRequired = NO;//需要解锁才能处理，如果
     
     UIMutableUserNotificationAction *acceptAction2 = [[UIMutableUserNotificationAction alloc] init];
-    acceptAction2.identifier = @"acceptAction";
+    acceptAction2.identifier = @"recive";
     acceptAction2.title = @"收到";
     acceptAction2.activationMode = UIUserNotificationActivationModeBackground;
     acceptAction2.authenticationRequired = NO;//需要解锁才能处理，如果
@@ -76,7 +77,53 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-
+-(void)NoiticaionForremot:(NSDictionary *)json
+{
+    //    {
+    //        aps =     {
+    //            alert = "\U8bf7\U5404\U4f4d\U5230\U96c6\U5408\U70b9";
+    //            badge = 1;
+    //            category = answer;
+    //            sound = "sound.caf";
+    //        };
+    //        json = "";
+    //    }
+    UIAlertController  *alert;
+    
+    NSString * category = [[json objectForKey:@"aps"] objectForKey:@"category"];
+    NSString *remotedeviceid =[json objectForKey:@"json"];
+    if ([category isEqualToString:@"boardcast"])
+    {
+        CLLocation*loc =   [GDLocation getInstancet].GetLocation;
+        alert = [UIAlertController alertControllerWithTitle:@"通知提示" message:[[json objectForKey:@"aps"] objectForKey:@"alert"] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"上报位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NotificationGPS *ngps = [[NotificationGPS  alloc] init];
+            [ngps updateGPS:loc];
+        }];
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:action1];
+        [alert addAction:action2];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    if ([category isEqualToString:@"answer"])
+    {
+        alert = [UIAlertController alertControllerWithTitle:@"通知提示" message:[[json objectForKey:@"aps"] objectForKey:@"alert"] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"收到" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NotificationGPS *ngps = [[NotificationGPS  alloc] init];
+            [ngps sendpush:[json objectForKey:@"json"]];
+        }];
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:action1];
+        [alert addAction:action2];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

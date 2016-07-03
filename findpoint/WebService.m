@@ -177,7 +177,7 @@
     [service clearArray];
     [service addParamsString:@"devicelist" values:devicelist];
     [service addParamsString:@"msg" values:msg];
-    [service addParamsString:@"json" values:@""];
+    [service addParamsString:@"json" values:[info getInstancent].uid];
     [service addParamsString:@"msgtype" values:msgtype];
     NSData* returndata =  [service httprequest:[service getDataForArrary]];
     

@@ -22,6 +22,8 @@
 -(void)UpdateLocationInfo:(CLLocation *)location;
 // 更新地址信息
 -(void)updateReGeoInfo:(AMapReGeocode *)GeoCodeInfo;
+//单词定位获得的信息
+-(void)updateSingleLocInfo:(CLLocation *)loc GeoCode:(AMapLocationReGeocode *)getoinfo;
 @end
 
 

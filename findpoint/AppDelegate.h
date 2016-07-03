@@ -11,6 +11,7 @@
 #import "WebService.h"
 #import "TencentClass.h"
 #import "WeChatClass.h"
+#import "GDLocation.h"
 
 #define MAPKEY @"7abad449503752055bbe35c553131a16"
 #define QQKEY @"AhXtCwxURKsgEman"
@@ -18,7 +19,7 @@
 
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,GPSLocationDelegate>
 {
     NSUserDefaults *userinfo;
     NSString *pushToken;
