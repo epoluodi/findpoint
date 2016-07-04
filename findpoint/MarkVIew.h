@@ -14,4 +14,6 @@
 @property (nonatomic,copy)NSString *openid;
 @property (nonatomic,copy)NSString *username;
 
+
+-(void)startAnimiation;
 @end

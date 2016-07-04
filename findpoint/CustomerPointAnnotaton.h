@@ -18,8 +18,9 @@
 
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+@property (copy,nonatomic)NSString *identity;
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 
-
+//-(instancetype)getShadowRadiu;
 @end

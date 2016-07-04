@@ -13,6 +13,7 @@
 @synthesize coordinate = _coordinate;
 @synthesize title = _title;
 @synthesize subtitle = _subtitle;
+@synthesize identity;
 
 #pragma mark - life cycle
 
@@ -26,5 +27,8 @@
     return self;
 }
 
-
+//-(instancetype)getShadowRadiu
+//{
+//    CustomerPointAnnotaton * annotaton;
+//}
 @end

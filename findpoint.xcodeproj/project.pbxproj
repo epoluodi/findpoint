@@ -110,6 +110,7 @@
 		B45B62B11D12A76800C57F30 /* meetpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AE1D12A76800C57F30 /* meetpoint.png */; };
 		B45B62B21D12A76800C57F30 /* boradcast.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AF1D12A76800C57F30 /* boradcast.png */; };
 		B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B464B6581CF5A664009A6A6F /* channelmaincell.xib */; };
+		B47311A61D29FBC2007029F0 /* meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = B47311A51D29FBC2007029F0 /* meeting.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +283,7 @@
 		B45B62AE1D12A76800C57F30 /* meetpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meetpoint.png; sourceTree = "<group>"; };
 		B45B62AF1D12A76800C57F30 /* boradcast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boradcast.png; sourceTree = "<group>"; };
 		B464B6581CF5A664009A6A6F /* channelmaincell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = channelmaincell.xib; sourceTree = "<group>"; };
+		B47311A51D29FBC2007029F0 /* meeting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meeting.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,6 +566,7 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				B47311A51D29FBC2007029F0 /* meeting.png */,
 				7B9231CD1D184B7F0052F962 /* refresh.png */,
 				7B411C931D158F5D007B3C59 /* btnno.png */,
 				7B411C941D158F5D007B3C59 /* btnok.png */,
@@ -779,6 +782,7 @@
 				7BE4163A1CE73F86001D324B /* app_logo.png in Resources */,
 				B45B62B11D12A76800C57F30 /* meetpoint.png in Resources */,
 				7B4475F51B3845B900FEB452 /* png4.png in Resources */,
+				B47311A61D29FBC2007029F0 /* meeting.png in Resources */,
 				7B4CF6501CDF714A000D4415 /* settingbackimg.jpg in Resources */,
 				7BBF69D31CF5FA8800C14D81 /* open.png in Resources */,
 				7B1DFD271CF733CE00D72E86 /* state1.png in Resources */,

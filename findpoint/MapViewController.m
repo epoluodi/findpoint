@@ -116,6 +116,7 @@
     btnmeet = [[UIButton alloc] init];
     btnmeet.frame=CGRectMake(10, btngb.frame.origin.y + 60 +10, 40, 60);
     [btnmeet setImage:[UIImage imageNamed:@"meetpoint"] forState:UIControlStateNormal];
+    [btnmeet addTarget:self action:@selector(showmeetingmark) forControlEvents:UIControlEventTouchUpInside];
     [controlview addSubview:btnmeet];
     
     btnlen = [[UIButton alloc] init];
@@ -182,6 +183,29 @@
 }
 
 
+
+//集合
+-(void)showmeetingmark
+{
+    
+    
+    if (!meetingAnnotaton)
+    {
+        meetingAnnotaton = [[CustomerPointAnnotaton alloc] init];
+        meetingAnnotaton.coordinate = map.centerCoordinate;
+        meetingAnnotaton.title=@"集合点";
+        meetingAnnotaton.identity = @"meeting";
+        [map addAnnotation:meetingAnnotaton];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"已经有一个结合点，如果要创建新的结合点，请先删除当前集合点" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        [map setCenterCoordinate:meetingAnnotaton.coordinate animated:YES];
+    }
+}
+
 //显示广播
 -(void)showboradcastsheet
 {
@@ -191,6 +215,13 @@
 
     }];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"请各位到集合点" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if (!meetingAnnotaton)
+        {
+            UIAlertView *_alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请先设置集合点" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [_alert show];
+            return ;
+        }
         [self submitboradcast:@"请各位到集合点" msgtype:@"answer"];
     }];
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"今天活动结束" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -391,6 +422,7 @@
                 CLLocationCoordinate2D coordinate;
                 coordinate.latitude = ((NSString *)[d  objectForKey:@"lat"]).doubleValue;
                 coordinate.longitude = ((NSString *)[d  objectForKey:@"lng"]).doubleValue;
+                mapmark.identity=[d objectForKey:@"deviceid"];
                 mapmark.coordinate =coordinate;
                 mapmark.data=d;
                 mapmark.title=[d objectForKey:@"name"];
@@ -426,8 +458,18 @@
         return nil;
     
     CustomerPointAnnotaton *cann = (CustomerPointAnnotaton *)annotation;
+    MarkVIew *mark;
     
-    MarkVIew *mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"mark"];
+    if ([cann.identity isEqualToString:@"meeting"]){
+        mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"meeting"];
+        mark.nickimg.image = [UIImage imageNamed:@"meeting"];
+        [mark startAnimiation];
+        return mark;
+    }
+    
+    
+   mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"mark"];
+    mark.draggable=NO;
     NSDictionary *d = cann.data;
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *path = [FileCommon getCacheDirectory];

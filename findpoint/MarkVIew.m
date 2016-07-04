@@ -47,4 +47,42 @@
 }
 
 
+-(void)startAnimiation
+{
+    CALayer *layer = [[CALayer alloc] init];
+    layer.frame =CGRectMake(20.f,20.f, 25, 25);
+    layer.borderColor=[[UIColor redColor] CGColor];
+    layer.borderWidth = 1;
+    layer.cornerRadius  = 12.5f;
+    layer.masksToBounds=YES;
+    layer.backgroundColor = [[UIColor clearColor] CGColor];
+    layer.shadowColor=[[[UIColor blackColor] colorWithAlphaComponent:0.35f] CGColor];
+    layer.shadowRadius = 6;
+    layer.shadowOffset = CGSizeMake(5, 5);
+    [self.layer addSublayer:layer];
+    
+    self.centerOffset =CGPointMake(-10, 0);
+    
+    CAKeyframeAnimation * keyanimation =[CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    keyanimation.duration = 0.8f;
+    keyanimation.values = @[@0,@0.2,@0.5,@0.7,@1,@1.2,@1.4,@1.6,@1.8,@2];
+    keyanimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+ 
+
+    CAKeyframeAnimation * keyanimation2 =[CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    keyanimation2.duration = 0.8f;
+    keyanimation2.values = @[@1,@0.9,@0.8,@0.7,@0.6,@0.5,@0.4,@0.3,@0.0];
+    keyanimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+
+    
+    CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
+    animationgroup.duration=0.8f;
+    animationgroup.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    animationgroup.animations = @[keyanimation,keyanimation2];
+    animationgroup.repeatCount=INT_MAX;
+    
+    [layer addAnimation:animationgroup forKey:nil];
+    
+}
+
 @end
