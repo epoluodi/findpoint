@@ -196,6 +196,7 @@
         meetingAnnotaton.title=@"集合点";
         meetingAnnotaton.identity = @"meeting";
         [map addAnnotation:meetingAnnotaton];
+        [map selectAnnotation:meetingAnnotaton animated:YES];
     }
     else
     {
