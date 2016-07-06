@@ -7,13 +7,17 @@
 //
 
 #import <MAMapKit/MAMapKit.h>
+#import "CallOutView.h"
 
 @interface MarkVIew : MAAnnotationView
+{
+    CallOutView *_calloutview;
+}
 
 @property (nonatomic, strong) UIImageView *nickimg;
 @property (nonatomic,copy)NSString *openid;
 @property (nonatomic,copy)NSString *username;
-
+@property (assign) BOOL IsCustomCallout;
 
 -(void)startAnimiation;
 @end

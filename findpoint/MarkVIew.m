@@ -5,11 +5,22 @@
 //  Created by 程嘉雯 on 16/6/21.
 //  Copyright © 2016年 com.epoluodi.findpoint. All rights reserved.
 //
+#define kWidth  150.f
+#define kHeight 60.f
 
+#define kHoriMargin 5.f
+#define kVertMargin 5.f
+
+#define kPortraitWidth  50.f
+#define kPortraitHeight 50.f
+
+#define kCalloutWidth   200.0
+#define kCalloutHeight  70.0
 #import "MarkVIew.h"
 
 @implementation MarkVIew
 @synthesize nickimg;
+@synthesize IsCustomCallout;
 /*
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.
@@ -27,6 +38,7 @@
     
     if (self)
     {
+        IsCustomCallout = NO;
         self.bounds = CGRectMake(0.f, 0.f, 40, 40);
         self.backgroundColor = [UIColor clearColor];
         /* Create portrait image view and add to view hierarchy. */
@@ -44,6 +56,54 @@
     }
 
     return self;
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+{
+    BOOL inside = [super pointInside:point withEvent:event];
+    /* Points that lie outside the receiver’s bounds are never reported as hits,
+     even if they actually lie within one of the receiver’s subviews.
+     This can occur if the current view’s clipsToBounds property is set to NO and the affected subview extends beyond the view’s bounds.
+     */
+    if (!inside && self.selected)
+    {
+        inside = [_calloutview pointInside:[self convertPoint:point toView:_calloutview] withEvent:event];
+    }
+    
+    return inside;
+}
+
+
+-(void)setSelected:(BOOL)selected
+{
+    [self setSelected:selected animated:NO];
+}
+
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    if (self.selected == selected)
+    {
+        return;
+    }
+    if (selected){
+        if (IsCustomCallout)
+        {
+            if (!_calloutview)
+            {
+                _calloutview = [[CallOutView alloc] init];
+                _calloutview.frame =CGRectMake(0, 0, kCalloutWidth, kCalloutHeight);
+                _calloutview.center = CGPointMake(CGRectGetWidth(self.bounds) / 2.f + self.calloutOffset.x,
+                                                  -CGRectGetHeight(_calloutview.bounds) / 2.f + self.calloutOffset.y);
+            }
+            [self addSubview:_calloutview];
+
+        }
+    }
+    else
+    {
+        [_calloutview removeFromSuperview];
+    }
+    [super setSelected: selected animated:animated];
 }
 
 

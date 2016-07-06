@@ -452,6 +452,17 @@
     NSLog(@"callout view :%@", view);
 }
 
+- (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    NSLog(@"accessory view :%@", view);
+}
+
+- (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view didChangeDragState:(MAAnnotationViewDragState)newState fromOldState:(MAAnnotationViewDragState)oldState
+{
+    NSLog(@"old :%ld - new :%ld", (long)oldState, (long)newState);
+}
+
+
 
 -(MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
@@ -465,6 +476,12 @@
         mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"meeting"];
         mark.nickimg.image = [UIImage imageNamed:@"meeting"];
         [mark startAnimiation];
+        UIImageView * img = [[UIImageView alloc] init];
+        img.image=[UIImage imageNamed:@"meeting"];
+        img.frame=CGRectMake(10, 10, 90, 90);
+        mark.canShowCallout=NO;
+        mark.IsCustomCallout=YES;
+        mark.calloutOffset    = CGPointMake(0, -5);
         return mark;
     }
     

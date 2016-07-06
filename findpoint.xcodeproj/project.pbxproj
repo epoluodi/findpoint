@@ -111,6 +111,7 @@
 		B45B62B21D12A76800C57F30 /* boradcast.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AF1D12A76800C57F30 /* boradcast.png */; };
 		B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B464B6581CF5A664009A6A6F /* channelmaincell.xib */; };
 		B47311A61D29FBC2007029F0 /* meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = B47311A51D29FBC2007029F0 /* meeting.png */; };
+		B47E188E1D2CFE54009FE388 /* CallOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E188D1D2CFE54009FE388 /* CallOutView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +285,8 @@
 		B45B62AF1D12A76800C57F30 /* boradcast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boradcast.png; sourceTree = "<group>"; };
 		B464B6581CF5A664009A6A6F /* channelmaincell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = channelmaincell.xib; sourceTree = "<group>"; };
 		B47311A51D29FBC2007029F0 /* meeting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meeting.png; sourceTree = "<group>"; };
+		B47E188C1D2CFE54009FE388 /* CallOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallOutView.h; sourceTree = "<group>"; };
+		B47E188D1D2CFE54009FE388 /* CallOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallOutView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +420,8 @@
 				7B411C981D16F9BC007B3C59 /* CustomerPointAnnotaton.m */,
 				7B28C3BF1D1996F200F6CA64 /* MarkVIew.h */,
 				7B28C3C01D1996F200F6CA64 /* MarkVIew.m */,
+				B47E188C1D2CFE54009FE388 /* CallOutView.h */,
+				B47E188D1D2CFE54009FE388 /* CallOutView.m */,
 			);
 			name = mapview;
 			sourceTree = "<group>";
@@ -856,6 +861,7 @@
 				7B718C211B25E5E000AE4D8B /* MBProgressHUD.m in Sources */,
 				7B893F5B1B3B088900C1D776 /* LoginView.m in Sources */,
 				7BBC232E1B1AF82800AA88DC /* AppDelegate.m in Sources */,
+				B47E188E1D2CFE54009FE388 /* CallOutView.m in Sources */,
 				7BCA9CB01B2342E9006D6156 /* AlertView.m in Sources */,
 				7B28C3C11D1996F200F6CA64 /* MarkVIew.m in Sources */,
 				7BC66C1A1D044CCD00AEF132 /* GroupInfo.m in Sources */,
