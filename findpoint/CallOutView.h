@@ -10,4 +10,6 @@
 
 @interface CallOutView : UIView
 
+@property (weak,nonatomic)UIView *view;
+-(void)startanimation;
 @end

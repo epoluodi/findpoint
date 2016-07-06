@@ -9,10 +9,11 @@
 #import "CallOutView.h"
 
 @implementation CallOutView
+@synthesize view;
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
  */
 
 -(instancetype)init
@@ -20,6 +21,43 @@
     self = [super init];
     self.backgroundColor = [UIColor clearColor];
     return self;
+}
+
+
+-(void)startanimation
+{
+    
+    CAKeyframeAnimation * keyanimation =[CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    keyanimation.values = @[@0,@0.2,@0.3,@0.5,@0.6,@0.7,@0.8,@0.9,@01,@1.1,@1.2,@1.3,@1.2,@1.1,@1];
+    keyanimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    
+    CAKeyframeAnimation * keyanimation2 =[CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    keyanimation2.values = @[@0,@0.1,@0.3,@0.5,@0.6,@0.6,@0.9];
+    keyanimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    
+    //1.创建核心动画
+    //    CABasicAnimation *anima=[CABasicAnimation animationWithKeyPath:<#(NSString *)#>]
+    CABasicAnimation *anima=[CABasicAnimation animation];
+    
+//    
+   CGRect rect=  [view convertRect:view.bounds fromView:nil];
+    
+    //1.1告诉系统要执行什么样的动画
+    anima.keyPath=@"position";
+    //设置通过动画，将layer从哪儿移动到哪儿
+    anima.fromValue=[NSValue valueWithCGPoint:CGPointMake(rect.origin.x, rect.origin.y-100)];
+    anima.toValue=[NSValue valueWithCGPoint:CGPointMake(rect.origin.x, rect.origin.y)];
+
+    
+    
+    CAAnimationGroup *group =[CAAnimationGroup animation];
+    group.animations=@[keyanimation,keyanimation2];
+    group.duration=0.6;
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    group.fillMode=kCAFillModeForwards;
+    group.removedOnCompletion=NO;
+    [self.layer addAnimation:group forKey:nil];
 }
 
 

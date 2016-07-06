@@ -14,8 +14,8 @@
 #define kPortraitWidth  50.f
 #define kPortraitHeight 50.f
 
-#define kCalloutWidth   200.0
-#define kCalloutHeight  70.0
+#define kCalloutWidth   240.0
+#define kCalloutHeight  120.0
 #import "MarkVIew.h"
 
 @implementation MarkVIew
@@ -95,7 +95,10 @@
                 _calloutview.center = CGPointMake(CGRectGetWidth(self.bounds) / 2.f + self.calloutOffset.x,
                                                   -CGRectGetHeight(_calloutview.bounds) / 2.f + self.calloutOffset.y);
             }
+            _calloutview.view=self;
+            _calloutview.alpha=0;
             [self addSubview:_calloutview];
+            [_calloutview startanimation];
 
         }
     }
