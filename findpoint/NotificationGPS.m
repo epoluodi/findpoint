@@ -22,7 +22,7 @@
         NSUserDefaults *userinfo = [NSUserDefaults standardUserDefaults];
         NSString*nickname = [userinfo stringForKey:@"nickname"];
         if (nickname && ![nickname isEqualToString:@""])
-            [web sendpush:deviceid msg:[NSString stringWithFormat:@"%@:已经收到，尽快到达集合点",nickname] msgtype:@""];
+            [web sendpush:deviceid msg:[NSString stringWithFormat:@"%@:已经收到，将尽快到达集合点",nickname] msgtype:@""];
       
     });
 

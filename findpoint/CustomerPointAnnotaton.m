@@ -14,6 +14,7 @@
 @synthesize title = _title;
 @synthesize subtitle = _subtitle;
 @synthesize identity;
+@synthesize markview;
 
 #pragma mark - life cycle
 

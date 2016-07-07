@@ -12,6 +12,7 @@
 @interface MarkVIew : MAAnnotationView
 {
     CallOutView *_calloutview;
+    CALayer *_layergq;
 }
 
 @property (nonatomic, strong) UIImageView *nickimg;
@@ -20,5 +21,7 @@
 @property (assign) BOOL IsCustomCallout;
 @property (weak,nonatomic)UIViewController *controllview;
 
+-(void)setMeetingimg:(UIImage *)img;
 -(void)startAnimiation;
+-(void)stopAnimation;
 @end

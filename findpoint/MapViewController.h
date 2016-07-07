@@ -12,13 +12,13 @@
 #import "GroupInfo.h"
 #import "CustomerPointAnnotaton.h"
 
-@interface MapViewController : UIViewController<GPSLocationDelegate,UIPickerViewDataSource,UIPickerViewDelegate,MAMapViewDelegate>
+@interface MapViewController : UIViewController<GPSLocationDelegate,UIPickerViewDataSource,UIPickerViewDelegate,MAMapViewDelegate,UIImagePickerControllerDelegate>
 {
     CLLocation *_location;
     NSTimer *timer1;//上传GPS
     AMapReGeocode *_geocode;
     BOOL isrun;
-    
+    UIImagePickerController *pickerview;
     //UI
     UIButton *btnloc,*btnrefresh ;
     UIButton *channelname;
@@ -34,7 +34,8 @@
     CustomerPointAnnotaton *meetingAnnotaton;
     __block NSMutableArray<NSString *>* devicelist;
     __block id _self;
-   
+    UIImage *meetingimg;
+    
     __block NSMutableDictionary<NSString *,CustomerPointAnnotaton  *>*marklist;
 }
 
@@ -42,5 +43,5 @@
 @property (weak,nonatomic)NSString *channelid;
 
 -(void)delmeetingmark;
-
+-(void)addmeetingImage;
 @end

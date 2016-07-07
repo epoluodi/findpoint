@@ -7,6 +7,7 @@
 //
 
 #import <MAMapKit/MAMapKit.h>
+#import "MarkVIew.h"
 
 @interface CustomerPointAnnotaton : NSObject<MAAnnotation>
 
@@ -16,7 +17,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
 
-
+@property (weak,nonatomic)MarkVIew *markview;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property (copy,nonatomic)NSString *identity;
 

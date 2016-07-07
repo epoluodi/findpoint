@@ -20,6 +20,7 @@
 @implementation MapViewController
 @synthesize map;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -35,7 +36,7 @@
     
     timer1 = [NSTimer scheduledTimerWithTimeInterval:45 target:self selector:@selector(updateGPS) userInfo:nil repeats:YES];
     isrun=NO;
-//
+    //
     timer2=[NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshUserGPSInfo) userInfo:nil repeats:YES];
     [timer2 fire];
     
@@ -59,6 +60,17 @@
         [self initUI];
         isrun=YES;
     }
+    if (meetingAnnotaton)
+    {
+        [meetingAnnotaton.markview startAnimiation];
+    }
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if (meetingAnnotaton)
+    {
+        [meetingAnnotaton.markview stopAnimation];
+    }
 }
 
 //初始化地图控制UI
@@ -67,7 +79,7 @@
     //定位
     btnloc = [[UIButton alloc] init];
     btnloc.frame=CGRectMake(10,
-                        map.frame.size.height -8 -120, 38, 38);
+                            map.frame.size.height -8 -120, 38, 38);
     [btnloc setImage:[UIImage imageNamed:@"loc"] forState:UIControlStateNormal];
     [btnloc setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
     [btnloc setImageEdgeInsets:
@@ -79,10 +91,10 @@
     [btnloc addTarget:self action:@selector(Clickbtnloc) forControlEvents:UIControlEventTouchUpInside];
     [map addSubview:btnloc];
     
-  
+    
     btnrefresh = [[UIButton alloc] init];
     btnrefresh.frame=CGRectMake(10,
-                            map.frame.size.height -8 -120  -8-38, 38, 38);
+                                map.frame.size.height -8 -120  -8-38, 38, 38);
     [btnrefresh setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
     [btnrefresh setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
     [btnrefresh setImageEdgeInsets:
@@ -93,7 +105,7 @@
     btnrefresh.layer.masksToBounds=YES;
     [btnrefresh addTarget:self action:@selector(Onbtnrefresh) forControlEvents:UIControlEventTouchUpInside];
     [map addSubview:btnrefresh];
-
+    
     
     
     
@@ -106,7 +118,7 @@
     controlview.layer.masksToBounds=YES;
     [controlview setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
     [map addSubview:controlview];
- 
+    
     btngb = [[UIButton alloc] init];
     btngb.frame=CGRectMake(10, 10, 40, 60);
     [btngb setImage:[UIImage imageNamed:@"boradcast"] forState:UIControlStateNormal];
@@ -126,8 +138,8 @@
     
     
     btnchannel = [[UIButton alloc] init];
-     btnchannel.frame=CGRectMake(map.frame.size.width-60-10, controlview.frame.origin.y + 220 +10, 60, 70);
-     [btnchannel setImage:[UIImage imageNamed:@"channel"] forState:UIControlStateNormal];
+    btnchannel.frame=CGRectMake(map.frame.size.width-60-10, controlview.frame.origin.y + 220 +10, 60, 70);
+    [btnchannel setImage:[UIImage imageNamed:@"channel"] forState:UIControlStateNormal];
     [btnchannel setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
     btnchannel.layer.borderWidth=0.9f;
     btnchannel.layer.borderColor = [[UIColor colorWithRed:0.917f green:0.5f blue:0.062f alpha:1.00] CGColor];
@@ -213,7 +225,7 @@
     UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"广播信息" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"请各位上报位置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self submitboradcast:@"请各位上报位置" msgtype:@"boardcast"];
-
+        
     }];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"请各位到集合点" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -231,7 +243,7 @@
     UIAlertAction *action4 = [UIAlertAction actionWithTitle:@"自定义消息" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [_self showCustomMsg];
     }];
-  
+    
     UIAlertAction *action5 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:action1];
     [alert addAction:action2];
@@ -302,7 +314,7 @@
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-
+    
     return [[GroupInfo getInstancet] getChannels] ;
 }
 
@@ -314,7 +326,7 @@
 
 -(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
-     NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:row];
+    NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:row];
     
     UILabel *l = [[UILabel alloc] init];
     l.textColor = [UIColor whiteColor];
@@ -349,7 +361,7 @@
     }];
     
     [UIView commitAnimations];
-
+    
 }
 
 
@@ -361,7 +373,7 @@
     if (!_channelid)
     {
         [marklist removeAllObjects];
-
+        
         [map removeAnnotation:map.annotations];
         [channelname removeFromSuperview];
         channelname=nil;
@@ -373,7 +385,7 @@
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (!channelname){
-        
+            
             channelname = [[UIButton alloc] init];
             channelname.frame=CGRectMake(0, map.frame.size.height -25, map.frame.size.width, 24);
             [channelname setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
@@ -385,7 +397,7 @@
             [map addSubview:channelname];
         }
         [channelname setTitle:[groupinfo objectForKey:@"CHNAME"] forState:UIControlStateNormal];
-
+        
     });
     NSLog(@"%@",groupinfo);
     [timer2 fire];
@@ -410,7 +422,7 @@
             return ;
         dispatch_async(mainQ, ^{
             NSMutableArray *key = [[NSMutableArray alloc] initWithArray:[marklist allKeys]];
-       
+            
             CustomerPointAnnotaton *mapmark;
             [devicelist removeAllObjects];
             for (NSDictionary *d in gpslist) {
@@ -431,16 +443,16 @@
                 mapmark.title=[d objectForKey:@"name"];
                 mapmark.uid = [d objectForKey:@"deviceid"];
                 [marklist setObject:mapmark forKey:[d objectForKey:@"deviceid"]];
-         
+                
             }
             for (NSString *s  in key) {
                 [marklist removeObjectForKey:s];
             }
-       
-    
+            
+            
             [map addAnnotations:[marklist allValues]];
-
-        
+            
+            
         });
     });
 }
@@ -452,8 +464,86 @@
     if (meetingAnnotaton)
         [map removeAnnotation:meetingAnnotaton];
     meetingAnnotaton = nil;
+    meetingimg=nil;
+}
+
+
+//添加集合照片
+-(void)addmeetingImage
+{
+    UIAlertController * alert =[UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                             {
+                                 pickerview = [[UIImagePickerController alloc] init];//初始化
+                                 pickerview.delegate = self;
+                                 pickerview.allowsEditing = YES;//设置可编辑
+                                 UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+                                 pickerview.sourceType = sourceType;
+                                 [self presentModalViewController:pickerview animated:YES];//进入照相界面
+                             }];
+    
+    
+    UIAlertAction *photo = [UIAlertAction actionWithTitle:@"从相册中选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                            {
+                                pickerview = [[UIImagePickerController alloc] init];//初始化
+                                pickerview.delegate = self;
+                                pickerview.allowsEditing = YES;//设置可编辑
+                                UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                pickerview.sourceType = sourceType;
+                                [self presentModalViewController:pickerview animated:YES];//进入照相界面
+                            }];
+    
+    
+    
+    
+    [alert addAction:camera];
+    [alert addAction:photo];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
     
 }
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    meetingimg = [image copy];
+    [meetingAnnotaton.markview setMeetingimg:meetingimg];
+    
+    
+    NSLog(@"SMILE!");
+    //    [self.capturedImages addObject:image];
+    
+    //    if ([self.cameraTimer isValid])
+    //    {
+    //        return;
+    //    }
+    
+    
+    
+    NSData *jpgdata = UIImageJPEGRepresentation(image, 80);
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *filePath = [FileCommon getCacheDirectory];
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    
+//    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+    //
+    NSString *filename = [NSString stringWithFormat:@"/%@.jpg",uuid];
+    [fileManager createFileAtPath:[filePath stringByAppendingString:filename] contents:jpgdata attributes:nil];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    //    [self finishAndUpdate];
+}
+
+
+
 
 #pragma mark 地图委托
 
@@ -471,7 +561,7 @@
 - (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view didChangeDragState:(MAAnnotationViewDragState)newState fromOldState:(MAAnnotationViewDragState)oldState
 {
     NSLog(@"old :%ld - new :%ld", (long)oldState, (long)newState);
- 
+    
 }
 
 
@@ -495,11 +585,12 @@
         mark.IsCustomCallout=YES;
         mark.controllview=self;
         mark.calloutOffset    = CGPointMake(0, -5);
+        meetingAnnotaton.markview = mark;
         return mark;
     }
     
     
-   mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"mark"];
+    mark = [[MarkVIew alloc ] initWithAnnotation:annotation reuseIdentifier:@"mark"];
     mark.draggable=NO;
     NSDictionary *d = cann.data;
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -509,7 +600,7 @@
     if ([fm fileExistsAtPath:_filename])
     {
         pngdata = [NSData dataWithContentsOfFile:_filename];
-
+        
     }
     else
     {
@@ -525,8 +616,8 @@
         mark.nickimg.image=[UIImage imageWithData:pngdata];
     
     return mark;
-
-
+    
+    
 }
 
 #pragma mark -
@@ -541,7 +632,7 @@
 -(void)updateGPS
 {
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
- 
+    
     NSDictionary *d =[[NSDictionary alloc] initWithObjectsAndKeys:
                       [info getInstancent].uid,@"deviceid",
                       @(_location.coordinate.latitude),@"lat",
@@ -553,14 +644,14 @@
                        _geocode.addressComponent.streetNumber.street,
                        _geocode.addressComponent.streetNumber.number],@"addr",
                       _geocode.addressComponent.city,@"city",
-        _geocode.addressComponent.province,@"province",nil];
+                      _geocode.addressComponent.province,@"province",nil];
     dispatch_async(globalQ, ^{
         WebService *web = [[WebService alloc] initUrl:SubmitGPS];
-    
+        
         [web SubmitGPSInfo:d];
         
     });
-
+    
     
 }
 
@@ -570,14 +661,14 @@
 {
     _location= location;
     if (!_geocode)
-         [[GDLocation getInstancet] getLocationGeoInfo:_location];
+        [[GDLocation getInstancet] getLocationGeoInfo:_location];
     
 }
 -(void)updateReGeoInfo:(AMapReGeocode *)GeoCodeInfo
 {
     _geocode = GeoCodeInfo;
-//    txtsheng.text=GeoCodeInfo.addressComponent.province;
-//    txtcity.text = GeoCodeInfo.addressComponent.city;
+    //    txtsheng.text=GeoCodeInfo.addressComponent.province;
+    //    txtcity.text = GeoCodeInfo.addressComponent.city;
 }
 
 
@@ -588,13 +679,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

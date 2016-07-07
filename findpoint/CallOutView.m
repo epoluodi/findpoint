@@ -25,12 +25,16 @@
     btndel = [[UIButton alloc] init];
     leftimage = [[UIImageView alloc] init];
     indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    btnaddimg = [[UIButton alloc] init];
+
     
     self.userInteractionEnabled=YES;
     return self;
 }
 
+-(void)setMeetingimg:(UIImage *)img
+{
+    leftimage.image=img;
+}
 //加载图片
 -(void)initview:(NSString *)strimgid
 {
@@ -38,11 +42,16 @@
     leftimage.layer.cornerRadius=6;
     leftimage.layer.borderColor = [[[UIColor whiteColor] colorWithAlphaComponent:0.4] CGColor];
     leftimage.layer.borderWidth=1;
-    btnaddimg.frame =CGRectMake(140/2 -30,100/2-30,60,60);
+    leftimage.layer.masksToBounds=YES;
+
     leftimage.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:leftimage];
     leftimage.userInteractionEnabled=YES;
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+    [tap addTarget:self action:@selector(btnadd)];
+    
+    [leftimage addGestureRecognizer:tap];
     
     title.frame = CGRectMake(leftimage.frame.origin.y + leftimage.frame.size.width + 10,
                              10, 80, 30);
@@ -57,12 +66,11 @@
     [btndel setImage:[UIImage imageNamed:@"btndel"] forState:UIControlStateNormal];
     [self addSubview:btndel];
     
+    
+    
     if (!strimgid)
     {
-        [btnaddimg addTarget:self action:@selector(btnadd) forControlEvents:UIControlEventTouchUpInside];
-        [btnaddimg setImage:[UIImage imageNamed:@"addimg"] forState:UIControlStateNormal];
-        btnaddimg.userInteractionEnabled=YES;
-        [leftimage addSubview:btnaddimg];
+
     }
     else
     {
@@ -79,7 +87,7 @@
 
 -(void)btnadd
 {
-    
+        [((MapViewController *)_controllview) addmeetingImage];
 }
 
 

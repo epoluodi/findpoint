@@ -74,7 +74,10 @@
     return inside;
 }
 
-
+-(void)setMeetingimg:(UIImage *)img
+{
+    [_calloutview setMeetingimg:img];
+}
 -(void)setSelected:(BOOL)selected
 {
     [self setSelected:selected animated:NO];
@@ -114,17 +117,17 @@
 
 -(void)startAnimiation
 {
-    CALayer *layer = [[CALayer alloc] init];
-    layer.frame =CGRectMake(20.f,20.f, 25, 25);
-    layer.borderColor=[[UIColor redColor] CGColor];
-    layer.borderWidth = 1;
-    layer.cornerRadius  = 12.5f;
-    layer.masksToBounds=YES;
-    layer.backgroundColor = [[UIColor clearColor] CGColor];
-    layer.shadowColor=[[[UIColor blackColor] colorWithAlphaComponent:0.35f] CGColor];
-    layer.shadowRadius = 6;
-    layer.shadowOffset = CGSizeMake(5, 5);
-    [self.layer addSublayer:layer];
+    _layergq = [[CALayer alloc] init];
+    _layergq.frame =CGRectMake(20.f,20.f, 25, 25);
+    _layergq.borderColor=[[UIColor redColor] CGColor];
+    _layergq.borderWidth = 1;
+    _layergq.cornerRadius  = 12.5f;
+    _layergq.masksToBounds=YES;
+    _layergq.backgroundColor = [[UIColor clearColor] CGColor];
+    _layergq.shadowColor=[[[UIColor blackColor] colorWithAlphaComponent:0.35f] CGColor];
+    _layergq.shadowRadius = 6;
+    _layergq.shadowOffset = CGSizeMake(5, 5);
+    [self.layer addSublayer:_layergq];
     
     self.centerOffset =CGPointMake(-10, 0);
     
@@ -144,10 +147,16 @@
     animationgroup.duration=0.8f;
     animationgroup.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     animationgroup.animations = @[keyanimation,keyanimation2];
-    animationgroup.repeatCount=INT_MAX;
+    animationgroup.repeatCount=HUGE_VALF;
     
-    [layer addAnimation:animationgroup forKey:nil];
+    [_layergq addAnimation:animationgroup forKey:nil];
     
+}
+-(void)stopAnimation
+{
+    [_layergq removeAllAnimations];
+    [_layergq removeFromSuperlayer];
+    _layergq = nil;
 }
 
 @end
