@@ -9,7 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface CallOutView : UIView
+{
+    UIImageView *leftimage;
+    UILabel *title;
+//    UILabel *subtitle;s
+    UIActivityIndicatorView *indicator;
+    UIButton *btnaddimg;
+    UIButton *btndel;
+}
 
-@property (weak,nonatomic)UIView *view;
+@property (weak,nonatomic)UIViewController *controllview;
+
+
 -(void)startanimation;
+-(void)initview:(NSString *)strimgid;
 @end

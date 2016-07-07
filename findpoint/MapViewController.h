@@ -41,6 +41,6 @@
 @property (weak, nonatomic) IBOutlet MAMapView *map;
 @property (weak,nonatomic)NSString *channelid;
 
-
+-(void)delmeetingmark;
 
 @end

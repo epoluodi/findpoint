@@ -52,6 +52,7 @@
         self.layer.shadowOpacity=0.7;
         self.draggable=YES;
         self.canShowCallout=YES;
+        
         nickimg.image=[UIImage imageNamed:@"state3"];
     }
 
@@ -95,9 +96,10 @@
                 _calloutview.center = CGPointMake(CGRectGetWidth(self.bounds) / 2.f + self.calloutOffset.x,
                                                   -CGRectGetHeight(_calloutview.bounds) / 2.f + self.calloutOffset.y);
             }
-            _calloutview.view=self;
+            _calloutview.controllview=_controllview;
             _calloutview.alpha=0;
             [self addSubview:_calloutview];
+            [_calloutview initview:nil];
             [_calloutview startanimation];
 
         }

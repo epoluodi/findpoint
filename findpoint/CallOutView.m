@@ -7,9 +7,9 @@
 //
 #define kArrorHeight    10
 #import "CallOutView.h"
+#import "MapViewController.h"
 
 @implementation CallOutView
-@synthesize view;
 
 /*
  // Only override drawRect: if you perform custom drawing.
@@ -20,10 +20,70 @@
 {
     self = [super init];
     self.backgroundColor = [UIColor clearColor];
+    title = [[UILabel alloc] init];
+    //    subtitle = [[UILabel alloc] init];
+    btndel = [[UIButton alloc] init];
+    leftimage = [[UIImageView alloc] init];
+    indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    btnaddimg = [[UIButton alloc] init];
+    
+    self.userInteractionEnabled=YES;
     return self;
 }
 
+//加载图片
+-(void)initview:(NSString *)strimgid
+{
+    leftimage.frame = CGRectMake(5, 5, 140, 100);
+    leftimage.layer.cornerRadius=6;
+    leftimage.layer.borderColor = [[[UIColor whiteColor] colorWithAlphaComponent:0.4] CGColor];
+    leftimage.layer.borderWidth=1;
+    btnaddimg.frame =CGRectMake(140/2 -30,100/2-30,60,60);
+    leftimage.contentMode = UIViewContentModeScaleAspectFill;
+    [self addSubview:leftimage];
+    leftimage.userInteractionEnabled=YES;
+    
+    
+    title.frame = CGRectMake(leftimage.frame.origin.y + leftimage.frame.size.width + 10,
+                             10, 80, 30);
+    title.text=@"集合点";
+    title.textAlignment=NSTextAlignmentCenter;
+    title.textColor= [UIColor whiteColor];
+    [self addSubview:title];
+    
+    btndel.frame= CGRectMake(leftimage.frame.origin.y + leftimage.frame.size.width + 30,
+                             50, 40, 40);
+    [btndel addTarget:self action:@selector(btndel) forControlEvents:UIControlEventTouchUpInside];
+    [btndel setImage:[UIImage imageNamed:@"btndel"] forState:UIControlStateNormal];
+    [self addSubview:btndel];
+    
+    if (!strimgid)
+    {
+        [btnaddimg addTarget:self action:@selector(btnadd) forControlEvents:UIControlEventTouchUpInside];
+        [btnaddimg setImage:[UIImage imageNamed:@"addimg"] forState:UIControlStateNormal];
+        btnaddimg.userInteractionEnabled=YES;
+        [leftimage addSubview:btnaddimg];
+    }
+    else
+    {
+        
+    }
+}
 
+//删除集合标记
+-(void)btndel
+{
+    [((MapViewController *)_controllview) delmeetingmark];
+}
+
+
+-(void)btnadd
+{
+    
+}
+
+
+//动画
 -(void)startanimation
 {
     
@@ -40,27 +100,33 @@
     //    CABasicAnimation *anima=[CABasicAnimation animationWithKeyPath:<#(NSString *)#>]
     CABasicAnimation *anima=[CABasicAnimation animation];
     
-//    
-   CGRect rect=  [view convertRect:view.bounds fromView:nil];
+    //
+    CGPoint point = [_controllview.view convertPoint:self.center toView:_controllview.view];
     
     //1.1告诉系统要执行什么样的动画
     anima.keyPath=@"position";
     //设置通过动画，将layer从哪儿移动到哪儿
-    anima.fromValue=[NSValue valueWithCGPoint:CGPointMake(rect.origin.x, rect.origin.y-100)];
-    anima.toValue=[NSValue valueWithCGPoint:CGPointMake(rect.origin.x, rect.origin.y)];
-
+    
+    anima.fromValue=[NSValue valueWithCGPoint:CGPointMake(point.x,point.y -60)];
+    anima.toValue=[NSValue valueWithCGPoint:CGPointMake(point.x,point.y)];
+    
     
     
     CAAnimationGroup *group =[CAAnimationGroup animation];
-    group.animations=@[keyanimation,keyanimation2];
+    group.animations=@[keyanimation,keyanimation2,anima];
     group.duration=0.6;
     group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     group.fillMode=kCAFillModeForwards;
     group.removedOnCompletion=NO;
+    group.delegate=self;
     [self.layer addAnimation:group forKey:nil];
 }
 
 
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    self.alpha=1;
+}
 
 
 

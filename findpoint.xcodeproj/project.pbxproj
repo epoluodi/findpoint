@@ -112,6 +112,8 @@
 		B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B464B6581CF5A664009A6A6F /* channelmaincell.xib */; };
 		B47311A61D29FBC2007029F0 /* meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = B47311A51D29FBC2007029F0 /* meeting.png */; };
 		B47E188E1D2CFE54009FE388 /* CallOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E188D1D2CFE54009FE388 /* CallOutView.m */; };
+		B48B0EFA1D2DF6CE00646A20 /* addimg.png in Resources */ = {isa = PBXBuildFile; fileRef = B48B0EF91D2DF6CE00646A20 /* addimg.png */; };
+		B48B0EFE1D2DFC5A00646A20 /* btndel.png in Resources */ = {isa = PBXBuildFile; fileRef = B48B0EFD1D2DFC5A00646A20 /* btndel.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +289,8 @@
 		B47311A51D29FBC2007029F0 /* meeting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meeting.png; sourceTree = "<group>"; };
 		B47E188C1D2CFE54009FE388 /* CallOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallOutView.h; sourceTree = "<group>"; };
 		B47E188D1D2CFE54009FE388 /* CallOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallOutView.m; sourceTree = "<group>"; };
+		B48B0EF91D2DF6CE00646A20 /* addimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addimg.png; sourceTree = "<group>"; };
+		B48B0EFD1D2DFC5A00646A20 /* btndel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btndel.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -571,6 +575,8 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				B48B0EFD1D2DFC5A00646A20 /* btndel.png */,
+				B48B0EF91D2DF6CE00646A20 /* addimg.png */,
 				B47311A51D29FBC2007029F0 /* meeting.png */,
 				7B9231CD1D184B7F0052F962 /* refresh.png */,
 				7B411C931D158F5D007B3C59 /* btnno.png */,
@@ -811,11 +817,13 @@
 				7B4475F81B3845B900FEB452 /* png7.png in Resources */,
 				7B4475FB1B3845B900FEB452 /* png10.png in Resources */,
 				7BBC23341B1AF82800AA88DC /* Main.storyboard in Resources */,
+				B48B0EFA1D2DF6CE00646A20 /* addimg.png in Resources */,
 				7BAAB8371CD8E591003EBE37 /* share.png in Resources */,
 				7BAAB8311CD8E1C6003EBE37 /* jiantou.png in Resources */,
 				7B7C3C4F1CE2330600D6668D /* btn_share.png in Resources */,
 				7B4475F31B3845B900FEB452 /* png2.png in Resources */,
 				7BCF0CF41B1DFED700DDD8D4 /* channelCell.xib in Resources */,
+				B48B0EFE1D2DFC5A00646A20 /* btndel.png in Resources */,
 				7B411C961D158F5D007B3C59 /* btnok.png in Resources */,
 				7B46CCAE1CF1E64C00D0928E /* png.bundle in Resources */,
 				7BAAB8351CD8E4B4003EBE37 /* gps.png in Resources */,

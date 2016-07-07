@@ -33,10 +33,10 @@
     map.scaleOrigin = CGPointMake(map.scaleOrigin.x, map.scaleOrigin.y+5);
     [GDLocation getInstancet].delegate=self;
     
-    timer1 = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateGPS) userInfo:nil repeats:YES];
+    timer1 = [NSTimer scheduledTimerWithTimeInterval:45 target:self selector:@selector(updateGPS) userInfo:nil repeats:YES];
     isrun=NO;
 //
-    timer2=[NSTimer scheduledTimerWithTimeInterval:45 target:self selector:@selector(refreshUserGPSInfo) userInfo:nil repeats:YES];
+    timer2=[NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshUserGPSInfo) userInfo:nil repeats:YES];
     [timer2 fire];
     
     _self=self;
@@ -329,6 +329,7 @@
 //选择一个团队
 -(void)OnSelectchannel
 {
+    [self delmeetingmark];
     int row= [pickview selectedRowInComponent:0];
     NSDictionary *d = [[GroupInfo getInstancet] getGroupForindex:row];
     [self setChannelid:[d objectForKey:@"CHID"]];
@@ -364,6 +365,7 @@
         [map removeAnnotation:map.annotations];
         [channelname removeFromSuperview];
         channelname=nil;
+        meetingAnnotaton = nil;
         [timer2 invalidate];
         return;
     }
@@ -444,9 +446,18 @@
 }
 
 
-
+//删除集合标记
+-(void)delmeetingmark
+{
+    if (meetingAnnotaton)
+        [map removeAnnotation:meetingAnnotaton];
+    meetingAnnotaton = nil;
+    
+}
 
 #pragma mark 地图委托
+
+
 - (void)mapView:(MAMapView *)mapView didAnnotationViewCalloutTapped:(MAAnnotationView *)view
 {
     NSLog(@"callout view :%@", view);
@@ -460,6 +471,7 @@
 - (void)mapView:(MAMapView *)mapView annotationView:(MAAnnotationView *)view didChangeDragState:(MAAnnotationViewDragState)newState fromOldState:(MAAnnotationViewDragState)oldState
 {
     NSLog(@"old :%ld - new :%ld", (long)oldState, (long)newState);
+ 
 }
 
 
@@ -481,6 +493,7 @@
         img.frame=CGRectMake(10, 10, 90, 90);
         mark.canShowCallout=NO;
         mark.IsCustomCallout=YES;
+        mark.controllview=self;
         mark.calloutOffset    = CGPointMake(0, -5);
         return mark;
     }

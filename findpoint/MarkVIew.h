@@ -18,6 +18,7 @@
 @property (nonatomic,copy)NSString *openid;
 @property (nonatomic,copy)NSString *username;
 @property (assign) BOOL IsCustomCallout;
+@property (weak,nonatomic)UIViewController *controllview;
 
 -(void)startAnimiation;
 @end
