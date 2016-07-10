@@ -21,6 +21,8 @@
 #define getChannelForGPS @"http://epoluodi.vicp.cc:8081/channel.asmx/getChannelForGPS"
 
 #define downloadjpg @"http://epoluodi.vicp.cc:8081/PublicCommon.asmx/Download"
+#define delMeetingMarkInfo @"http://epoluodi.vicp.cc:8081/channel.asmx/delMeetingMarkInfo"
+
 
 #pragma 推送
 #define pushsubmit [NSString stringWithFormat:@"%@%@",ServerUrl,@"push.asmx/submitToken"]

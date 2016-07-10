@@ -73,6 +73,14 @@
     });
     
 }
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+        [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:notification.alertTitle message:notification.alertBody delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alert show];
+    return;
+}
 -(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler
 {
     NSLog(@"%@",identifier);
@@ -98,7 +106,9 @@
     if ([identifier isEqualToString:@"recive"]){
         NotificationGPS *ngps;
         ngps = [[NotificationGPS alloc] init];
-        [ngps sendpush:[userInfo objectForKey:@"json"]];
+        NSString *str =[userInfo objectForKey:@"json"] ;
+        NSDictionary *d = [NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+        [ngps sendpush:[d objectForKey:@"userid"]];
     }
     
     completionHandler();
@@ -123,6 +133,7 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

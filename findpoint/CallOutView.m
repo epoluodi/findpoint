@@ -33,6 +33,7 @@
 
 -(void)setMeetingimg:(UIImage *)img
 {
+    leftimage.contentMode = UIViewContentModeScaleAspectFill;
     leftimage.image=img;
 }
 //加载图片
@@ -44,7 +45,8 @@
     leftimage.layer.borderWidth=1;
     leftimage.layer.masksToBounds=YES;
 
-    leftimage.contentMode = UIViewContentModeScaleAspectFill;
+    leftimage.contentMode = UIViewContentModeScaleAspectFit;
+    leftimage.image=[UIImage imageNamed:@"addimg"];
     [self addSubview:leftimage];
     leftimage.userInteractionEnabled=YES;
     

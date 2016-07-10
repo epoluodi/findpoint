@@ -31,10 +31,10 @@
     UITextField *customtext;
     UIButton *btnok,*btnno;
     NSTimer *timer2;
-    CustomerPointAnnotaton *meetingAnnotaton;
+   __block CustomerPointAnnotaton *meetingAnnotaton;
     __block NSMutableArray<NSString *>* devicelist;
     __block id _self;
-    UIImage *meetingimg;
+   __block UIImage *meetingimg;
     
     __block NSMutableDictionary<NSString *,CustomerPointAnnotaton  *>*marklist;
 }

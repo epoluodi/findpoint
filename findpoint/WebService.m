@@ -135,18 +135,35 @@
     [service addParamsString:@"userid" values:[info getInstancent].uid];
     NSData *returndata =  [service httprequest:[service getDataForArrary]];
     if (returndata == nil)
-        return nil;
+        return NO;
     
     NSString *ret = [service getXmlString:returndata];
     if (ret == nil)
-        return nil;
+        return NO;
     if ([ret isEqualToString:@"1"])
         return YES;
     return NO;
 }
 
 
--(NSArray *)getChannelGPS:(NSString *)chid
+-(BOOL)delChannelMeetingInfo:(NSString *)chid
+{
+    [service clearArray];
+    [service addParamsString:@"channelid" values:chid];
+    NSData *returndata =  [service httprequest:[service getDataForArrary]];
+    if (returndata == nil)
+        return NO;
+    
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return NO;
+    if ([ret isEqualToString:@"1"])
+        return YES;
+    return NO;
+}
+
+
+-(NSDictionary *)getChannelGPS:(NSString *)chid
 {
     [service clearArray];
     [service addParamsString:@"channelid" values:chid];
@@ -158,9 +175,9 @@
     if (ret == nil)
         return nil;
     
-    NSArray * arry = [NSJSONSerialization JSONObjectWithData:[ret dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+    NSDictionary * d = [NSJSONSerialization JSONObjectWithData:[ret dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
     
-    return [arry copy];
+    return [d copy];
 }
 
 #pragma 推送
@@ -190,6 +207,27 @@
         return YES;
     return NO;
 }
+
+-(BOOL)sendpush:(NSString *)devicelist msg:(NSString *)msg json:(NSString *)json msgtype:(NSString *)msgtype
+{
+    [service clearArray];
+    [service addParamsString:@"devicelist" values:devicelist];
+    [service addParamsString:@"msg" values:msg];
+    [service addParamsString:@"json" values:json];
+    [service addParamsString:@"msgtype" values:msgtype];
+    NSData* returndata =  [service httprequest:[service getDataForArrary]];
+    
+    if (returndata == nil)
+        return NO;
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return NO;
+    if ([ret isEqualToString:@"1"])
+        return YES;
+    return NO;
+}
+
+
 #pragma GPS
 
 //提交GPS

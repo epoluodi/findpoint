@@ -207,6 +207,7 @@
         meetingAnnotaton.coordinate = map.centerCoordinate;
         meetingAnnotaton.title=@"集合点";
         meetingAnnotaton.identity = @"meeting";
+        meetingAnnotaton.creater = [info getInstancent].uid;
         [map addAnnotation:meetingAnnotaton];
         [map selectAnnotation:meetingAnnotaton animated:YES];
     }
@@ -235,7 +236,17 @@
             [_alert show];
             return ;
         }
-        [self submitboradcast:@"请各位到集合点" msgtype:@"answer"];
+        
+        NSString *json;
+        NSDictionary *_djson = [[NSDictionary alloc] initWithObjectsAndKeys:
+        [info getInstancent].uid,@"userid",
+        @(meetingAnnotaton.coordinate.latitude),@"lat",
+        @(meetingAnnotaton.coordinate.longitude),@"lng",
+        _channelid,@"chid",nil];
+        NSData *jsondata = [NSJSONSerialization dataWithJSONObject:_djson options:NSJSONWritingPrettyPrinted error:nil];
+        json = [[NSString alloc] initWithData:jsondata encoding:NSUTF8StringEncoding];
+        NSLog(@"json %@",json);
+        [self submitboradcast:@"请各位到集合点" json:json msgtype:@"answer"];
     }];
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"今天活动结束" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self submitboradcast:@"今天活动结束" msgtype:nil];
@@ -275,11 +286,14 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
 -(void)submitboradcast:(NSString *)msg msgtype:(NSString *)msgtype
 {
     if (!_channelid)
         return;
+    [devicelist removeObject:[info getInstancent].uid ];
     NSString *strlist = [devicelist componentsJoinedByString:@","];
+    
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     dispatch_async(globalQ, ^{
@@ -289,9 +303,9 @@
         dispatch_async(mainQ, ^{
             NSString *alertmag;
             if (r)
-                alertmag = @"广播已经发送";
+                alertmag = @"已经发送";
             else
-                alertmag = @"广播发送失败";
+                alertmag = @"发送失败";
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:alertmag delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         });
@@ -300,6 +314,39 @@
     
     
 }
+
+
+
+-(void)submitboradcast:(NSString *)msg json:(NSString *)json msgtype:(NSString *)msgtype
+{
+    
+    
+    
+    if (!_channelid)
+        return;
+    [devicelist removeObject:[info getInstancent].uid];
+    NSString *strlist = [devicelist componentsJoinedByString:@","];
+    if (!strlist|| [strlist isEqualToString:@""])
+        return;
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(globalQ, ^{
+        
+        WebService *web = [[WebService alloc] initUrl:sendPush];
+        BOOL r=  [web sendpush:strlist msg:msg json:json msgtype:msgtype];
+        dispatch_async(mainQ, ^{
+            NSString *alertmag;
+            if (r)
+                alertmag = @"已经发送";
+            else
+                alertmag = @"发送失败";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:alertmag delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        });
+    });
+}
+
+
 
 #pragma mark pickview delegate
 
@@ -417,12 +464,61 @@
         if (!_channelid)
             return ;
         WebService *web = [[WebService alloc] initUrl:getChannelForGPS];
-        NSArray * gpslist = [web getChannelGPS:_channelid];
-        if (!gpslist)
+        NSDictionary *d =[web getChannelGPS:_channelid];
+        if (!d)
             return ;
         dispatch_async(mainQ, ^{
             NSMutableArray *key = [[NSMutableArray alloc] initWithArray:[marklist allKeys]];
             
+            
+            NSArray * gpslist = [d objectForKey:@"gps"];
+            NSDictionary *meetinfo = [d objectForKey:@"meeting"];
+            if ([[meetinfo objectForKey:@"state"] isEqualToString:@"1"])
+            {
+                if (!meetingAnnotaton)
+                {
+                    meetingAnnotaton = [[CustomerPointAnnotaton alloc] init];
+                    CLLocationCoordinate2D coordinate;
+                    coordinate.latitude = ((NSString *)[meetinfo  objectForKey:@"lat"]).doubleValue;
+                    coordinate.longitude = ((NSString *)[meetinfo  objectForKey:@"lng"]).doubleValue;
+                    meetingAnnotaton.coordinate = coordinate;
+                    meetingAnnotaton.title=@"集合点";
+                    meetingAnnotaton.identity = @"meeting";
+                    if ([[info getInstancent].uid isEqualToString:[meetinfo objectForKey:@"userid"]])
+                    {
+                        meetingAnnotaton.creater = [info getInstancent].uid;
+                    }
+                    meetingAnnotaton.img=[d objectForKey:@"img"];
+                    [map addAnnotation:meetingAnnotaton];
+                    [map selectAnnotation:meetingAnnotaton animated:YES];
+                }
+                else
+                {
+                    CLLocationCoordinate2D coordinate;
+                    coordinate.latitude = ((NSString *)[meetinfo  objectForKey:@"lat"]).doubleValue;
+                    coordinate.longitude = ((NSString *)[meetinfo  objectForKey:@"lng"]).doubleValue;
+                    
+                    if (meetingAnnotaton.coordinate.latitude != coordinate.latitude ||
+                        meetingAnnotaton.coordinate.longitude!= coordinate.longitude)
+                    {
+                        meetingAnnotaton.coordinate=coordinate;
+                        [map selectAnnotation:meetingAnnotaton animated:YES];
+                    }
+                    meetingAnnotaton.img=[d objectForKey:@"img"];
+                    
+                }
+                
+                
+            }
+            else
+            {
+                if (meetingAnnotaton)
+                {
+                    [map removeAnnotation:meetingAnnotaton];
+                    meetingAnnotaton = nil;
+                    meetingimg = nil;
+                }
+            }
             CustomerPointAnnotaton *mapmark;
             [devicelist removeAllObjects];
             for (NSDictionary *d in gpslist) {
@@ -461,10 +557,74 @@
 //删除集合标记
 -(void)delmeetingmark
 {
-    if (meetingAnnotaton)
-        [map removeAnnotation:meetingAnnotaton];
-    meetingAnnotaton = nil;
-    meetingimg=nil;
+    
+    
+    if (meetingAnnotaton){
+        
+        if (![meetingAnnotaton.creater isEqualToString:[info getInstancent].uid])
+        {
+            
+            UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"提示" message:@"你不是集合点创建者，你确定要删除集合点吗？" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *action2 =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+          
+                [self delmeetingmarkAnnotation];
+                
+            }];
+            [alert addAction:action1];
+            [alert addAction:action2];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        
+        
+        [self delmeetingmarkAnnotation];
+    }
+    
+}
+
+-(void)delmeetingmarkAnnotation
+{
+ 
+    
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(globalQ, ^{
+        [devicelist removeObject:[info getInstancent].uid];
+        NSString *strlist = [devicelist componentsJoinedByString:@","];
+        if (!strlist|| [strlist isEqualToString:@""])
+            return;
+        
+        
+        
+        
+        WebService *web = [[WebService alloc] initUrl:delMeetingMarkInfo];
+         BOOL r= [web delChannelMeetingInfo:_channelid];
+        if (r){
+            web = nil;
+            web = [[WebService alloc] initUrl:sendPush];
+           r = [web sendpush:strlist msg:@"集合点取消！" msgtype:nil];
+        }
+        dispatch_async(mainQ, ^{
+            
+            if (!r)
+            {
+                [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"网络错误请重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                return ;
+            }
+            
+            [map removeAnnotation:meetingAnnotaton];
+            meetingAnnotaton = nil;
+            meetingimg=nil;
+            
+            
+        });
+    });
+    
+
 }
 
 

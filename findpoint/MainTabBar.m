@@ -60,6 +60,7 @@
                                                                          settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge)
                                                                          categories:[NSSet setWithObjects:categorys1,categorys2, nil]]];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+  
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入
     //开启连续定位
     [[GDLocation getInstancet] StartLocation];
@@ -111,7 +112,10 @@
         alert = [UIAlertController alertControllerWithTitle:@"通知提示" message:[[json objectForKey:@"aps"] objectForKey:@"alert"] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"收到" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NotificationGPS *ngps = [[NotificationGPS  alloc] init];
-            [ngps sendpush:[json objectForKey:@"json"]];
+            NSLog(@"%@",json);
+            NSString *str =[json objectForKey:@"json"] ;
+            NSDictionary *d = [NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+            [ngps sendpush:[d objectForKey:@"userid"]];
         }];
         UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         [alert addAction:action1];
@@ -119,10 +123,28 @@
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    // 设置触发通知的时间
+    // 时区
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    
+    // 通知内容
+    notification.alertBody =  [[json objectForKey:@"aps"] objectForKey:@"alert"];
+    notification.alertTitle=@"点名提醒";
+    notification.applicationIconBadgeNumber = 1;
+    // 通知被触发时播放的声音
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    // 通知参数
+    NSDictionary *userDict = [NSDictionary dictionaryWithObject:@"消息" forKey:@"key"];
+    notification.userInfo = userDict;
+    
+
+    
+    // 执行通知注册
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
     
     
-    
-    
+
 }
 
 - (void)didReceiveMemoryWarning {

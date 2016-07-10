@@ -24,6 +24,7 @@
 
 
 
+
 -(int)checkchannelid:(NSString *)channcelid;
 -(int)createchannel:(NSString *)json;
 -(NSArray *)queryChannel:(NSString *)key;
@@ -37,10 +38,10 @@
 
 -(NSArray *)getChannelUserInfo:(NSString *)chid;
 -(BOOL)delChannelUserInfo:(NSString *)chid;
--(NSArray *)getChannelGPS:(NSString *)chid;
+-(NSDictionary *)getChannelGPS:(NSString *)chid;
 
 -(void)submittoken:(NSString *)token;
 -(BOOL)sendpush:(NSString *)devicelist msg:(NSString *)msg msgtype:(NSString *)msgtype;
-
-
+-(BOOL)sendpush:(NSString *)devicelist msg:(NSString *)msg json:(NSString *)json msgtype:(NSString *)msgtype;
+-(BOOL)delChannelMeetingInfo:(NSString *)chid;
 @end
