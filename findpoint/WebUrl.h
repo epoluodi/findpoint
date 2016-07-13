@@ -22,8 +22,8 @@
 
 #define downloadjpg @"http://epoluodi.vicp.cc:8081/PublicCommon.asmx/Download"
 #define delMeetingMarkInfo @"http://epoluodi.vicp.cc:8081/channel.asmx/delMeetingMarkInfo"
-
-
+#define uploadfile @"http://epoluodi.vicp.cc:8081/PublicCommon.asmx/upload"
+#define updatemeetingimg @"http://epoluodi.vicp.cc:8081/channel.asmx/updatemeetingimg"
 #pragma 推送
 #define pushsubmit [NSString stringWithFormat:@"%@%@",ServerUrl,@"push.asmx/submitToken"]
 #define sendPush [NSString stringWithFormat:@"%@%@",ServerUrl,@"push.asmx/sendPush"]

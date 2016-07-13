@@ -8,6 +8,8 @@
 #define kArrorHeight    10
 #import "CallOutView.h"
 #import "MapViewController.h"
+#import <Common/FileCommon.h>
+#import "WebService.h"
 
 @implementation CallOutView
 
@@ -36,6 +38,44 @@
     leftimage.contentMode = UIViewContentModeScaleAspectFill;
     leftimage.image=img;
 }
+-(void)setMeetingimgForuuid:(UIImage *)img
+{
+    NSString *path = [FileCommon getCacheDirectory];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *filename = [NSString stringWithFormat:@"%@.jpg",img];
+    NSString* _filename = [path stringByAppendingPathComponent:filename];
+    if ([fm fileExistsAtPath:_filename])
+    {
+        NSData *pngdata = [NSData dataWithContentsOfFile:_filename];
+        if (pngdata)
+        {
+            
+            leftimage.image=[UIImage imageWithData:pngdata] ;
+
+        }
+        
+    }
+    else
+    {
+        
+        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t mainQ = dispatch_get_main_queue();
+        dispatch_async(globalQ, ^{
+            NSString *pngpath  = [NSString stringWithFormat:@"%@?mediaid=%@",downloadjpg,img];
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:pngpath] ];
+            if (data)
+            {
+                [fm createFileAtPath:_filename contents:data attributes:nil];
+                dispatch_async(mainQ, ^{
+                     
+                    leftimage.image = [UIImage imageWithData:data];
+                });
+            }
+        });
+        
+    }
+
+}
 //加载图片
 -(void)initview:(NSString *)strimgid
 {
@@ -49,7 +89,7 @@
     leftimage.image=[UIImage imageNamed:@"addimg"];
     [self addSubview:leftimage];
     leftimage.userInteractionEnabled=YES;
-    
+  
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
     [tap addTarget:self action:@selector(btnadd)];
     
@@ -69,15 +109,7 @@
     [self addSubview:btndel];
     
     
-    
-    if (!strimgid)
-    {
-
-    }
-    else
-    {
-        
-    }
+ 
 }
 
 //删除集合标记

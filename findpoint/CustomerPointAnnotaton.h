@@ -16,9 +16,9 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
-@property (nonatomic, copy) NSString *img;
-@property (weak,nonatomic)NSString *creater;
 
+@property (weak,nonatomic)NSString *creater;
+@property (nonatomic, copy) NSString *img;
 @property (weak,nonatomic)MarkVIew *markview;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property (copy,nonatomic)NSString *identity;

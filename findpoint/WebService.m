@@ -264,6 +264,33 @@
     
 }
 
+-(BOOL)UploadFile:(NSString *)filename DATA:(NSData *)data
+{
+        NSData *returndata =  [service UploadFile:filename FileData:data];
+    if (returndata == nil)
+        return NO;
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return NO;
+    if ([ret isEqualToString:@"0"])
+        return YES;
+    else
+        return NO;
+}
 
-
+-(BOOL)UpdateMeetingImg:(NSString *)chid uuid:(NSString *)uuid
+{
+    [service clearArray];
+    [service addParamsString:@"channelid" values:chid];
+    [service addParamsString:@"uuid" values:uuid];
+    NSData* returndata =  [service httprequest:[service getDataForArrary]];
+    if (returndata == nil)
+        return NO;
+    NSString *ret = [service getXmlString:returndata];
+    if (ret == nil)
+        return NO;
+    if ([ret isEqualToString:@"1"])
+        return YES;
+    return NO;
+}
 @end

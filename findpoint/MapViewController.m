@@ -12,9 +12,12 @@
 #import "MarkVIew.h"
 #import "Common.h"
 #import <Common/FileCommon.h>
+#import "MBProgressHUD.h"
 
 @interface MapViewController ()
-
+{
+    MBProgressHUD *hub;
+}
 @end
 
 @implementation MapViewController
@@ -488,7 +491,7 @@
                     {
                         meetingAnnotaton.creater = [info getInstancent].uid;
                     }
-                    meetingAnnotaton.img=[d objectForKey:@"img"];
+                    meetingAnnotaton.img =[meetinfo objectForKey:@"img"];
                     [map addAnnotation:meetingAnnotaton];
                     [map selectAnnotation:meetingAnnotaton animated:YES];
                 }
@@ -504,7 +507,9 @@
                         meetingAnnotaton.coordinate=coordinate;
                         [map selectAnnotation:meetingAnnotaton animated:YES];
                     }
-                    meetingAnnotaton.img=[d objectForKey:@"img"];
+                    meetingAnnotaton.img =[meetinfo objectForKey:@"img"];
+                    [meetingAnnotaton.markview setMeetingimgForuuid:[meetinfo objectForKey:@"img"]];
+                 
                     
                 }
                 
@@ -691,11 +696,42 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filePath = [FileCommon getCacheDirectory];
     NSString *uuid = [[NSUUID UUID] UUIDString];
-    
+    uuid =[uuid stringByReplacingOccurrencesOfString:@"-" withString:@""];
 //    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
     //
     NSString *filename = [NSString stringWithFormat:@"/%@.jpg",uuid];
     [fileManager createFileAtPath:[filePath stringByAppendingString:filename] contents:jpgdata attributes:nil];
+    
+    
+        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+      dispatch_queue_t mainQ = dispatch_get_main_queue();
+    hub = [[MBProgressHUD alloc] initWithView:map];
+    [map addSubview:hub];
+    [hub show:YES];
+    dispatch_async(globalQ, ^{
+        WebService *web = [[WebService alloc] initUrl:uploadfile];
+        BOOL r =[web UploadFile:uuid DATA:jpgdata];
+        NSLog(@"%d",r);
+        if (r)
+        {
+            WebService *web = [[WebService alloc] initUrl:updatemeetingimg];
+            r= [web UpdateMeetingImg:_channelid uuid:uuid];
+
+        }
+        dispatch_async(mainQ, ^{
+            [hub hide:YES];
+            
+           if (!r)
+           {
+               meetingimg = nil;
+               [meetingAnnotaton.markview setMeetingimg:meetingimg];
+               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"上传照片失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+               [alert show];
+               return ;
+           }
+        });
+    });
+    
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
@@ -745,6 +781,7 @@
         mark.IsCustomCallout=YES;
         mark.controllview=self;
         mark.calloutOffset    = CGPointMake(0, -5);
+        mark.img=meetingAnnotaton.img;
         meetingAnnotaton.markview = mark;
         return mark;
     }

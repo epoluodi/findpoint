@@ -78,6 +78,11 @@
 {
     [_calloutview setMeetingimg:img];
 }
+-(void)setMeetingimgForuuid:(UIImage *)img
+{
+    [_calloutview setMeetingimgForuuid:img];
+}
+
 -(void)setSelected:(BOOL)selected
 {
     [self setSelected:selected animated:NO];
@@ -98,11 +103,14 @@
                 _calloutview.frame =CGRectMake(0, 0, kCalloutWidth, kCalloutHeight);
                 _calloutview.center = CGPointMake(CGRectGetWidth(self.bounds) / 2.f + self.calloutOffset.x,
                                                   -CGRectGetHeight(_calloutview.bounds) / 2.f + self.calloutOffset.y);
+                
+                [_calloutview initview:_img];
             }
+          
             _calloutview.controllview=_controllview;
             _calloutview.alpha=0;
             [self addSubview:_calloutview];
-            [_calloutview initview:nil];
+            [_calloutview setMeetingimgForuuid:_img];
             [_calloutview startanimation];
 
         }

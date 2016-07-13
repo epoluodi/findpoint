@@ -20,7 +20,8 @@
 @property (nonatomic,copy)NSString *username;
 @property (assign) BOOL IsCustomCallout;
 @property (weak,nonatomic)UIViewController *controllview;
-
+@property (nonatomic, weak) NSString *img;
+-(void)setMeetingimgForuuid:(NSString *)img;
 -(void)setMeetingimg:(UIImage *)img;
 -(void)startAnimiation;
 -(void)stopAnimation;
