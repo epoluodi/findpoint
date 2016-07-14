@@ -636,6 +636,36 @@
 //添加集合照片
 -(void)addmeetingImage
 {
+    
+    
+    if (meetingAnnotaton){
+        
+        if (![meetingAnnotaton.creater isEqualToString:[info getInstancent].uid])
+        {
+            
+            UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"提示" message:@"你不是集合点创建者，你确定要修改照片吗？" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *action2 =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [self addmeetingImageDo];
+                
+            }];
+            [alert addAction:action1];
+            [alert addAction:action2];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        
+        
+        [self addmeetingImageDo];
+    }
+    
+    
+    
+}
+
+-(void)addmeetingImageDo
+{
     UIAlertController * alert =[UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -670,10 +700,8 @@
     [alert addAction:photo];
     
     [self presentViewController:alert animated:YES completion:nil];
-    
-    
-}
 
+}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -764,6 +792,20 @@
 
 -(MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
+    
+    //1.将两个经纬度点转成投影点
+    
+    MAMapPoint point1 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(39.989612,116.480972));
+    
+    MAMapPoint point2 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(39.990347,116.480441));
+    
+    
+    
+    //2.计算距离
+    
+    CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
+    
+    
     if ([[annotation title] isEqualToString:@"当前位置"])
         return nil;
     

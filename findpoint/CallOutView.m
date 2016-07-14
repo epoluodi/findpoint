@@ -27,7 +27,7 @@
     btndel = [[UIButton alloc] init];
     leftimage = [[UIImageView alloc] init];
     indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-
+    leftimage.contentMode = UIViewContentModeScaleAspectFill;
     
     self.userInteractionEnabled=YES;
     return self;
@@ -35,7 +35,7 @@
 
 -(void)setMeetingimg:(UIImage *)img
 {
-    leftimage.contentMode = UIViewContentModeScaleAspectFill;
+
     leftimage.image=img;
 }
 -(void)setMeetingimgForuuid:(UIImage *)img
@@ -85,7 +85,7 @@
     leftimage.layer.borderWidth=1;
     leftimage.layer.masksToBounds=YES;
 
-    leftimage.contentMode = UIViewContentModeScaleAspectFit;
+    leftimage.contentMode = UIViewContentModeScaleAspectFill;
     leftimage.image=[UIImage imageNamed:@"addimg"];
     [self addSubview:leftimage];
     leftimage.userInteractionEnabled=YES;

@@ -63,7 +63,6 @@
 		7B4CF66F1CDF7B57000D4415 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF66E1CDF7B57000D4415 /* libc++.tbd */; };
 		7B4CF6721CDF8DCB000D4415 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B4CF6711CDF8DCB000D4415 /* AMapLocationKit.framework */; };
 		7B4CF6751CDF91C6000D4415 /* GDLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CF6741CDF91C6000D4415 /* GDLocation.m */; };
-		7B6C7A9F1B4430A30012000B /* NotificationViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C7A9E1B4430A30012000B /* NotificationViewControl.m */; };
 		7B718C211B25E5E000AE4D8B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B718C201B25E5E000AE4D8B /* MBProgressHUD.m */; };
 		7B7C3C4F1CE2330600D6668D /* btn_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C3C4E1CE2330600D6668D /* btn_share.png */; };
 		7B7C3C531CE233BB00D6668D /* btn_return.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B7C3C521CE233BB00D6668D /* btn_return.png */; };
@@ -106,6 +105,7 @@
 		7BE416471CE7729F001D324B /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BE416461CE7729F001D324B /* TencentOpenApi_IOS_Bundle.bundle */; };
 		7BE4164F1CE782A9001D324B /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE4164E1CE782A9001D324B /* TencentOpenAPI.framework */; };
 		7BE416521CE78567001D324B /* TencentClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE416511CE78567001D324B /* TencentClass.m */; };
+		B42644E11D377BC600599F9B /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = B42644E01D377BC600599F9B /* splash.png */; };
 		B45B62B01D12A76800C57F30 /* len.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AD1D12A76800C57F30 /* len.png */; };
 		B45B62B11D12A76800C57F30 /* meetpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AE1D12A76800C57F30 /* meetpoint.png */; };
 		B45B62B21D12A76800C57F30 /* boradcast.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AF1D12A76800C57F30 /* boradcast.png */; };
@@ -218,8 +218,6 @@
 		7B4CF6711CDF8DCB000D4415 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
 		7B4CF6731CDF91C6000D4415 /* GDLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDLocation.h; sourceTree = "<group>"; };
 		7B4CF6741CDF91C6000D4415 /* GDLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDLocation.m; sourceTree = "<group>"; };
-		7B6C7A9D1B4430A30012000B /* NotificationViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewControl.h; sourceTree = "<group>"; };
-		7B6C7A9E1B4430A30012000B /* NotificationViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewControl.m; sourceTree = "<group>"; };
 		7B718C1F1B25E5E000AE4D8B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7B718C201B25E5E000AE4D8B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B7C3C4E1CE2330600D6668D /* btn_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_share.png; sourceTree = "<group>"; };
@@ -282,6 +280,7 @@
 		7BE4164E1CE782A9001D324B /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		7BE416501CE78567001D324B /* TencentClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentClass.h; sourceTree = "<group>"; };
 		7BE416511CE78567001D324B /* TencentClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentClass.m; sourceTree = "<group>"; };
+		B42644E01D377BC600599F9B /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		B45B62AD1D12A76800C57F30 /* len.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = len.png; sourceTree = "<group>"; };
 		B45B62AE1D12A76800C57F30 /* meetpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meetpoint.png; sourceTree = "<group>"; };
 		B45B62AF1D12A76800C57F30 /* boradcast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boradcast.png; sourceTree = "<group>"; };
@@ -452,15 +451,6 @@
 			name = map;
 			sourceTree = "<group>";
 		};
-		7B6C7A9C1B442B010012000B /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				7B6C7A9D1B4430A30012000B /* NotificationViewControl.h */,
-				7B6C7A9E1B4430A30012000B /* NotificationViewControl.m */,
-			);
-			name = Notification;
-			sourceTree = "<group>";
-		};
 		7B718C1E1B25E5CA00AE4D8B /* MBHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,7 +508,6 @@
 				7B46CCA21CF1E32100D0928E /* WX */,
 				7BE416531CE7856A001D324B /* QQ */,
 				7BE416391CE73F86001D324B /* app_logo.png */,
-				7B6C7A9C1B442B010012000B /* Notification */,
 				7BC0AAE91B40469C00D53A84 /* CustomerView */,
 				7BC0AAE61B40435000D53A84 /* txt */,
 				7B893F4F1B3B028300C1D776 /* TranView */,
@@ -575,6 +564,7 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				B42644E01D377BC600599F9B /* splash.png */,
 				B48B0EFD1D2DFC5A00646A20 /* btndel.png */,
 				B48B0EF91D2DF6CE00646A20 /* addimg.png */,
 				B47311A51D29FBC2007029F0 /* meeting.png */,
@@ -826,6 +816,7 @@
 				B48B0EFE1D2DFC5A00646A20 /* btndel.png in Resources */,
 				7B411C961D158F5D007B3C59 /* btnok.png in Resources */,
 				7B46CCAE1CF1E64C00D0928E /* png.bundle in Resources */,
+				B42644E11D377BC600599F9B /* splash.png in Resources */,
 				7BAAB8351CD8E4B4003EBE37 /* gps.png in Resources */,
 				7B4475FA1B3845B900FEB452 /* png9.png in Resources */,
 				B45B62B21D12A76800C57F30 /* boradcast.png in Resources */,
@@ -886,7 +877,6 @@
 				7B893F521B3B029A00C1D776 /* CMSCoinView.m in Sources */,
 				7BB2D2E71B3C4B6500397F20 /* RegView.m in Sources */,
 				7B419BE11D0728B50037555D /* ChannelInfoController.m in Sources */,
-				7B6C7A9F1B4430A30012000B /* NotificationViewControl.m in Sources */,
 				7B411C991D16F9BC007B3C59 /* CustomerPointAnnotaton.m in Sources */,
 				7B419BE61D0994E30037555D /* gridcellfornick.m in Sources */,
 				7BE416521CE78567001D324B /* TencentClass.m in Sources */,
