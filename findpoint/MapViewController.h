@@ -35,8 +35,10 @@
     __block NSMutableArray<NSString *>* devicelist;
     __block id _self;
    __block UIImage *meetingimg;
-    
     __block NSMutableDictionary<NSString *,CustomerPointAnnotaton  *>*marklist;
+    BOOL Measure;
+    NSMutableArray *overlays;
+    
 }
 
 @property (weak, nonatomic) IBOutlet MAMapView *map;

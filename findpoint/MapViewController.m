@@ -36,7 +36,7 @@
     map.delegate=self;
     map.scaleOrigin = CGPointMake(map.scaleOrigin.x, map.scaleOrigin.y+5);
     [GDLocation getInstancet].delegate=self;
-    
+    Measure = NO;
     timer1 = [NSTimer scheduledTimerWithTimeInterval:45 target:self selector:@selector(updateGPS) userInfo:nil repeats:YES];
     isrun=NO;
     //
@@ -137,6 +137,7 @@
     btnlen = [[UIButton alloc] init];
     btnlen.frame=CGRectMake(10, btnmeet.frame.origin.y + 60 +10, 40, 60);
     [btnlen setImage:[UIImage imageNamed:@"len"] forState:UIControlStateNormal];
+    [btnlen addTarget:self action:@selector(Openmeasure) forControlEvents:UIControlEventTouchUpInside];
     [controlview addSubview:btnlen];
     
     
@@ -198,6 +199,35 @@
 }
 
 
+
+//开启测量
+-(void)Openmeasure
+{
+    if (Measure){
+        Measure =NO;
+           [btnlen setImage:[UIImage imageNamed:@"len"] forState:UIControlStateNormal];
+        [map removeOverlays:overlays];
+        [overlays removeAllObjects];
+        overlays=nil;
+    }
+    else
+    {
+        Measure = YES;
+        overlays = [[NSMutableArray alloc] init];
+        [btnlen setImage:[UIImage imageNamed:@"len2"] forState:UIControlStateNormal];
+        for (NSString *s in [marklist allKeys]) {
+            CustomerPointAnnotaton *ca = [marklist objectForKey:s];
+            CLLocationCoordinate2D coord2d [2];
+            coord2d[0] = ca.coordinate;
+            coord2d[1] = map.userLocation.coordinate;
+            MAMultiPolyline *multiTexturePolyline = [MAMultiPolyline polylineWithCoordinates:coord2d count:2 drawStyleIndexes:@[@0,@1]];
+            [overlays addObject:multiTexturePolyline];
+            [map addOverlay:multiTexturePolyline];
+        }
+
+    }
+    
+}
 
 //集合
 -(void)showmeetingmark
@@ -527,6 +557,8 @@
             CustomerPointAnnotaton *mapmark;
             [devicelist removeAllObjects];
             for (NSDictionary *d in gpslist) {
+                if ([[d objectForKey:@"deviceid"]  isEqualToString:[info getInstancent].uid])
+                    continue;
                 [devicelist addObject:[d objectForKey:@"deviceid"]];
                 if ([key containsObject:[d objectForKey:@"deviceid"]])
                 {
@@ -703,6 +735,8 @@
 
 }
 
+
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
@@ -771,6 +805,15 @@
 
 #pragma mark 地图委托
 
+-(MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id<MAOverlay>)overlay
+{
+    MAMultiColoredPolylineRenderer * polylineRenderer = [[MAMultiColoredPolylineRenderer alloc] initWithMultiPolyline:overlay];
+    polylineRenderer.lineWidth = 6.f;
+    polylineRenderer.strokeColors = @[[[UIColor redColor] colorWithAlphaComponent:0.7],
+                                      [[UIColor yellowColor] colorWithAlphaComponent:0.7]];
+    polylineRenderer.gradient = YES;
+    return polylineRenderer;
+}
 
 - (void)mapView:(MAMapView *)mapView didAnnotationViewCalloutTapped:(MAAnnotationView *)view
 {
@@ -789,7 +832,29 @@
 }
 
 
-
+-(void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view
+{
+    if (Measure)
+    {
+        CLLocationCoordinate2D coord2d = view.annotation.coordinate;
+        //1.将两个经纬度点转成投影点
+        MAMapPoint point1 = MAMapPointForCoordinate(coord2d);
+        MAMapPoint point2 = MAMapPointForCoordinate(_location.coordinate);
+        //2.计算距离
+        
+        CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
+        NSString *strlen;
+        if (distance<1000)
+            strlen = [NSString stringWithFormat:@"%.2f 米",distance];
+        if (distance > 1000)
+            strlen = [NSString stringWithFormat:@"%.2f 公里",distance/1000];
+        
+        ((CustomerPointAnnotaton *)view.annotation).subtitle =strlen;
+        
+    }
+    else
+        ((CustomerPointAnnotaton *)view.annotation).subtitle =nil;
+}
 -(MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
     
@@ -901,6 +966,22 @@
     _location= location;
     if (!_geocode)
         [[GDLocation getInstancet] getLocationGeoInfo:_location];
+    
+    if (Measure)
+    {
+        [map removeOverlays:overlays];
+        [overlays removeAllObjects];
+
+        for (NSString *s in [marklist allKeys]) {
+            CustomerPointAnnotaton *ca = [marklist objectForKey:s];
+            CLLocationCoordinate2D coord2d [2];
+            coord2d[0] = ca.coordinate;
+            coord2d[1] = map.userLocation.coordinate;
+            MAMultiPolyline *multiTexturePolyline = [MAMultiPolyline polylineWithCoordinates:coord2d count:2 drawStyleIndexes:@[@0,@1]];
+            [overlays addObject:multiTexturePolyline];
+            [map addOverlay:multiTexturePolyline];
+        }
+    }
     
 }
 -(void)updateReGeoInfo:(AMapReGeocode *)GeoCodeInfo

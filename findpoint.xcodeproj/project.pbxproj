@@ -110,6 +110,7 @@
 		B45B62B11D12A76800C57F30 /* meetpoint.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AE1D12A76800C57F30 /* meetpoint.png */; };
 		B45B62B21D12A76800C57F30 /* boradcast.png in Resources */ = {isa = PBXBuildFile; fileRef = B45B62AF1D12A76800C57F30 /* boradcast.png */; };
 		B464B6591CF5A664009A6A6F /* channelmaincell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B464B6581CF5A664009A6A6F /* channelmaincell.xib */; };
+		B46CFB4A1D38D3CB00598D13 /* len2.png in Resources */ = {isa = PBXBuildFile; fileRef = B46CFB491D38D3CB00598D13 /* len2.png */; };
 		B47311A61D29FBC2007029F0 /* meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = B47311A51D29FBC2007029F0 /* meeting.png */; };
 		B47E188E1D2CFE54009FE388 /* CallOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E188D1D2CFE54009FE388 /* CallOutView.m */; };
 		B48B0EFA1D2DF6CE00646A20 /* addimg.png in Resources */ = {isa = PBXBuildFile; fileRef = B48B0EF91D2DF6CE00646A20 /* addimg.png */; };
@@ -285,6 +286,7 @@
 		B45B62AE1D12A76800C57F30 /* meetpoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meetpoint.png; sourceTree = "<group>"; };
 		B45B62AF1D12A76800C57F30 /* boradcast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boradcast.png; sourceTree = "<group>"; };
 		B464B6581CF5A664009A6A6F /* channelmaincell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = channelmaincell.xib; sourceTree = "<group>"; };
+		B46CFB491D38D3CB00598D13 /* len2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = len2.png; sourceTree = "<group>"; };
 		B47311A51D29FBC2007029F0 /* meeting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meeting.png; sourceTree = "<group>"; };
 		B47E188C1D2CFE54009FE388 /* CallOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallOutView.h; sourceTree = "<group>"; };
 		B47E188D1D2CFE54009FE388 /* CallOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallOutView.m; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 		7BCA9CB11B2494F2006D6156 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				B46CFB491D38D3CB00598D13 /* len2.png */,
 				B42644E01D377BC600599F9B /* splash.png */,
 				B48B0EFD1D2DFC5A00646A20 /* btndel.png */,
 				B48B0EF91D2DF6CE00646A20 /* addimg.png */,
@@ -797,6 +800,7 @@
 				7B411C951D158F5D007B3C59 /* btnno.png in Resources */,
 				7B4475F71B3845B900FEB452 /* png6.png in Resources */,
 				7B1DFD291CF733CE00D72E86 /* state3.png in Resources */,
+				B46CFB4A1D38D3CB00598D13 /* len2.png in Resources */,
 				7B4CF6401CDF6985000D4415 /* settingcell.xib in Resources */,
 				7B4475F41B3845B900FEB452 /* png3.png in Resources */,
 				7B4475F91B3845B900FEB452 /* png8.png in Resources */,
