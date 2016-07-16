@@ -11,7 +11,9 @@
 #import "Common.h"
 #import "info.h"
 #import "WebService.h"
-
+#import "TencentClass.h"
+#import "WeChatClass.h"
+#import <Common/PublicCommon.h>
 
 
 @interface settingMainViewController ()
@@ -83,33 +85,33 @@
     SettingCell *cell =(SettingCell*) [table dequeueReusableCellWithIdentifier:@"cell"];
     switch (indexPath.row) {
         case 0:
-            cell.SettingTypeEmun=QQ;
-            [cell initview];
-            if (isloginQQ)
-            {
-                cell.labstate.text=@"已登录";
-                nickname.text = [userinfo stringForKey:@"nickname"];
-                NSString *imgfile =[userinfo stringForKey:@"nickimage"];
-                NSURL *url = [NSURL URLWithString:imgfile];
-                NSData *jpg = [Common downloadfile:url];
-                if (jpg){
-                    UIImage *img = [UIImage imageWithData:jpg];
-                    nickimage.image=img;
-                }
+        cell.SettingTypeEmun=QQ;
+        [cell initview];
+        if (isloginQQ)
+        {
+            cell.labstate.text=@"已登录";
+            nickname.text = [userinfo stringForKey:@"nickname"];
+            NSString *imgfile =[userinfo stringForKey:@"nickimage"];
+            NSURL *url = [NSURL URLWithString:imgfile];
+            NSData *jpg = [Common downloadfile:url];
+            if (jpg){
+                UIImage *img = [UIImage imageWithData:jpg];
+                nickimage.image=img;
             }
-            break;
+        }
+        break;
         case 1:
-            cell.SettingTypeEmun=GPS;
-            [cell initview];
-            break;
+        cell.SettingTypeEmun=GPS;
+        [cell initview];
+        break;
         case 2:
-            cell.SettingTypeEmun=SHAREAPP;
-            [cell initview];
-            break;
+        cell.SettingTypeEmun=SHAREAPP;
+        [cell initview];
+        break;
         case 3:
-            cell.SettingTypeEmun=ABOUTAPP;
-            [cell initview];
-            break;
+        cell.SettingTypeEmun=ABOUTAPP;
+        [cell initview];
+        break;
     }
     
     return cell;
@@ -126,33 +128,42 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-            
+        
         case 0:
-            if (![TencentClass checkQQ])
-            {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你没有安装QQ客户端,无法进行QQ登录" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
-                [alert addAction:action1];
-                [self presentViewController:alert animated:YES completion:nil];
-                return;
-            }
-            
-            [TencentClass getInstance].delegate=self;
-            [[TencentClass getInstance] LoginQQ];
-            
-            break;
+        if (![TencentClass checkQQ])
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"你没有安装QQ客户端,无法进行QQ登录" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:action1];
+            [self presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        
+        [TencentClass getInstance].delegate=self;
+        [[TencentClass getInstance] LoginQQ];
+        
+        break;
         case 1:
-            [self performSegueWithIdentifier:@"showgps" sender:self];
-            break;
+        [self performSegueWithIdentifier:@"showgps" sender:self];
+        break;
         case 2:
-            shareview = [[SheetUI alloc] initclass:self];
-            shareview.ISWEiBO=NO;
-            sharealert =  [shareview SHowSheet:nil];
-            [self presentViewController:sharealert animated:YES completion:nil];
-            break;
+        shareview = [[SheetUI alloc] initclass:self];
+        shareview.ISWEiBO=NO;
+        shareview.IsQQ=NO;
+        sharealert =  [shareview SHowSheet:nil];
+        [self presentViewController:sharealert animated:YES completion:nil];
+        break;
+        case 3:
+        [self showabout];
+        break;
     }
 }
 
+-(void)showabout
+{
+    UIAlertView *alert= [[UIAlertView alloc] initWithTitle:@"关于" message:@"本APP主要用于旅行团队或者户外团队的多人定位管理，如有好的建议可以联系作者：epoluodi@163.com BY YXG \n 版权归作者所有" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alert show];
+}
 
 
 #pragma mark -
@@ -234,13 +245,20 @@
 -(void)SetqueryParams:(int)type
 {
     [sharealert dismissViewControllerAnimated:YES completion:nil];
+    UIImage *img =[PublicCommon scaleToSize:[UIImage imageNamed:@"app_logo"] size:CGSizeMake(120, 120)];
+    
     switch (type) {
-        case 0:
-            
-            break;
         case 1:
-            break;
-
+        [[WeChatClass getInstance] sendLinkContent:@"点名APP 团队定位管理工具" Desc:@"专为旅行团队，户外团队设计的定位管理工具，支持集合点分享，位置反馈等功能" URL:@"https://itunes.apple.com/us/app/ding-dong-gu-piao-ge-ren-gu/id1114291111?l=zh&ls=1&mt=8" Image:img WXScene:WXSceneSession];
+        
+        break;
+        case 2:
+        [[WeChatClass getInstance] sendLinkContent:@"点名APP 团队定位管理工具" Desc:@"专为旅行团队，户外团队设计的定位管理工具，支持集合点分享，位置反馈等功能" URL:@"https://itunes.apple.com/us/app/ding-dong-gu-piao-ge-ren-gu/id1114291111?l=zh&ls=1&mt=8" Image:img WXScene:WXSceneTimeline];
+        break;
+        case 4:
+        [[TencentClass getInstance] sendNewMsg:@"https://itunes.apple.com/us/app/ding-dong-gu-piao-ge-ren-gu/id1114291111?l=zh&ls=1&mt=8" pngname:UIImagePNGRepresentation(img) title:@"点名APP 团队定位管理工具" desc:@"专为旅行团队，户外团队设计的定位管理工具，支持集合点分享，位置反馈等功能"];
+        
+        break;
     }
 }
 -(void)cancelquery

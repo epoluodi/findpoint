@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GDLocation.h"
-
-@interface GPSViewController : UIViewController<GPSLocationDelegate>
+#import "SheetUI.h"
+@interface GPSViewController : UIViewController<GPSLocationDelegate,SHeeUIDelegate>
 
 
 - (IBAction)clickreturn:(id)sender;

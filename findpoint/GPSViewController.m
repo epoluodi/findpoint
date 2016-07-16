@@ -7,11 +7,15 @@
 //
 
 #import "GPSViewController.h"
+#import <Common/PublicCommon.h>
+#import "WeChatClass.h"
 
 @interface GPSViewController ()
 {
     NSTimer *timer;
     CLLocation *loc;
+    SheetUI *shareview;
+    UIAlertController *sharealert;
 }
 @end
 
@@ -95,5 +99,53 @@
 }
 
 - (IBAction)clickshare:(id)sender {
+    shareview = [[SheetUI alloc] initclass:self];
+    shareview.ISWEiBO=NO;
+    shareview.IsQQ=NO;
+    sharealert =  [shareview SHowSheet:nil];
+    [self presentViewController:sharealert animated:YES completion:nil];
+    
+    
 }
+
+
+
+
+#pragma mark 分享委托
+-(void)setupshow
+{
+    
+}
+-(void)SetqueryParams:(int)type
+{
+    [sharealert dismissViewControllerAnimated:YES completion:nil];
+    sharealert=nil;
+
+    UIImage *img =[map takeSnapshotInRect:CGRectMake(0, 0, map.frame.size.width, map.frame.size.height)];
+    UIImage *ThumbImage = [PublicCommon scaleToSize:img size:map.frame.size];
+    NSData *jpgdata = UIImageJPEGRepresentation(img, 80);
+    NSString *tempPath = NSTemporaryDirectory();
+    NSString *filePath = [tempPath stringByAppendingString:@"/temp.jpg"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createFileAtPath:filePath contents:jpgdata attributes:nil];
+
+    
+    switch (type) {
+        case 1:
+        [[WeChatClass getInstance] sendImageContent:ThumbImage WXScene:WXSceneSession filepath:filePath title:@"我的位置" desc:@"我的位置"];
+        break;
+        case 2:
+          [[WeChatClass getInstance] sendImageContent:ThumbImage WXScene:WXSceneTimeline filepath:filePath title:@"我的位置" desc:@"我的位置"];
+        break;
+   
+    }
+}
+-(void)cancelquery
+{
+    
+}
+
+
+
+
 @end
